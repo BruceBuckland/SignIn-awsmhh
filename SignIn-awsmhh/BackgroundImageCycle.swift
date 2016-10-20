@@ -21,7 +21,8 @@ import UIKit
 class BackgroundImageCycle: NSObject {
     //MARK: Global Variables for Changing Image Functionality.
     private var idx = 0
-    private var backGroundArray = [UIImage(named: "img1.jpg"),UIImage(named:"img2.jpg"), UIImage(named: "img3.jpg"), UIImage(named: "img4.jpg"),UIImage(named: "img5.jpg"),UIImage(named: "img6.jpg"),UIImage(named: "img7.jpg"),UIImage(named: "img8.jpg"),UIImage(named: "img9.jpg"),UIImage(named: "img10.jpg"),UIImage(named: "img11.jpg"),UIImage(named: "img12.jpg"),UIImage(named: "img13.jpg"),UIImage(named: "img14.jpg"),UIImage(named: "img15.jpg")]
+    private var backGroundArray = [UIImage(named: "img1.jpg"),UIImage(named:"img2.jpg"), UIImage(named: "img3.jpg"), UIImage(named: "img4.jpg"),UIImage(named: "img5.jpg")]
+        //,UIImage(named: "img6.jpg"),UIImage(named: "img7.jpg"),UIImage(named: "img8.jpg"),UIImage(named: "img9.jpg"),UIImage(named: "img10.jpg"),UIImage(named: "img11.jpg"),UIImage(named: "img12.jpg"),UIImage(named: "img13.jpg"),UIImage(named: "img14.jpg"),UIImage(named: "img15.jpg")]
     // cycle images and put the animations onto the main queue
     var backgroundImageTimer: NSTimer? = nil
     var viewToCycle: UIImageView?

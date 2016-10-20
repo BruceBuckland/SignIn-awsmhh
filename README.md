@@ -1,22 +1,21 @@
 # Signin 
 ##### Overview
 Signin is an example of an AWS User Pools authentication for IOS written in Swift. 
+- "Cognito Your User Pools" login is implemented
+- Facebook and Google+ login is implemented
+- Signup, Forgot Password and Update Attributes are implemented
+- While some functions require entry of a verification code and that is implemented, if you terminate the app there needs to be a way to enter that code, and that is NOT implemented.
 - MFA (multi-factor authentication) is not implemented.
-- updating attributes is implemented
-- Signup is implemented
-- Google login is implemented
-- user Pool login is implemented
-- facebook login is implemented
-- Forgot password is implemented
-- While some functions (signup and forgot password) require a verification code, it you leave the app there needs to be a way to enter that code, and that is NOT implemented.
+
 
 ##### Background
-The initial signin app was built using aws-ios-sdk but this one uses the far superior mobile-hub-helper framework. 
+The initial signin app (a different repo) was built using aws-ios-sdk but this one uses the far superior mobile-hub-helper framework. 
 
 ##### What the App does
-The app has a logged in and a not logged in state.  Both should be allowed (in your cognito console federated identity choose -allow unauthenticated identities)
+The app is written in Swift using AWS Mobile Hub Helper and AWS Mobile Client (from the AWS Mobile Hub). The app has a logged in and a not logged in state.  Both should be allowed (in your cognito console federated identity choose -allow unauthenticated identities). The app will allow login using Facebook, Google and a custom User Pool that you create in Cognito User Pools. You can switch between identities but the app does not (yet) let you link identities (because MHH's AWSIdentityManager does not yet support that.).  The app supports the latest AWS IOS SDK and currently is written in Swift 2
 
-##### Building Signin
+##### Building SignIn-awsmhh
+- Clone or download the repository
 - Install cocoapods
 - Install the AWS IOS SDK (Tested with version 2.4.9 or greater).
 - Use AWS account and create a User Pool in the Cognito console.
@@ -26,7 +25,14 @@ The app has a logged in and a not logged in state.  Both should be allowed (in y
     -   On the same page add an app to your User Pool. Specify the same name you intend to use for your app name. I used "signin". Click on Show Details and take note of the App Client Id, and the App Client Secret.  Click Save Changes.
     -   Take a look at the Policies section of the Pool Details page to see what password requirements you want to implement.  I unchecked "Require special characters" and required a minimum length of only 6.  If you use something other than that edit the storyboard text for the signup view controller to say that they are required.  
 - Use AWS account and create a Federated identity pool in the Cognito console.
-- Create a new file in Xcode File > New > File... > IOS > Other > Configuration Settings File.  Name the file AWSKeys.xcconfig (because that is the filename ignored in the .gitignore).  In that file put the following:
+- Clone the mobile-hub-helper fork at https://github.com/BruceBuckland/aws-mobilehub-helper-ios which has 2 small fixes in it to make it handle User Pools
+- cd top level directory aws-mobile-hub-helper
+- pod install
+- Scripts/GenerateHelperFramework.sh (This puts a builtFramework directory at top level)
+- In xcode open SignIn-awsmhh remove the AWSMobileHubHelper.framework from that app and add the file aws-mobilehub-helper-ios/builtFramework/framework/AWSMobileHubHelper.framework to your app.
+
+- The easiest way to do this next step may be to use AWS Mobile Hub to create configure and download an app using your google and facebook keys, and then copy the data you need from the Info.plist in that downloaded app. 
+Create a new file in Xcode File > New > File... > IOS > Other > Configuration Settings File.  Name the file AWSKeys.xcconfig (because that is the filename ignored in the .gitignore).  In that file put the following:
 
 ```
     //
@@ -69,4 +75,6 @@ PROJECT_CLIENT_ID = < from the Info.plist downloaded when you made a mobile hub 
 
 - You will need to specify your AWSKeys.xcconfig as a Configuration for (Debug and Release) in your project settings -> Select Project -> Select Info -> Select Configurations -> Select the AWSKeys file in both  Debug and Release. 
 - If you change the configuration of these settings you must do a Product -> Clean (which gets rid of the preconfigured info.plist I think, so the settings can find thier way to K. struct in ConstantsK.swift
+- This app uses an AWSSignInProvider class called AWSCUPIdPSignInProvider that allows authentication using Cognito Your User Pools. If you want to write your own AWSSignInProvider for another IdentityProvider this class provides a model
+
 
