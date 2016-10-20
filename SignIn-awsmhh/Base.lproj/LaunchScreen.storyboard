@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="i3x-Pw-Jga">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="3iX-Wl-rMi">
+            <objects>
+                <viewController storyboardIdentifier="loggedIn" id="i3x-Pw-Jga" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="hCu-Ui-aKc"/>
+                        <viewControllerLayoutGuide type="bottom" id="DJY-sY-kEu"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="zrq-c3-Y8J">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="img1" translatesAutoresizingMaskIntoConstraints="NO" id="MRQ-pR-LkU"/>
+                            <visualEffectView opaque="NO" alpha="0.80000000000000004" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Ns-Xm-oq0">
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="8lS-fz-WY5">
+                                    <frame key="frameInset"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="g23-7T-Ooa">
+                                <constraints>
+                                    <constraint firstAttribute="width" id="xI1-SP-xsS"/>
+                                </constraints>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="g23-7T-Ooa" firstAttribute="top" secondItem="zrq-c3-Y8J" secondAttribute="top" id="4RG-Pc-9jE"/>
+                            <constraint firstItem="2Ns-Xm-oq0" firstAttribute="top" secondItem="g23-7T-Ooa" secondAttribute="top" id="6QP-er-xh1"/>
+                            <constraint firstItem="g23-7T-Ooa" firstAttribute="leading" secondItem="zrq-c3-Y8J" secondAttribute="leading" id="9Ib-nS-Uu5"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="2Ns-Xm-oq0" secondAttribute="trailing" constant="-20" id="9R0-i0-WFl"/>
+                            <constraint firstItem="MRQ-pR-LkU" firstAttribute="top" secondItem="zrq-c3-Y8J" secondAttribute="topMargin" id="BRU-XV-5rE"/>
+                            <constraint firstItem="2Ns-Xm-oq0" firstAttribute="bottom" secondItem="MRQ-pR-LkU" secondAttribute="bottom" id="I6d-FL-nO6"/>
+                            <constraint firstItem="MRQ-pR-LkU" firstAttribute="bottom" secondItem="zrq-c3-Y8J" secondAttribute="bottomMargin" id="Li9-7Q-CHb"/>
+                            <constraint firstItem="MRQ-pR-LkU" firstAttribute="leading" secondItem="zrq-c3-Y8J" secondAttribute="leadingMargin" id="NyH-vE-7bR"/>
+                            <constraint firstItem="2Ns-Xm-oq0" firstAttribute="leading" secondItem="zrq-c3-Y8J" secondAttribute="leadingMargin" constant="-20" id="P1F-fQ-7jd"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MRQ-pR-LkU" secondAttribute="trailing" id="iHc-cJ-6fe"/>
+                            <constraint firstItem="MRQ-pR-LkU" firstAttribute="top" secondItem="zrq-c3-Y8J" secondAttribute="topMargin" id="olt-GE-Ahr"/>
+                        </constraints>
+                    </view>
+                    <toolbarItems/>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="94f-FO-VGW" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-290.39999999999998" y="487.10644677661173"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="img1" width="675" height="675"/>
+    </resources>
+</document>
