@@ -9,10 +9,13 @@ Signin is an example of an AWS User Pools authentication for IOS written in Swif
 - facebook login is implemented
 - Forgot password is implemented
 - While some functions (signup and forgot password) require a verification code, it you leave the app there needs to be a way to enter that code, and that is NOT implemented.
+
 ##### Background
 The initial signin app was built using aws-ios-sdk but this one uses the far superior mobile-hub-helper framework. 
+
 ##### What the App does
 The app has a logged in and a not logged in state.  Both should be allowed (in your cognito console federated identity choose -allow unauthenticated identities)
+
 ##### Building Signin
 - Install cocoapods
 - Install the AWS IOS SDK (Tested with version 2.4.9 or greater).
@@ -48,7 +51,7 @@ The app has a logged in and a not logged in state.  Both should be allowed (in y
 // So my Amazon User Pool Provider name is:
 
 
-COGNITO_USER_POOL_IDP_NAME = cognito-idp.us-east-1.amazonaws.com/< your pool id like us-east-1_sfoOIFIdif
+COGNITO_USER_POOL_IDP_NAME = cognito-idp.us-east-1.amazonaws.com/< your pool id like us-east-1_sfoOIFIdif>
 
 // this ID goes in a login entry dictionary in the cognito
 // credentials provider that includes
@@ -58,7 +61,7 @@ COGNITO_USER_POOL_IDP_NAME = cognito-idp.us-east-1.amazonaws.com/< your pool id 
 GOOGLE_CLIENT_ID = from your mobile hub downloaded info.plist
 GOOGLE_URL_SCHEME = from your mobile hub downloaded info.plist
 FACEBOOK_APP_ID =  from your mobile hub downloaded info.plist
-PROJECT_CLIENT_ID = MobileHub 3252345-3245-325-345-3425-2345 aws-my-sample-app-ios-swift-v0.4
+PROJECT_CLIENT_ID = < from the Info.plist downloaded when you made a mobile hub like MobileHub 3252345-3245-325-345-3425-2345 aws-my-sample-app-ios-swift-v0.4>
 
 ```
 
