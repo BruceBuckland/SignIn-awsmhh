@@ -9,10 +9,13 @@ Signin is an example of an AWS User Pools authentication for IOS written in Swif
 - facebook login is implemented
 - Forgot password is implemented
 - While some functions (signup and forgot password) require a verification code, it you leave the app there needs to be a way to enter that code, and that is NOT implemented.
+
 ##### Background
 The initial signin app was built using aws-ios-sdk but this one uses the far superior mobile-hub-helper framework. 
+
 ##### What the App does
 The app has a logged in and a not logged in state.  Both should be allowed (in your cognito console federated identity choose -allow unauthenticated identities)
+
 ##### Building Signin
 - Install cocoapods
 - Install the AWS IOS SDK (Tested with version 2.4.9 or greater).
