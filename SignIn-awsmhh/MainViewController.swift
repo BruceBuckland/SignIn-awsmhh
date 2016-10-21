@@ -98,6 +98,7 @@ class MainViewController: UIViewController {
             strongSelf.refreshInterface("-Complete")
             })
         
+        
         setupBarButtonItems()
         refreshInterface()
     }
@@ -121,13 +122,13 @@ class MainViewController: UIViewController {
             navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
             
             navigationItem.rightBarButtonItem!.action = #selector(MainViewController.handleLogout)
-//            let mergeButton: UIBarButtonItem = UIBarButtonItem(title: "Merge", style: .Done, target: self, action: #selector(MainViewController.goToLogin))
-//            self.navigationItem.leftBarButtonItem = mergeButton
+            //            let mergeButton: UIBarButtonItem = UIBarButtonItem(title: "Merge", style: .Done, target: self, action: #selector(MainViewController.goToLogin))
+            //            self.navigationItem.leftBarButtonItem = mergeButton
         }
         if !(AWSIdentityManager.defaultIdentityManager().loggedIn) {
             navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-In", comment: "Label for the login button.")
             navigationItem.rightBarButtonItem!.action = #selector(MainViewController.goToLogin)
-//            self.navigationItem.leftBarButtonItem = nil // can't merge when not logged in
+            //            self.navigationItem.leftBarButtonItem = nil // can't merge when not logged in
         }
     }
     
@@ -191,7 +192,7 @@ class MainViewController: UIViewController {
                         
                         
                         if let response = task.result as? AWSCognitoIdentityUserGetDetailsResponse {
-                            
+                            self.otherDataLabel.text = ""
                             self.otherDataLabel.text! +=  "\nAttributes: "
                             for attribute in response.userAttributes! {
                                 self.otherDataLabel.text! += attribute.name! +  ":" + attribute.value! + "\n"
@@ -207,22 +208,10 @@ class MainViewController: UIViewController {
         // What can I get from every Provider?
         
         if AWSIdentityManager.defaultIdentityManager().loggedIn {
-
-            let name = NSStringFromClass(AWSIdentityManager.defaultIdentityManager().currentSignInProvider.dynamicType)
             
-            let defaultDictionary = AWSInfo().defaultServiceInfo("IdentityManager")?.infoDictionary
+            print("Authenticated by: \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
             
-            if let classKeys = defaultDictionary?["SignInProviderClassDictionary"] as? NSDictionary {
-                for key in classKeys {
-                    if key.1 as! String == name {
-                        self.usernameLabel.text = (key.0 as! String)
-                    }
-                }
-            } else {
-                print("Info.plist configuration missing for  SignInProviderClassDictionary")
-            }
-
-            self.usernameLabel.text = self.usernameLabel.text! + " authenticated " +  AWSIdentityManager.defaultIdentityManager().userName!
+            self.usernameLabel.text = AWSIdentityManager.defaultIdentityManager().authenticatedBy! + " authenticated " +  AWSIdentityManager.defaultIdentityManager().userName!
             self.actionRequringAuthentication.hidden = false
         } else {
             self.usernameLabel.text = "Guest User"
@@ -230,50 +219,6 @@ class MainViewController: UIViewController {
         
         self.otherDataLabel.text! +=  "\nIdentityId: \(AWSIdentityManager.defaultIdentityManager().identityId)" + appendToId
         
-        
-    }
-    
-    
-    
-    
-    func goFindUserPoolConfig(response: AWSCognitoIdentityUserSession) {
-        
-        //        // request a description of my pool id
-        //        let descriptionRequest = AWSCognitoIdentityProviderDescribeUserPoolRequest()
-        //        descriptionRequest.userPoolId = AWSCUPIdPSignInProvider.sharedInstance.identityProviderName
-        //
-        //
-        //        // using default provider
-        //        let provider = AWSCognitoIdentityProvider.defaultCognitoIdentityProvider()
-        //
-        //        // maybe we need to AWSCognitoIdentityProvider.registerCognitoIdentityProviderWithConfiguration(<#T##configuration: AWSServiceConfiguration##AWSServiceConfiguration#>, forKey: <#T##String#>)
-        //
-        //        NSLog("8 Signed in (before provider.describeUserPool): \(self.pool?.currentUser()?.signedIn)")
-        //
-        //        provider.describeUserPool(descriptionRequest).continueWithBlock{ (task) in
-        //
-        //            dispatch_async(dispatch_get_main_queue()) {
-        //
-        //                if task.error != nil {  // some sort of error
-        //                    // NSLog(task.error?.userInfo["message"] as! String)
-        //                    NSLog("task: \(task)")
-        //                    NSLog("task.error: \(task.error)")
-        //                    NSLog("Domain: " + (task.error?.domain)! + " Code: \(task.error?.code)")
-        //                    NSLog("\(task.error?.userInfo)")
-        //                    //  NSLog("\(task.error?.userInfo["message"] as! String)")
-        //
-        //                }
-        //                else {
-        //                    let response = task.result as! AWSCognitoIdentityProviderDescribeUserPoolResponse
-        //                    NSLog("Description of user pool \(descriptionRequest) is \(response)" )
-        //                    NSLog("done")
-        //                }
-        //            }
-        //            return nil
-        //        }
-        //
-        //
-        //
         
     }
     

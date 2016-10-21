@@ -16,8 +16,6 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     var didSignInObserver: AnyObject! // MHH signaling
     
-    var activeSignInProvider: AWSSignInProvider?
-    
     var usernameText: String?
     
     //MARK: Outlets for UI Elements.
@@ -269,7 +267,6 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     }
     
     func handleLoginWithSignInProvider(signInProvider: AWSSignInProvider) {
-        self.activeSignInProvider = signInProvider
         AWSIdentityManager.defaultIdentityManager().loginWithSignInProvider(signInProvider, completionHandler: {(result: AnyObject?, error: NSError?) -> Void in
             // If no error reported by SignInProvider, discard the sign-in view controller.
             if error == nil {
@@ -278,29 +275,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(),{
-                    var provider = signInProvider.identityProviderName
-                    switch provider {
-                    case AWSCUPIdPSignInProvider.sharedInstance.identityProviderName:
-                        provider = AWSCUPIdPSignInProvider.sharedInstance.identityProviderFriendlyName
-                    case AWSIdentityProviderFacebook:
-                        provider = "Facebook"
-                    case AWSIdentityProviderGoogle:
-                        provider = "Google"
-                    case AWSIdentityProviderDigits:
-                        provider = "Digits"
-                    case AWSIdentityProviderLoginWithAmazon:
-                        provider = "Login with Amazon"
-                    case AWSIdentityProviderTwitter:
-                        provider = "Twitter"
-                    case AWSIdentityProviderAmazonCognitoIdentity:
-                        provider = "Cognito"
-                    default:
-                        break
-                    }
-                    
-                    
-                    
-                    self.showErrorDialog(provider, withError: error!)
+                    self.showErrorDialog(AWSIdentityManager.defaultIdentityManager().authenticatedBy!, withError: error!)
                 })
             }
             print("result = \(result), error = \(error)")

@@ -32,7 +32,7 @@ class AppColor: NSObject {
     
     class func colorizeField(fields:UITextField...) {
         for field in fields {
-            field.textColor = defaultColor.lighter(0.75)
+            field.textColor = defaultColor.lighter(0.1)
             field.tintColor = defaultColor
         }
     }
