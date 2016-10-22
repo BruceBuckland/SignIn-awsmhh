@@ -91,7 +91,7 @@ class MainViewController: UIViewController {
             strongSelf.setupBarButtonItems()
             strongSelf.refreshInterface("-SignOut")
             })
-        
+        // when we really have an identityId - start processing.
         completeInitializationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSMobileClient.AWSMobileClientDidCompleteInitialization, object: AWSMobileClient.sharedInstance, queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
             guard let strongSelf = self else { return }
             print("Initialization of AWSIdentityManager complete, we now have an identityId")
