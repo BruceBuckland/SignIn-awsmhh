@@ -1,15 +1,16 @@
-# Signin 
+# SignIn-awsmhh
 ##### Overview
-Signin is an example of an AWS User Pools authentication for IOS written in Swift. 
+SignIn-awsmhh is an example of an AWS User Pools authentication for IOS written in Swift. 
 - "Cognito Your User Pools" login is implemented
 - Facebook and Google+ login is implemented
 - Signup, Forgot Password and Update Attributes are implemented
 - While some functions require entry of a verification code and that is implemented, if you terminate the app there needs to be a way to enter that code, and that is NOT implemented.
 - MFA (multi-factor authentication) is not implemented.
+- Supports identity linking
 
 
 ##### Background
-The initial signin app (a different repo) was built using aws-ios-sdk but this one uses the far superior mobile-hub-helper framework. 
+This app was built to use the far superior mobile-hub-helper framework to replace earlier efforts with the ios-sdk samples.
 
 ##### What the App does
 The app is written in Swift using AWS Mobile Hub Helper and AWS Mobile Client (from the AWS Mobile Hub). The app has a logged in and a not logged in state.  Both should be allowed (in your cognito console federated identity choose -allow unauthenticated identities). The app will allow login using Facebook, Google and a custom User Pool that you create in Cognito User Pools. You can switch between identities but the app does not (yet) let you link identities (because MHH's AWSIdentityManager does not yet support that.).  The app supports the latest AWS IOS SDK and currently is written in Swift 2
