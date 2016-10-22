@@ -21,6 +21,8 @@
 		<dict>
 			<key>Default</key>
 			<dict>
+				<key>Allow Identity Merging</key>
+				<true/>
 				<key>Google</key>
 				<dict>
 					<key>ClientId</key>

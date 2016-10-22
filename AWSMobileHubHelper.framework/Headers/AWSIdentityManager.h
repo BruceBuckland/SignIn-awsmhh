@@ -38,7 +38,8 @@ FOUNDATION_EXPORT NSString *const AWSIdentityManagerDidSignOutNotification;
     @property (nonatomic, readonly, nullable) NSString * userName;
     /**
      * A user readable name of the currentSignInProvider, such as Facebook or Google or
-     * Cognito Your User Pools.
+     * Cognito Your User Pools.  Note you may be authenticated with more id's
+     * logins may contain multiple providers, but online one is the currentSignInProvider
      * @return provider name, if user is signed-in or nil
      */
     @property (nonatomic, readonly, nullable) NSString * authenticatedBy;
@@ -93,7 +94,13 @@ FOUNDATION_EXPORT NSString *const AWSIdentityManagerDidSignOutNotification;
      */
 - (void)loginWithSignInProvider:(id<AWSSignInProvider>)signInProvider
               completionHandler:(void (^)(id _Nullable result, NSError * _Nullable error))completionHandler;
-    
+    /**
+     * A user readable name of the signInProvider passed as an such as Facebook or Google or
+     * Cognito Your User Pools.  This is the value for the Class name key in the 
+     * Info.plist ClassNameKeyDictionary
+     * @return provider name or nil (if classname not found)
+     */
+- (NSString *)providerKey:(id<AWSSignInProvider>)signInProvider;
     
     /**
      * Attempts to resume session with the previous sign-in provider.

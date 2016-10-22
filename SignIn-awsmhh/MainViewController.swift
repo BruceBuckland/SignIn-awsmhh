@@ -82,7 +82,7 @@ class MainViewController: UIViewController {
             guard let strongSelf = self else { return }
             print("Sign In Observer observed sign in.")
             strongSelf.setupBarButtonItems()
-            strongSelf.refreshInterface("-SignIn")
+            strongSelf.refreshInterface("-SignIn \(AWSIdentityManager.defaultIdentityManager().authenticatedBy!)")
             })
         
         signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
@@ -122,13 +122,13 @@ class MainViewController: UIViewController {
             navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
             
             navigationItem.rightBarButtonItem!.action = #selector(MainViewController.handleLogout)
-            //            let mergeButton: UIBarButtonItem = UIBarButtonItem(title: "Merge", style: .Done, target: self, action: #selector(MainViewController.goToLogin))
-            //            self.navigationItem.leftBarButtonItem = mergeButton
+            let mergeButton: UIBarButtonItem = UIBarButtonItem(title: "Link Accounts", style: .Done, target: self, action: #selector(MainViewController.goToLogin))
+            self.navigationItem.leftBarButtonItem = mergeButton
         }
         if !(AWSIdentityManager.defaultIdentityManager().loggedIn) {
             navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-In", comment: "Label for the login button.")
             navigationItem.rightBarButtonItem!.action = #selector(MainViewController.goToLogin)
-            //            self.navigationItem.leftBarButtonItem = nil // can't merge when not logged in
+            self.navigationItem.leftBarButtonItem = nil // can't merge when not logged in
         }
     }
     
@@ -170,7 +170,6 @@ class MainViewController: UIViewController {
         
         self.updateUserAttributesButton.hidden = true
         self.actionRequringAuthentication.hidden = true
-        self.otherDataLabel.text = ""
         
         if let signInProvider = AWSIdentityManager.defaultIdentityManager().currentSignInProvider as? AWSCUPIdPSignInProvider {
             
@@ -193,6 +192,7 @@ class MainViewController: UIViewController {
                         
                         if let response = task.result as? AWSCognitoIdentityUserGetDetailsResponse {
                             self.otherDataLabel.text = ""
+                            self.otherDataLabel.text! +=  "\nIdentityId: \(AWSIdentityManager.defaultIdentityManager().identityId!)" + appendToId
                             self.otherDataLabel.text! +=  "\nAttributes: "
                             for attribute in response.userAttributes! {
                                 self.otherDataLabel.text! += attribute.name! +  ":" + attribute.value! + "\n"
@@ -203,6 +203,9 @@ class MainViewController: UIViewController {
                 }
                 return nil  // return from get details synchronously
             }
+        } else {
+            // What can I get if I don't even have a provider (Unauthenticated)
+            self.otherDataLabel.text! +=  "\nIdentityId: \(AWSIdentityManager.defaultIdentityManager().identityId!)" + appendToId
         }
         
         // What can I get from every Provider?
@@ -216,8 +219,6 @@ class MainViewController: UIViewController {
         } else {
             self.usernameLabel.text = "Guest User"
         }
-        
-        self.otherDataLabel.text! +=  "\nIdentityId: \(AWSIdentityManager.defaultIdentityManager().identityId)" + appendToId
         
         
     }

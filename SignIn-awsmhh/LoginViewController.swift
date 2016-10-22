@@ -33,12 +33,10 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     @IBOutlet weak var facebookButton: UIButton!
     
     @IBOutlet weak var googleButton: UIButton!
-    
-    @IBOutlet weak var anonymousId: UILabel!
+
     
     // helper subclass button be made active when fields are full
     @IBOutlet weak var loginButton: FieldSensitiveUIButton!
-    
     
     //MARK: Global Variables for Changing Image Functionality.
     var backgroundImageCycler: BackgroundImageCycle?
@@ -48,7 +46,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
-        self.navigationController?.setNavigationBarHidden(true, animated: false)
+        self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         self.usernameField.text = self.usernameText // remember the userid
         self.passwordField.text = ""
@@ -267,6 +265,12 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     }
     
     func handleLoginWithSignInProvider(signInProvider: AWSSignInProvider) {
+        if signInProvider.loggedIn == true {
+            let key = AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider)
+            showAlert("\(key) is Linked", message: "Account is already logged in and linked. \(key) is now your primary authenticator for this session.")
+        }
+        
+        
         AWSIdentityManager.defaultIdentityManager().loginWithSignInProvider(signInProvider, completionHandler: {(result: AnyObject?, error: NSError?) -> Void in
             // If no error reported by SignInProvider, discard the sign-in view controller.
             if error == nil {
@@ -283,16 +287,21 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         })
     }
     
-    func showErrorDialog(loginProviderName: String, withError error: NSError) {
-        print("\(loginProviderName) failed to sign in w/ error: \(error)")
+    func showAlert(titleText: String, message: String) {
         var alertController: UIAlertController!
-        if let message = error.userInfo["message"] {
-            alertController = UIAlertController(title: NSLocalizedString("\(loginProviderName) Sign-in Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("Sign in using \(loginProviderName) failed: \(message)", comment: "Sign-in message structure for sign-in failure."), preferredStyle: .Alert)
-        } else {
-            alertController = UIAlertController(title: NSLocalizedString("\(loginProviderName) Sign-In Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("\(loginProviderName) failed to sign in w/ error: \(error)", comment: "Sign-in message structure for sign-in failure."), preferredStyle: .Alert)        }
-        let doneAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Label to cancel sign-in failure."), style: .Cancel, handler: nil)
+        alertController = UIAlertController(title: titleText, message: message, preferredStyle: .Alert)
+        let doneAction = UIAlertAction(title: NSLocalizedString("Done", comment: "Label to cancel dialog box."), style: .Cancel, handler: nil)
         alertController.addAction(doneAction)
         presentViewController(alertController, animated: true, completion: nil)
+    }
+    
+    func showErrorDialog(loginProviderName: String, withError error: NSError) {
+        print("\(loginProviderName) failed to sign in w/ error: \(error)")
+        if let message = error.userInfo["message"] {
+            showAlert(NSLocalizedString("\(loginProviderName) Sign-in Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("Sign in using \(loginProviderName) failed: \(message)", comment: "Sign-in message structure for sign-in failure."))
+        } else {
+            showAlert(NSLocalizedString("\(loginProviderName) Sign-In Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("\(loginProviderName) failed to sign in w/ error: \(error)", comment: "Sign-in message structure for sign-in failure."))
+        }
     }
     
     // MARK: - IBActions
@@ -332,7 +341,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     
     func anchorViewForFacebook() -> UIView {
-        return anonymousId
+        return signUpNowButton
     }
     
     func anchorViewForGoogle() -> UIView {
