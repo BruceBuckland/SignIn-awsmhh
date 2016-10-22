@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */; };
 		E5C5480D1DBB396E00816386 /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5C5480C1DBB396E00816386 /* AWSMobileHubHelper.framework */; };
+		E5C5480F1DBB494E00816386 /* cognito diagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E5C5480E1DBB494E00816386 /* cognito diagram.pdf */; };
 		E5CB37F31DB35F0A00F6E646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37F11DB35F0A00F6E646 /* LaunchScreen.storyboard */; };
 		E5CB37FB1DB35F2600F6E646 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37FA1DB35F2600F6E646 /* .gitignore */; };
 		E5CB38101DB35F9300F6E646 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38001DB35F9200F6E646 /* AppColor.swift */; };
@@ -40,6 +41,7 @@
 		930732EEF6F5A2E61164A8E0 /* Pods_SignIn_awsmhh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn_awsmhh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
 		E5C5480C1DBB396E00816386 /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileHubHelper.framework; sourceTree = "<group>"; };
+		E5C5480E1DBB494E00816386 /* cognito diagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "cognito diagram.pdf"; sourceTree = "<group>"; };
 		E5CB37E51DB35F0A00F6E646 /* SignIn-awsmhh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SignIn-awsmhh.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CB37F21DB35F0A00F6E646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5CB37FA1DB35F2600F6E646 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -102,6 +104,7 @@
 		E5CB37DC1DB35F0A00F6E646 = {
 			isa = PBXGroup;
 			children = (
+				E5C5480E1DBB494E00816386 /* cognito diagram.pdf */,
 				E5CB38271DB3629400F6E646 /* Podfile */,
 				E5CB37FA1DB35F2600F6E646 /* .gitignore */,
 				E5CB37FD1DB35F5400F6E646 /* README.md */,
@@ -230,6 +233,7 @@
 				E5CB38221DB3605100F6E646 /* Main.storyboard in Resources */,
 				E5CB39F91DB531C700F6E646 /* Images.xcassets in Resources */,
 				E5CB38121DB35F9300F6E646 /* AWSKeys.xcconfig in Resources */,
+				E5C5480F1DBB494E00816386 /* cognito diagram.pdf in Resources */,
 				E5CB38281DB3629400F6E646 /* Podfile in Resources */,
 				E5CB37FB1DB35F2600F6E646 /* .gitignore in Resources */,
 				E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */,
