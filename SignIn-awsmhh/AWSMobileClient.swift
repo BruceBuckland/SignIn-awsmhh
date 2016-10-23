@@ -13,7 +13,7 @@
 import Foundation
 import UIKit
 import AWSCore
-import AWSMobileHubHelper
+//import AWSMobileHubHelper
 
 /**
  * AWSMobileClient is a singleton that bootstraps the app. It creates an identity manager to establish the user identity with Amazon Cognito.
@@ -89,8 +89,8 @@ class AWSMobileClient: NSObject {
         }
 
         // Be aware, this gets the view controllers going, when run for the first time on an 
-        //clean (I.E. Simulator->Reset Content and Settings...) device, the identityId is nil 
-        // untilthe completionHandler is complete
+        // clean (I.E. Simulator->Reset Content and Settings...) device, the identityId is nil
+        // until the completionHandler is complete
         return didFinishLaunching
         
     }

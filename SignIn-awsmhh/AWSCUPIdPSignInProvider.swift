@@ -12,7 +12,7 @@
 
 import Foundation
 import AWSCognitoIdentityProvider // needed for user pools
-import AWSMobileHubHelper
+//import AWSMobileHubHelper
 
 // AWSIdentityProvider intercept... uses NSClassFromString on our Class name
 @objc(AWSCUPIdPSignInProvider)

@@ -6,7 +6,7 @@
 import UIKit
 import AWSCore
 import AWSCognitoIdentityProvider
-import AWSMobileHubHelper
+//import AWSMobileHubHelper
 
 
 
@@ -279,7 +279,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(),{
-                    self.showErrorDialog(AWSIdentityManager.defaultIdentityManager().authenticatedBy!, withError: error!)
+                    self.showErrorDialog(AWSIdentityManager.defaultIdentityManager().authenticatedBy, withError: error!)
                 })
             }
             print("result = \(result), error = \(error)")
@@ -325,17 +325,14 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     func handleCUPIdPLogin() {
         
         if (usernameField.text != nil) && (passwordField.text != nil) {
-            
-            
+
             let customSignInProvider = AWSCUPIdPSignInProvider.sharedInstance
             
             // Push userId and password to our AWSCUPIdPSignInProvider
-            
             customSignInProvider.customUserIdField = usernameField.text
             customSignInProvider.customPasswordField = passwordField.text
             
             handleLoginWithSignInProvider(customSignInProvider)
-            
         }
     }
     

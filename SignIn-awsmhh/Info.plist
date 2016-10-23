@@ -46,7 +46,7 @@
 				<key>SignInProviderKeyDictionary</key>
 				<dict>
 					<key>AWSCUPIdPSignInProvider</key>
-					<string>SignIn User Pool</string>
+					<string>Cognito Pool</string>
 					<key>AWSFacebookSignInProvider</key>
 					<string>Facebook</string>
 					<key>AWSGoogleSignInProvider</key>
@@ -158,10 +158,6 @@
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
-	</array>
-	<key>UISupportedInterfaceOrientations</key>
-	<array>
-		<string>UIInterfaceOrientationPortrait</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>

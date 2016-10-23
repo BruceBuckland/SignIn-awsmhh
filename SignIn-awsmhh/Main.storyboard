@@ -380,10 +380,10 @@
                                 <color key="textColor" red="0.78357371789999997" green="0.042327818980000001" blue="0.14736350270000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuA-JH-j2A">
-                                <state key="normal" title="Action allowed for unauthenticated user"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EuA-JH-j2A" userLabel="Action Requiring Authentication">
+                                <state key="normal" title="Action allowed for authenticated users"/>
                                 <connections>
-                                    <action selector="doSomethingAuthorizedPressed:" destination="fwb-OO-Fdp" eventType="touchUpInside" id="rnq-YK-yP2"/>
+                                    <action selector="actionRequiringAuthenticationPressed:" destination="fwb-OO-Fdp" eventType="touchUpInside" id="bz7-u0-l5o"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CgL-0d-Q6b">
@@ -393,7 +393,10 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ecU-1S-yVf">
-                                <state key="normal" title="Action requiring authentication from any user"/>
+                                <state key="normal" title="Action for any user"/>
+                                <connections>
+                                    <action selector="actionNotRequiringAuthenticationPressed:" destination="fwb-OO-Fdp" eventType="touchUpInside" id="yRy-MP-LpY"/>
+                                </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="C7S-ho-wM2">
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -482,7 +485,8 @@
                     </navigationItem>
                     <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
-                        <outlet property="actionRequringAuthentication" destination="ecU-1S-yVf" id="ro4-yE-cAI"/>
+                        <outlet property="actionNotRequiringAuthenticationButton" destination="ecU-1S-yVf" id="o0w-Ve-8t1"/>
+                        <outlet property="actionRequiringAuthenticationButton" destination="EuA-JH-j2A" id="EfV-wf-Q2g"/>
                         <outlet property="appNameLabel" destination="8rC-y8-QEg" id="b9t-Qi-Ot3"/>
                         <outlet property="imageView" destination="alN-RS-rII" id="rFK-Zv-qoe"/>
                         <outlet property="otherDataLabel" destination="YcI-bk-ErX" id="mww-Mw-78c"/>

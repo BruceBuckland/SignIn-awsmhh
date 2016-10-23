@@ -42,7 +42,7 @@ FOUNDATION_EXPORT NSString *const AWSIdentityManagerDidSignOutNotification;
      * logins may contain multiple providers, but online one is the currentSignInProvider
      * @return provider name, if user is signed-in or nil
      */
-    @property (nonatomic, readonly, nullable) NSString * authenticatedBy;
+    @property (nonatomic, readonly) NSString * authenticatedBy;
     
     /**
      * Amazon Cognito User Identity ID. This uniquely identifies the user, regardless of
@@ -58,7 +58,17 @@ FOUNDATION_EXPORT NSString *const AWSIdentityManagerDidSignOutNotification;
      * password.  The SignInProvider class is a good place to encapsulate interfacing with
      * the authentication provider, but we need to be able to get the currentSignInProvider
      */
-    @property (nonatomic, readonly) id<AWSSignInProvider> currentSignInProvider;
+    @property (nonatomic, readonly) id currentSignInProvider;
+    
+    /**
+     * Returns an array of instances of AWSSignInProviders with active sessions. 
+     * SignIn Providers that have active sessions store a value in NSUserDefaults with thier
+     * providerKey as a key.  Usually this value is "YES", but does not need to be (some have
+     * stored a token).  The existence of any value is enough to indicate that there is an 
+     * active session with this provider.
+     */
+- (NSArray *)activeProviders;
+
     
     /**
      * Completes login process, sends notification of SignIn state change

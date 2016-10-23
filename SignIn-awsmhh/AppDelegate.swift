@@ -8,7 +8,7 @@
 
 
 import UIKit
-import AWSMobileHubHelper
+//import AWSMobileHubHelper
 
 
 @UIApplicationMain

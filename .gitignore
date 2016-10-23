@@ -50,6 +50,9 @@ playground.xcworkspace
 #
 Pods/
 
+# ignore AWSMobileHubHelper because I just brought it in temporarily so I could do symbolic debugging of it.
+AWSMobileHubHelper/
+
 # Carthage
 #
 # Add this line if you want to avoid checking in source code from Carthage dependencies.

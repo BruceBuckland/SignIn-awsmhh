@@ -11,7 +11,7 @@ import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
 import AWSDynamoDB
-import AWSMobileHubHelper
+//import AWSMobileHubHelper
 
 class MainViewController: UIViewController {
     
@@ -24,7 +24,9 @@ class MainViewController: UIViewController {
     
     @IBOutlet weak var updateUserAttributesButton: UIButton!
     
-    @IBOutlet weak var actionRequringAuthentication: UIButton!
+    @IBOutlet weak var actionRequiringAuthenticationButton: UIButton!
+    
+    @IBOutlet weak var actionNotRequiringAuthenticationButton: UIButton!
     // MARK: Properties
     // attributes for update attributes call
     var attributes: [AWSCognitoIdentityProviderAttributeType] = []
@@ -77,30 +79,29 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
+        actionRequiringAuthenticationButton.setTitle("Sign-Out All Accounts", forState: .Normal)
+        actionNotRequiringAuthenticationButton.setTitle("What providers are active?", forState: .Normal)
         
         signInObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self] (note: NSNotification) -> Void in
             guard let strongSelf = self else { return }
             print("Sign In Observer observed sign in.")
             strongSelf.setupBarButtonItems()
-            strongSelf.refreshInterface("-SignIn \(AWSIdentityManager.defaultIdentityManager().authenticatedBy!)")
+            strongSelf.refreshInterface("-SignIn \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
             })
         
         signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
             guard let strongSelf = self else { return }
             print("Sign Out Observer observed sign out.")
             strongSelf.setupBarButtonItems()
-            strongSelf.refreshInterface("-SignOut")
+            strongSelf.refreshInterface("-now logged in as \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
             })
         // when we really have an identityId - start processing.
         completeInitializationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSMobileClient.AWSMobileClientDidCompleteInitialization, object: AWSMobileClient.sharedInstance, queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
             guard let strongSelf = self else { return }
             print("Initialization of AWSIdentityManager complete, we now have an identityId")
-            strongSelf.refreshInterface("-Complete")
+            strongSelf.refreshInterface("-Complete \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
             })
-        
-        
         setupBarButtonItems()
-        refreshInterface()
     }
     
     deinit {
@@ -143,14 +144,16 @@ class MainViewController: UIViewController {
         navigationController!.pushViewController(loginController, animated: true)
     }
     
-    func handleLogout() {
+    func handleLogout(allProviders:Bool = false) {
         if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
             AWSIdentityManager.defaultIdentityManager().logoutWithCompletionHandler({(result: AnyObject?, error: NSError?) -> Void in
-                
-                self.refreshInterface() // WILL kick off authentication
-                
+                if allProviders && AWSIdentityManager.defaultIdentityManager().loggedIn { // keep logging out till no more providers
+                    self.handleLogout()
+                }
+                if error != nil {
+                    assert(false)
+                }
                 self.navigationController!.popToRootViewControllerAnimated(false)
-                
                 self.setupBarButtonItems()
             })
             // print("Logout Successful: \(signInProvider.getDisplayName)");
@@ -161,15 +164,36 @@ class MainViewController: UIViewController {
     }
     
     
-    
-    @IBAction func doSomethingAuthorizedPressed(sender: AnyObject) {
-        refreshInterface()
+    // test routine for something that requires an authenticated user
+    @IBAction func actionRequiringAuthenticationPressed(sender: AnyObject) {
+        handleLogout(true)     // Log out all users
     }
     
-    func refreshInterface(appendToId: String = "") {
+    // test routines for something that any user can do, even guests.
+    @IBAction func actionNotRequiringAuthenticationPressed(sender: AnyObject) {
+            var line = ""
+        for provider in AWSIdentityManager.defaultIdentityManager().activeProviders() as! [AWSSignInProvider] {
+
+            if AWSIdentityManager.defaultIdentityManager().providerKey(provider) == AWSIdentityManager.defaultIdentityManager().authenticatedBy {
+                line += "-*" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) // flag our auth provider now
+            } else {
+                line += "-" + AWSIdentityManager.defaultIdentityManager().providerKey(provider)
+            }
+            
+        }
+        if line == "" {
+            self.otherDataLabel.text = "" // zap everytime we enter guest state
+            
+            line = " *" + AWSIdentityManager.defaultIdentityManager().authenticatedBy
+        }
+        self.otherDataLabel.text! = "-Currently" + line + "\n" + self.otherDataLabel.text!
+    }
+    
+    
+    func refreshInterface(appendToId: String = "-shouldNotHappen") {
         
         self.updateUserAttributesButton.hidden = true
-        self.actionRequringAuthentication.hidden = true
+        self.actionRequiringAuthenticationButton.hidden = true
         
         if let signInProvider = AWSIdentityManager.defaultIdentityManager().currentSignInProvider as? AWSCUPIdPSignInProvider {
             
@@ -189,13 +213,14 @@ class MainViewController: UIViewController {
                         NSLog(task.error?.userInfo["message"] as! String)
                     } else {
                         
-                        
                         if let response = task.result as? AWSCognitoIdentityUserGetDetailsResponse {
-                            self.otherDataLabel.text = ""
-                            self.otherDataLabel.text! +=  "\nIdentityId: \(AWSIdentityManager.defaultIdentityManager().identityId!)" + appendToId
-                            self.otherDataLabel.text! +=  "\nAttributes: "
+                            self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId)"  + "\n" + self.otherDataLabel.text!
+                            
+                            
                             for attribute in response.userAttributes! {
-                                self.otherDataLabel.text! += attribute.name! +  ":" + attribute.value! + "\n"
+                                if appendToId == "-Complete" {
+                                    self.otherDataLabel.text! = attribute.name! +  ":" + attribute.value! + "\n" + self.otherDataLabel.text!
+                                }
                                 self.attributes.append(attribute) // keep for seque
                             }
                         }
@@ -205,7 +230,7 @@ class MainViewController: UIViewController {
             }
         } else {
             // What can I get if I don't even have a provider (Unauthenticated)
-            self.otherDataLabel.text! +=  "\nIdentityId: \(AWSIdentityManager.defaultIdentityManager().identityId!)" + appendToId
+            self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId!)"  + "\n" + self.otherDataLabel.text!
         }
         
         // What can I get from every Provider?
@@ -214,8 +239,8 @@ class MainViewController: UIViewController {
             
             print("Authenticated by: \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
             
-            self.usernameLabel.text = AWSIdentityManager.defaultIdentityManager().authenticatedBy! + " authenticated " +  AWSIdentityManager.defaultIdentityManager().userName!
-            self.actionRequringAuthentication.hidden = false
+            self.usernameLabel.text = AWSIdentityManager.defaultIdentityManager().authenticatedBy + " authenticated " +  AWSIdentityManager.defaultIdentityManager().userName!
+            self.actionRequiringAuthenticationButton.hidden = false
         } else {
             self.usernameLabel.text = "Guest User"
         }
