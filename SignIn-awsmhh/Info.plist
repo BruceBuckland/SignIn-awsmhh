@@ -21,7 +21,11 @@
 		<dict>
 			<key>Default</key>
 			<dict>
+				<key>Merging note:</key>
+				<string>Allow Identity Merging requires that you Allow Simultaneous Active Accounts.   </string>
 				<key>Allow Identity Merging</key>
+				<true/>
+				<key>Allow Simultaneous Active Accounts</key>
 				<true/>
 				<key>Google</key>
 				<dict>

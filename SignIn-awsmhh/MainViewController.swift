@@ -93,7 +93,7 @@ class MainViewController: UIViewController {
             guard let strongSelf = self else { return }
             print("Sign Out Observer observed sign out.")
             strongSelf.setupBarButtonItems()
-            strongSelf.refreshInterface("-now logged in as \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
+            strongSelf.refreshInterface("-Sign-out says current login is: \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
             })
         // when we really have an identityId - start processing.
         completeInitializationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSMobileClient.AWSMobileClientDidCompleteInitialization, object: AWSMobileClient.sharedInstance, queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
@@ -123,7 +123,7 @@ class MainViewController: UIViewController {
             navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
             
             navigationItem.rightBarButtonItem!.action = #selector(MainViewController.handleLogout)
-            let mergeButton: UIBarButtonItem = UIBarButtonItem(title: "Link Accounts", style: .Done, target: self, action: #selector(MainViewController.goToLogin))
+            let mergeButton: UIBarButtonItem = UIBarButtonItem(title: "Sign-In or Link Accounts", style: .Done, target: self, action: #selector(MainViewController.goToLogin))
             self.navigationItem.leftBarButtonItem = mergeButton
         }
         if !(AWSIdentityManager.defaultIdentityManager().loggedIn) {
@@ -148,7 +148,7 @@ class MainViewController: UIViewController {
         if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
             AWSIdentityManager.defaultIdentityManager().logoutWithCompletionHandler({(result: AnyObject?, error: NSError?) -> Void in
                 if allProviders && AWSIdentityManager.defaultIdentityManager().loggedIn { // keep logging out till no more providers
-                    self.handleLogout()
+                    self.handleLogout(true)
                 }
                 if error != nil {
                     assert(false)
@@ -159,7 +159,11 @@ class MainViewController: UIViewController {
             // print("Logout Successful: \(signInProvider.getDisplayName)");
             
         } else {
-            assert(false)
+            // this condition is possible if you get an error when logging in, and then
+            // have an active provider that is not really logged in.
+            // probably a bug in AWSIdentityManager
+            NSLog("handleLogout ran when defaultIdentityManager was not loggedIn");
+            // assert(false)
         }
     }
     
@@ -175,18 +179,16 @@ class MainViewController: UIViewController {
         for provider in AWSIdentityManager.defaultIdentityManager().activeProviders() as! [AWSSignInProvider] {
 
             if AWSIdentityManager.defaultIdentityManager().providerKey(provider) == AWSIdentityManager.defaultIdentityManager().authenticatedBy {
-                line += "-*" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) // flag our auth provider now
+                line += "\(provider.userName!) on *" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + "," // flag our auth provider now
             } else {
-                line += "-" + AWSIdentityManager.defaultIdentityManager().providerKey(provider)
+                line += "\(provider.userName!) on " + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ","
             }
             
         }
         if line == "" {
-            self.otherDataLabel.text = "" // zap everytime we enter guest state
-            
-            line = " *" + AWSIdentityManager.defaultIdentityManager().authenticatedBy
+            line = "None, just a " + AWSIdentityManager.defaultIdentityManager().authenticatedBy
         }
-        self.otherDataLabel.text! = "-Currently" + line + "\n" + self.otherDataLabel.text!
+        self.otherDataLabel.text! = "-Authenticated users:" + line + " \(AWSIdentityManager.defaultIdentityManager().identityId!)\n" + self.otherDataLabel.text!
     }
     
     
@@ -214,13 +216,16 @@ class MainViewController: UIViewController {
                     } else {
                         
                         if let response = task.result as? AWSCognitoIdentityUserGetDetailsResponse {
-                            self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId)"  + "\n" + self.otherDataLabel.text!
+                            if (AWSIdentityManager.defaultIdentityManager().identityId == nil) {
+                                self.otherDataLabel.text! =  "\(appendToId) identityId is nil"  + "\n" + self.otherDataLabel.text!
+                            } else {
+                               self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId!)"  + "\n" + self.otherDataLabel.text!
+                            }
                             
                             
                             for attribute in response.userAttributes! {
-                                if appendToId == "-Complete" {
                                     self.otherDataLabel.text! = attribute.name! +  ":" + attribute.value! + "\n" + self.otherDataLabel.text!
-                                }
+                                
                                 self.attributes.append(attribute) // keep for seque
                             }
                         }

@@ -193,7 +193,7 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
         //      Default
         //          CognitoYourUserPools - dict
         // So we try to conform to the AWS way of doing it, although it is none too clear
-        // what "Default" means, so we let our
+        // what "Default" means
         
         let defaultDictionary = AWSInfo().defaultServiceInfo(AWSInfoIdentityManager)!.infoDictionary
         

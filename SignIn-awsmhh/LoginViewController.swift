@@ -265,11 +265,6 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     }
     
     func handleLoginWithSignInProvider(signInProvider: AWSSignInProvider) {
-        if signInProvider.loggedIn == true {
-            let key = AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider)
-            showAlert("\(key) is Linked", message: "Account is already logged in and linked. \(key) is now your primary authenticator for this session.")
-        }
-        
         
         AWSIdentityManager.defaultIdentityManager().loginWithSignInProvider(signInProvider, completionHandler: {(result: AnyObject?, error: NSError?) -> Void in
             // If no error reported by SignInProvider, discard the sign-in view controller.
