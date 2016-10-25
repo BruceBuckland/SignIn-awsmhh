@@ -85,7 +85,8 @@
                                     <color key="titleShadowColor" red="0.5" green="0.5" blue="0.5" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2n4-DJ-aCy" userLabel="Facebook Button">
+                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2n4-DJ-aCy" userLabel="Facebook Button">
+                                <frame key="frameInset" minX="235" minY="428" width="30" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="240" id="J8W-LL-beZ"/>
                                     <constraint firstAttribute="height" constant="40" id="c0y-st-8Fi"/>
@@ -101,7 +102,8 @@
                                     </mask>
                                 </variation>
                             </button>
-                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-xL-kIi" userLabel="Google Button">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KA4-xL-kIi" userLabel="Google Button">
+                                <frame key="frameInset" minX="235" minY="470" width="30" height="34"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="ggZ-z1-ADI"/>
                                     <constraint firstAttribute="width" constant="240" id="m3L-7q-nlw"/>
@@ -138,7 +140,7 @@
                             <constraint firstItem="DNe-4s-p1W" firstAttribute="trailing" secondItem="RzD-rc-n1z" secondAttribute="trailing" id="Djo-81-p7P"/>
                             <constraint firstItem="DNe-4s-p1W" firstAttribute="top" secondItem="36k-hn-Z2A" secondAttribute="bottom" constant="8" id="EfJ-nx-biQ"/>
                             <constraint firstItem="x7q-eA-k54" firstAttribute="top" secondItem="t8n-rw-bcY" secondAttribute="bottom" constant="26" id="Ewq-ax-c1b"/>
-                            <constraint firstItem="x7q-eA-k54" firstAttribute="top" secondItem="Pib-zd-CkE" secondAttribute="bottom" constant="20" id="ExW-2e-bRN"/>
+                            <constraint firstItem="x7q-eA-k54" firstAttribute="top" secondItem="Pib-zd-CkE" secondAttribute="bottom" constant="15" id="ExW-2e-bRN"/>
                             <constraint firstItem="KA4-xL-kIi" firstAttribute="width" secondItem="2n4-DJ-aCy" secondAttribute="width" id="FNU-L3-Auu"/>
                             <constraint firstItem="KA4-xL-kIi" firstAttribute="centerX" secondItem="2n4-DJ-aCy" secondAttribute="centerX" id="G6d-O4-Eol"/>
                             <constraint firstItem="t8n-rw-bcY" firstAttribute="trailing" secondItem="RzD-rc-n1z" secondAttribute="trailing" id="Gas-YK-R14"/>
@@ -166,12 +168,9 @@
                             <constraint firstItem="2n4-DJ-aCy" firstAttribute="centerX" secondItem="t8n-rw-bcY" secondAttribute="centerX" id="q7p-aU-ZNU"/>
                             <constraint firstItem="cQ7-1q-Xsj" firstAttribute="trailing" secondItem="x7q-eA-k54" secondAttribute="trailing" id="qWr-ka-L8Y"/>
                             <constraint firstItem="RzD-rc-n1z" firstAttribute="centerX" secondItem="G72-09-hhT" secondAttribute="centerX" id="ra9-sl-HHZ"/>
-                            <constraint firstItem="2n4-DJ-aCy" firstAttribute="top" secondItem="cQ7-1q-Xsj" secondAttribute="bottom" constant="62.5" id="tB2-gT-M6b"/>
                             <constraint firstItem="t8n-rw-bcY" firstAttribute="centerX" secondItem="36k-hn-Z2A" secondAttribute="centerX" id="uFH-lJ-u0P"/>
-                            <constraint firstItem="KA4-xL-kIi" firstAttribute="top" secondItem="2n4-DJ-aCy" secondAttribute="bottom" constant="8" symbolic="YES" id="uV5-Hq-L3k"/>
                             <constraint firstItem="t8n-rw-bcY" firstAttribute="leading" secondItem="36k-hn-Z2A" secondAttribute="leading" id="v6Z-nz-oP8"/>
                             <constraint firstItem="cQ7-1q-Xsj" firstAttribute="top" secondItem="x7q-eA-k54" secondAttribute="bottom" constant="-5" id="xKf-vV-Jyd"/>
-                            <constraint firstItem="cQ7-1q-Xsj" firstAttribute="top" secondItem="Pib-zd-CkE" secondAttribute="bottom" constant="35.5" id="xe8-Nx-GYK"/>
                             <constraint firstItem="Pib-zd-CkE" firstAttribute="top" secondItem="t8n-rw-bcY" secondAttribute="bottom" id="ybh-RM-Ilu"/>
                         </constraints>
                         <variation key="default">
@@ -403,7 +402,7 @@
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="This version of Sign In does NOT assume you are logged in.  Instead it gives you an option to sign in." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukz-gN-Xlf">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Demo of Mobile Hub Helper's AWSIdentityManager.  Supports optional authentication, simultaneous logins and identity merging." textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ukz-gN-Xlf">
                                 <constraints>
                                     <constraint firstAttribute="height" constant="212" id="Nt4-OJ-ysf"/>
                                     <constraint firstAttribute="width" constant="250" id="ViN-hN-SjW"/>
@@ -429,7 +428,7 @@
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="ukz-gN-Xlf" firstAttribute="top" secondItem="C7S-ho-wM2" secondAttribute="bottom" constant="12" id="1Ce-S5-Fce"/>
-                            <constraint firstItem="EuA-JH-j2A" firstAttribute="top" secondItem="YcI-bk-ErX" secondAttribute="bottom" constant="8" id="AqZ-nl-UCj"/>
+                            <constraint firstItem="EuA-JH-j2A" firstAttribute="top" secondItem="YcI-bk-ErX" secondAttribute="bottom" constant="1" id="AqZ-nl-UCj"/>
                             <constraint firstItem="C7S-ho-wM2" firstAttribute="top" secondItem="YcI-bk-ErX" secondAttribute="bottom" constant="-262.5" id="Cc7-WF-ZAU"/>
                             <constraint firstItem="YcI-bk-ErX" firstAttribute="top" secondItem="ukz-gN-Xlf" secondAttribute="bottom" constant="8.5" id="FM0-lG-heW"/>
                             <constraint firstItem="8rC-y8-QEg" firstAttribute="centerX" secondItem="R3S-zj-PlC" secondAttribute="centerX" id="JwY-8w-EXl"/>
@@ -460,11 +459,11 @@
                             <constraint firstItem="ukz-gN-Xlf" firstAttribute="leading" secondItem="C7S-ho-wM2" secondAttribute="leading" id="uaE-D8-V7J"/>
                             <constraint firstItem="8rC-y8-QEg" firstAttribute="top" secondItem="DVo-Zg-J8o" secondAttribute="bottom" constant="8" id="xnV-K3-LBg"/>
                             <constraint firstAttribute="leadingMargin" secondItem="ukz-gN-Xlf" secondAttribute="leading" id="xwa-l0-Sha"/>
-                            <constraint firstItem="CgL-0d-Q6b" firstAttribute="top" secondItem="EuA-JH-j2A" secondAttribute="bottom" constant="8" id="yhK-82-7YP"/>
+                            <constraint firstItem="CgL-0d-Q6b" firstAttribute="top" secondItem="EuA-JH-j2A" secondAttribute="bottom" constant="1" id="yhK-82-7YP"/>
                             <constraint firstItem="EuA-JH-j2A" firstAttribute="leading" secondItem="ukz-gN-Xlf" secondAttribute="leading" id="zHq-1M-yfV"/>
                             <constraint firstItem="ukz-gN-Xlf" firstAttribute="top" secondItem="C7S-ho-wM2" secondAttribute="bottom" constant="8" id="zML-bA-wiT"/>
                             <constraint firstItem="0qc-dJ-Wls" firstAttribute="leading" secondItem="alN-RS-rII" secondAttribute="leading" id="zN7-cH-2y8"/>
-                            <constraint firstItem="ecU-1S-yVf" firstAttribute="top" secondItem="CgL-0d-Q6b" secondAttribute="bottom" constant="8" id="zOy-OI-4EL"/>
+                            <constraint firstItem="ecU-1S-yVf" firstAttribute="top" secondItem="CgL-0d-Q6b" secondAttribute="bottom" constant="1" id="zOy-OI-4EL"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -776,7 +775,7 @@
             <objects>
                 <navigationController storyboardIdentifier="loginNavigationController" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="bjg-R8-JiU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p7C-JN-jcZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="p7C-JN-jcZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -799,7 +798,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Htd-Gv-epW" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="ccw-e0-GmW">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="ccw-e0-GmW">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

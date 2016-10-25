@@ -246,6 +246,3 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
         return true
     }
 }
-
-
-

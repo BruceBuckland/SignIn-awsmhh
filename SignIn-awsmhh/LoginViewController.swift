@@ -294,6 +294,8 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         print("\(loginProviderName) failed to sign in w/ error: \(error)")
         if let message = error.userInfo["message"] {
             showAlert(NSLocalizedString("\(loginProviderName) Sign-in Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("Sign in using \(loginProviderName) failed: \(message)", comment: "Sign-in message structure for sign-in failure."))
+        } else if let message = error.userInfo["NSLocalizedDescription"]{
+                        showAlert(NSLocalizedString("\(loginProviderName) Sign-in Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("Sign in using \(loginProviderName) failed: \(message)", comment: "Sign-in message structure for sign-in failure."))
         } else {
             showAlert(NSLocalizedString("\(loginProviderName) Sign-In Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("\(loginProviderName) failed to sign in w/ error: \(error)", comment: "Sign-in message structure for sign-in failure."))
         }

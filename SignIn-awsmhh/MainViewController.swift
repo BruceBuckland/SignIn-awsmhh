@@ -175,13 +175,19 @@ class MainViewController: UIViewController {
     
     // test routines for something that any user can do, even guests.
     @IBAction func actionNotRequiringAuthenticationPressed(sender: AnyObject) {
-            var line = ""
+        var line = ""
         for provider in AWSIdentityManager.defaultIdentityManager().activeProviders() as! [AWSSignInProvider] {
-
+            NSLog("provider: \(AWSIdentityManager.defaultIdentityManager().providerKey(provider)) authenticated by: \(AWSIdentityManager.defaultIdentityManager().authenticatedBy) username: \(provider.userName) imageURL:\(provider.imageURL)")
+        
             if AWSIdentityManager.defaultIdentityManager().providerKey(provider) == AWSIdentityManager.defaultIdentityManager().authenticatedBy {
-                line += "\(provider.userName!) on *" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + "," // flag our auth provider now
+                if provider.userName == nil { // should not happen but currently does when errors or cancel on signin
+                    line += "Sign On Error Not Properly Reversed by Mobile Hub Helper on *" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ", "
+                } else {
+                    line += "\(provider.userName!) on *" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ", " // flag our auth provider now
+                    
+                }
             } else {
-                line += "\(provider.userName!) on " + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ","
+                line += "\(provider.userName!) on " + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ", "
             }
             
         }
@@ -201,8 +207,9 @@ class MainViewController: UIViewController {
             
             // Here we are dealing with an AWSCUPIdPSignInProvider
             
-            if AWSIdentityManager.defaultIdentityManager().loggedIn {
+            if AWSIdentityManager.defaultIdentityManager().loggedIn  {
                 self.updateUserAttributesButton.hidden = false
+                NSLog("We have an \(AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider))")
             }
             signInProvider.user.getDetails().continueWithSuccessBlock() { (task) in
                 dispatch_async(dispatch_get_main_queue()) {
@@ -219,12 +226,12 @@ class MainViewController: UIViewController {
                             if (AWSIdentityManager.defaultIdentityManager().identityId == nil) {
                                 self.otherDataLabel.text! =  "\(appendToId) identityId is nil"  + "\n" + self.otherDataLabel.text!
                             } else {
-                               self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId!)"  + "\n" + self.otherDataLabel.text!
+                                self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId!)"  + "\n" + self.otherDataLabel.text!
                             }
                             
                             
                             for attribute in response.userAttributes! {
-                                    self.otherDataLabel.text! = attribute.name! +  ":" + attribute.value! + "\n" + self.otherDataLabel.text!
+                                self.otherDataLabel.text! = attribute.name! +  ":" + attribute.value! + "\n" + self.otherDataLabel.text!
                                 
                                 self.attributes.append(attribute) // keep for seque
                             }
