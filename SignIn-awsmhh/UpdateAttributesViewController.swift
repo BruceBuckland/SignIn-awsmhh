@@ -188,7 +188,12 @@ class UpdateAttributesViewController: UIViewController {
         if workingAttributes.count >= 1 {
             
             return self.user?.updateAttributes([workingAttributes.removeFirst() ]).continueWithBlock{ (task) in
-                NSLog("Update Attributes Continuation Block Running for: \((task.result as! AWSCognitoIdentityUserUpdateAttributesResponse).codeDeliveryDetailsList?[0].attributeName) Delivery list count is: \((task.result as! AWSCognitoIdentityUserUpdateAttributesResponse).codeDeliveryDetailsList?.count)")
+                if task.error != nil {
+                    NSLog("error\(task.error)")
+                } else {
+                                NSLog("Update Attributes Continuation Block Running for: \((task.result as! AWSCognitoIdentityUserUpdateAttributesResponse).codeDeliveryDetailsList?[0].attributeName) Delivery list count is: \((task.result as! AWSCognitoIdentityUserUpdateAttributesResponse).codeDeliveryDetailsList?.count)")
+                }
+
                 dispatch_async(dispatch_get_main_queue()) {
                     
                     if task.error != nil {  // some sort of error

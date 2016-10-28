@@ -36,13 +36,6 @@ FOUNDATION_EXPORT NSString *const AWSIdentityManagerDidSignOutNotification;
  * @return user name, if user is signed-in
  */
 @property (nonatomic, readonly, nullable) NSString * userName;
-/**
- * A user readable name (providerKey) of the currentSignInProvider, such as Facebook or
- * Google or Cognito Your User Pools.  Note you may be authenticated with more id's
- * logins may contain multiple providers, but only one is the currentSignInProvider
- * @return providerKey of currentSignInProvider or "Guest"
- */
-@property (nonatomic, readonly) NSString * authenticatedBy;
 
 /**
  * Amazon Cognito User Identity ID. This uniquely identifies the user, regardless of
@@ -70,7 +63,6 @@ FOUNDATION_EXPORT NSString *const AWSIdentityManagerDidSignOutNotification;
  * @return NSArray of active AWSSignInProvider instances
  */
 - (NSArray *)activeProviders;
-
 
 /**
  * Completes login process, sends notification of SignIn state change
@@ -106,6 +98,7 @@ FOUNDATION_EXPORT NSString *const AWSIdentityManagerDidSignOutNotification;
  */
 - (void)loginWithSignInProvider:(id<AWSSignInProvider>)signInProvider
               completionHandler:(void (^)(id _Nullable result, NSError * _Nullable error))completionHandler;
+
 /**
  * A user readable name of the signInProvider passed as an such as Facebook or Google or
  * Cognito Your User Pools.  This is the value for the Class name key in the
@@ -124,11 +117,6 @@ FOUNDATION_EXPORT NSString *const AWSIdentityManagerDidSignOutNotification;
  * Passes parameters used to launch the application to the current identity provider. For some
  * third party providers, this completes the User Sign-in call flow, which used a browser to
  * get information from the user, directly.
- * Modified: Not all third party providers will get information directly from the user
- * with the browser.  Some (Cognito User Pools, or developer providers) will interact
- * directly with the application. Modified so that it re-instantiates any
- * AWSSignInProviders listed in the SignInProviderKeyDictionary in Info.plist (not
- * just Google and Facebook).
  * @param application application
  * @param launchOptions options used to launch the application
  * @return true if this call handled the operation

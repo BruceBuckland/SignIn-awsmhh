@@ -119,8 +119,9 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         AWSFacebookSignInProvider.sharedInstance().setPermissions(["public_profile"]);
         
         // Facebook login behavior can be optionally set, but must be set
-        // before user authenticates.
-        //                AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Web.rawValue)
+        // to use webview, uncomment out this line.
+        //AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Web.rawValue)
+        //AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Web.rawValue)
         
         // Facebook UI Setup
         facebookButton.addTarget(self, action: #selector(LoginViewController.handleFacebookLogin), forControlEvents: .TouchUpInside)
@@ -274,7 +275,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(),{
-                    self.showErrorDialog(AWSIdentityManager.defaultIdentityManager().authenticatedBy, withError: error!)
+                    self.showErrorDialog(AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider), withError: error!)
                 })
             }
             print("result = \(result), error = \(error)")

@@ -55,7 +55,9 @@ class ForgotPasswordViewController: UIViewController {
         
         forgotPasswordButton.requiredFields(usernameField)
         
-        self.pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
+        let customSignInProvider = AWSCUPIdPSignInProvider.sharedInstance
+        customSignInProvider.configureIdentityManager()
+        self.pool = customSignInProvider.pool
 
         
         if let username = usernameText {

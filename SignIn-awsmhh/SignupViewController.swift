@@ -57,7 +57,9 @@ class SignupViewController: UIViewController {
         
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
-        self.pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
+        let customSignInProvider = AWSCUPIdPSignInProvider.sharedInstance
+        customSignInProvider.configureIdentityManager()
+        self.pool = customSignInProvider.pool
         
         // don't require the phoneField, you can if you want of course.
         

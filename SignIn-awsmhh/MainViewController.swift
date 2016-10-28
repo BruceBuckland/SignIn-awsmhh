@@ -11,7 +11,7 @@ import AWSCore
 import AWSCognito
 import AWSCognitoIdentityProvider
 import AWSDynamoDB
-//import AWSMobileHubHelper
+// import AWSMobileHubHelper
 
 class MainViewController: UIViewController {
     
@@ -86,20 +86,20 @@ class MainViewController: UIViewController {
             guard let strongSelf = self else { return }
             print("Sign In Observer observed sign in.")
             strongSelf.setupBarButtonItems()
-            strongSelf.refreshInterface("-SignIn \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
+            strongSelf.refreshInterface("-SignIn \(strongSelf.authenticatedBy())")
             })
         
         signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
             guard let strongSelf = self else { return }
             print("Sign Out Observer observed sign out.")
             strongSelf.setupBarButtonItems()
-            strongSelf.refreshInterface("-Sign-out says current login is: \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
+            strongSelf.refreshInterface("-Sign-out says current login is: \(strongSelf.authenticatedBy())")
             })
         // when we really have an identityId - start processing.
         completeInitializationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSMobileClient.AWSMobileClientDidCompleteInitialization, object: AWSMobileClient.sharedInstance, queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
             guard let strongSelf = self else { return }
             print("Initialization of AWSIdentityManager complete, we now have an identityId")
-            strongSelf.refreshInterface("-Complete \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
+            strongSelf.refreshInterface("-Complete \(strongSelf.authenticatedBy())")
             })
         setupBarButtonItems()
     }
@@ -163,6 +163,9 @@ class MainViewController: UIViewController {
             // have an active provider that is not really logged in.
             // probably a bug in AWSIdentityManager
             NSLog("handleLogout ran when defaultIdentityManager was not loggedIn");
+            NSLog(self.authenticatedBy())
+            NSLog(AWSIdentityManager.defaultIdentityManager().currentSignInProvider.identityProviderName)
+            
             // assert(false)
         }
     }
@@ -177,9 +180,9 @@ class MainViewController: UIViewController {
     @IBAction func actionNotRequiringAuthenticationPressed(sender: AnyObject) {
         var line = ""
         for provider in AWSIdentityManager.defaultIdentityManager().activeProviders() as! [AWSSignInProvider] {
-            NSLog("provider: \(AWSIdentityManager.defaultIdentityManager().providerKey(provider)) authenticated by: \(AWSIdentityManager.defaultIdentityManager().authenticatedBy) username: \(provider.userName) imageURL:\(provider.imageURL)")
+            NSLog("provider: \(AWSIdentityManager.defaultIdentityManager().providerKey(provider)) authenticated by: \(self.authenticatedBy()) username: \(provider.userName) imageURL:\(provider.imageURL)")
         
-            if AWSIdentityManager.defaultIdentityManager().providerKey(provider) == AWSIdentityManager.defaultIdentityManager().authenticatedBy {
+            if AWSIdentityManager.defaultIdentityManager().providerKey(provider) == self.authenticatedBy() {
                 if provider.userName == nil { // should not happen but currently does when errors or cancel on signin
                     line += "Sign On Error Not Properly Reversed by Mobile Hub Helper on *" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ", "
                 } else {
@@ -192,11 +195,18 @@ class MainViewController: UIViewController {
             
         }
         if line == "" {
-            line = "None, just a " + AWSIdentityManager.defaultIdentityManager().authenticatedBy
+            line = "None, just a " + self.authenticatedBy()
         }
         self.otherDataLabel.text! = "-Authenticated users:" + line + " \(AWSIdentityManager.defaultIdentityManager().identityId!)\n" + self.otherDataLabel.text!
     }
     
+    func authenticatedBy() -> String {
+        if let currentSignInProvider = AWSIdentityManager.defaultIdentityManager().currentSignInProvider as? AWSSignInProvider {
+            return AWSIdentityManager.defaultIdentityManager().providerKey(currentSignInProvider)
+        } else {
+            return "Guest"
+        }
+    }
     
     func refreshInterface(appendToId: String = "-shouldNotHappen") {
         
@@ -249,9 +259,9 @@ class MainViewController: UIViewController {
         
         if AWSIdentityManager.defaultIdentityManager().loggedIn {
             
-            print("Authenticated by: \(AWSIdentityManager.defaultIdentityManager().authenticatedBy)")
+            print("Authenticated by: \(self.authenticatedBy())")
             
-            self.usernameLabel.text = AWSIdentityManager.defaultIdentityManager().authenticatedBy + " authenticated " +  AWSIdentityManager.defaultIdentityManager().userName!
+            self.usernameLabel.text = self.authenticatedBy() + " authenticated " +  AWSIdentityManager.defaultIdentityManager().userName!
             self.actionRequiringAuthenticationButton.hidden = false
         } else {
             self.usernameLabel.text = "Guest User"

@@ -419,8 +419,8 @@
                                     </mask>
                                 </variation>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="30" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-bk-ErX">
-                                <fontDescription key="fontDescription" type="system" pointSize="10"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="15" baselineAdjustment="alignBaselines" minimumScaleFactor="0.69999999999999996" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YcI-bk-ErX">
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -444,10 +444,10 @@
                             <constraint firstItem="6RB-Ev-LmP" firstAttribute="top" secondItem="alN-RS-rII" secondAttribute="bottom" constant="-44" id="ahB-o8-Vds"/>
                             <constraint firstItem="alN-RS-rII" firstAttribute="leading" secondItem="R3S-zj-PlC" secondAttribute="leadingMargin" constant="-20" id="cgW-PR-1qi"/>
                             <constraint firstItem="YcI-bk-ErX" firstAttribute="leading" secondItem="C7S-ho-wM2" secondAttribute="leading" id="dfF-9L-W8Y"/>
+                            <constraint firstItem="YcI-bk-ErX" firstAttribute="top" secondItem="ukz-gN-Xlf" secondAttribute="bottom" constant="12" id="eCR-Dj-Xcc"/>
                             <constraint firstItem="ecU-1S-yVf" firstAttribute="leading" secondItem="CgL-0d-Q6b" secondAttribute="leading" id="eqH-fP-Jrv"/>
                             <constraint firstAttribute="leadingMargin" secondItem="C7S-ho-wM2" secondAttribute="leading" id="ghr-ec-fHc"/>
                             <constraint firstItem="CgL-0d-Q6b" firstAttribute="leading" secondItem="EuA-JH-j2A" secondAttribute="leading" id="hPs-7i-4E0"/>
-                            <constraint firstItem="YcI-bk-ErX" firstAttribute="top" secondItem="ukz-gN-Xlf" secondAttribute="bottom" constant="12" id="iBC-MZ-cMU"/>
                             <constraint firstItem="YcI-bk-ErX" firstAttribute="top" secondItem="ukz-gN-Xlf" secondAttribute="bottom" constant="8.5" id="jMu-hC-cRm"/>
                             <constraint firstItem="YcI-bk-ErX" firstAttribute="trailing" secondItem="C7S-ho-wM2" secondAttribute="trailing" id="l9C-uO-QrN"/>
                             <constraint firstAttribute="trailingMargin" secondItem="C7S-ho-wM2" secondAttribute="trailing" id="lM5-z3-Y7G"/>
@@ -775,7 +775,7 @@
             <objects>
                 <navigationController storyboardIdentifier="loginNavigationController" automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="bjg-R8-JiU" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" misplaced="YES" id="p7C-JN-jcZ">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="p7C-JN-jcZ">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>

@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E502537F1DC2AF670099ECEA /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E502537E1DC2AF670099ECEA /* AWSMobileHubHelper.framework */; };
 		E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */; };
-		E5743E761DBF555700AC47F4 /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E5743E751DBF555700AC47F4 /* AWSMobileHubHelper.framework */; };
 		E5C5480F1DBB494E00816386 /* cognito diagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E5C5480E1DBB494E00816386 /* cognito diagram.pdf */; };
 		E5C548691DBC32D100816386 /* AWSCUPIdPSignInProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382B1DB3630900F6E646 /* AWSCUPIdPSignInProvider.swift */; };
 		E5CB37F31DB35F0A00F6E646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37F11DB35F0A00F6E646 /* LaunchScreen.storyboard */; };
@@ -32,15 +32,13 @@
 		E5CB382F1DB3654500F6E646 /* AWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382E1DB3654500F6E646 /* AWSMobileClient.swift */; };
 		E5CB38311DB368BB00F6E646 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38301DB368BB00F6E646 /* MainViewController.swift */; };
 		E5CB39F91DB531C700F6E646 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5CB39F81DB531C700F6E646 /* Images.xcassets */; };
-		F68CF44E5F40642485C2F46A /* Pods_SignIn_awsmhh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 930732EEF6F5A2E61164A8E0 /* Pods_SignIn_awsmhh.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn-awsmhh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh.debug.xcconfig"; sourceTree = "<group>"; };
 		5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn-awsmhh.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh.release.xcconfig"; sourceTree = "<group>"; };
-		930732EEF6F5A2E61164A8E0 /* Pods_SignIn_awsmhh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn_awsmhh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E502537E1DC2AF670099ECEA /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileHubHelper.framework; sourceTree = "<group>"; };
 		E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
-		E5743E751DBF555700AC47F4 /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileHubHelper.framework; sourceTree = "<group>"; };
 		E5C5480E1DBB494E00816386 /* cognito diagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "cognito diagram.pdf"; sourceTree = "<group>"; };
 		E5C548441DBC1AD200816386 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SignIn-awsmhh-Bridging-Header.h"; path = "SignIn-awsmhh/SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
 		E5CB37E51DB35F0A00F6E646 /* SignIn-awsmhh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SignIn-awsmhh.app"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -76,8 +74,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E5743E761DBF555700AC47F4 /* AWSMobileHubHelper.framework in Frameworks */,
-				F68CF44E5F40642485C2F46A /* Pods_SignIn_awsmhh.framework in Frameworks */,
+				E502537F1DC2AF670099ECEA /* AWSMobileHubHelper.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,8 +84,7 @@
 		0C3EE8AFC8B9BE793523355E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				E5743E751DBF555700AC47F4 /* AWSMobileHubHelper.framework */,
-				930732EEF6F5A2E61164A8E0 /* Pods_SignIn_awsmhh.framework */,
+				E502537E1DC2AF670099ECEA /* AWSMobileHubHelper.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
