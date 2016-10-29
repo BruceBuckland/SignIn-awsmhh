@@ -7,6 +7,7 @@ import UIKit
 import AWSCore
 import AWSCognitoIdentityProvider
 //import AWSMobileHubHelper
+import FBSDKLoginKit
 
 
 
@@ -117,11 +118,17 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         // before user authenticates.
         
         AWSFacebookSignInProvider.sharedInstance().setPermissions(["public_profile"]);
+        // or ask for @[@"public_profile", @"email", @"user_friends"]; but in swift.
         
         // Facebook login behavior can be optionally set, but must be set
         // to use webview, uncomment out this line.
-        //AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Web.rawValue)
-        //AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Web.rawValue)
+        // popup window, doesn't remember username AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Web.rawValue)
+        // seems to use safari, and remembers apparently this is the default. AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Native.rawValue)
+        AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.SystemAccount.rawValue)
+        // AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.SystemAccount.rawValue)
+        
+        // AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Browser.rawValue)
+        
         
         // Facebook UI Setup
         facebookButton.addTarget(self, action: #selector(LoginViewController.handleFacebookLogin), forControlEvents: .TouchUpInside)

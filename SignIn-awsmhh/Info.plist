@@ -21,17 +21,10 @@
 		<dict>
 			<key>Default</key>
 			<dict>
-				<key>Merging note:</key>
-				<string>Allow Identity Merging requires that you Allow Simultaneous Active Accounts.   </string>
 				<key>Allow Identity Merging</key>
 				<true/>
 				<key>Allow Simultaneous Active Accounts</key>
 				<true/>
-				<key>Google</key>
-				<dict>
-					<key>ClientId</key>
-					<string>$(GOOGLE_CLIENT_ID)</string>
-				</dict>
 				<key>CognitoYourUserPools</key>
 				<dict>
 					<key>COGNITO_REGIONTYPE</key>
@@ -46,6 +39,11 @@
 					<string>$(COGNITO_USER_POOL_IDP_NAME)</string>
 					<key>COGNITO_USER_POOL_NAME</key>
 					<string>$(COGNITO_USER_POOL_NAME)</string>
+				</dict>
+				<key>Google</key>
+				<dict>
+					<key>ClientId</key>
+					<string>$(GOOGLE_CLIENT_ID)</string>
 				</dict>
 				<key>SignInProviderKeyDictionary</key>
 				<dict>
@@ -66,6 +64,8 @@
 	</dict>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
+	<key>CFBundleDisplayName</key>
+	<string>SignIn</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
 	<key>CFBundleIdentifier</key>
@@ -100,7 +100,7 @@
 	<key>FacebookAppID</key>
 	<string>$(FACEBOOK_APP_ID)</string>
 	<key>FacebookDisplayName</key>
-	<string>SignIn-awsmhh</string>
+	<string>SignIn</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>fbapi</string>
@@ -166,7 +166,6 @@
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
