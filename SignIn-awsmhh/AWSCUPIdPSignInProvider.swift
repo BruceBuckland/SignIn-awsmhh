@@ -20,11 +20,12 @@ import AWSCognitoIdentityProvider // needed for user pools
 
 class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
     
+    
     static let sharedInstance = AWSCUPIdPSignInProvider() // create a singleton
     
     
     // Carry serviceConfiguration
-    private var serviceConfiguration: AWSServiceConfiguration?
+    fileprivate var serviceConfiguration: AWSServiceConfiguration?
     
     
     // Info.plist must contain (in addition to the mobile-hub-helper items)
@@ -36,7 +37,7 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
     // "AWSCUPIdPSignInProvider":"My Pool Name"
     // and so on listing all of the sign in providers that are compiled in and in use
     let AWSSignInProviderIndex = "SignInProviderKeyDictionary"
-    let AWSInfoClassNameKey = String(classForCoder().self) // Name of this class as a string
+    let AWSInfoClassNameKey = String(describing: classForCoder().self) // Name of this class as a string
     var AWSCUPIdPSignInProviderKey: String!
     let AWSInfoIdentityManager = "IdentityManager"
     // This is the configuration tag for Cognito User Pools keys
@@ -75,15 +76,15 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
     // SignInProvider to provide the pool for non-login tasks like updating
     // password, attributes, signing up, creating ids etc.
     var pool: AWSCognitoIdentityUserPool { return userPool! }
-    private var userPool: AWSCognitoIdentityUserPool?
+    fileprivate var userPool: AWSCognitoIdentityUserPool?
     
     var user: AWSCognitoIdentityUser { return userPoolUser! }
-    private var userPoolUser: AWSCognitoIdentityUser?
+    fileprivate var userPoolUser: AWSCognitoIdentityUser?
     
     // pragma mark - AWSIdentityProvider
-    private var _loggedIn: Bool = false
+    fileprivate var _loggedIn: Bool = false
     
-    var loggedIn: Bool {
+    var isLoggedIn: Bool {
         @objc(isLoggedIn)
         get {
             return self._loggedIn
@@ -94,7 +95,7 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
     }
     
     var userName:String?
-    var imageURL:NSURL?
+    var imageURL:URL?
     
     // pragma mark - methods
     
@@ -103,11 +104,11 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
     // credentials
     
     func completeLogin() {
-        NSUserDefaults.standardUserDefaults().setObject("YES", forKey: self.AWSCUPIdPSignInProviderKey)
-        self.imageURL = NSURL(string: "https://admin.mashable.com/wp-content/uploads/2011/09/not-google-plus.jpg") // temporary place holder - should load user image
+        UserDefaults.standard.set("YES", forKey: self.AWSCUPIdPSignInProviderKey)
+        self.imageURL = URL(string: "https://admin.mashable.com/wp-content/uploads/2011/09/not-google-plus.jpg") // temporary place holder - should load user image
         self.userName = self.userPoolUser!.username
         
-        self.loggedIn = true
+        self.isLoggedIn = true
         
         AWSIdentityManager.defaultIdentityManager().completeLogin()
     }
@@ -115,10 +116,12 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
     // using NSUserDefaults the SignInProvider keeps current logged in state even when device is shut down.
     
     func reloadSession()  {
-        if NSUserDefaults.standardUserDefaults().stringForKey(AWSCUPIdPSignInProviderKey) == "YES" {
+        
+        configureIdentityManager()  // init pool and current user
+        if UserDefaults.standard.string(forKey: AWSCUPIdPSignInProviderKey) == "YES" {
             
-            configureIdentityManager()  // init pool and current user
-            self.userPoolUser?.getSession().continueWithBlock { (task) in
+            
+            self.userPoolUser?.getSession().continue( { (task) in
                 
                 if task.error != nil {  // some sort of error
                     print("Error:\(task.error)")
@@ -128,16 +131,14 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
                 }
                 
                 return nil
-            }
+            })
         } else {
             print("Reload session failed. Should not get here")
         }
     }
-    //    func completeLogin()  {
-    //
-    //    }
     
-    typealias AWSIdentityManagerCompletionBlock = (AnyObject?,NSError?) -> Void
+    
+    typealias AWSIdentityManagerCompletionBlock = (Any?,Error?) -> Void
     
     // not a great way to do it, but for demonstration
     // these are the parameters for login
@@ -145,22 +146,22 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
     var customUserIdField:String? = ""
     var customPasswordField:String? = ""
     
-    func login(completionHandler: AWSIdentityManagerCompletionBlock )
+    func login(_ completionHandler: @escaping AWSIdentityManagerCompletionBlock )
         -> Void  {
             
             configureIdentityManager()
             
             if (customUserIdField != nil) && (customUserIdField != "") && (customPasswordField != nil)  && (customPasswordField != "")  {
                 self.userPoolUser = userPool!.getUser(customUserIdField!)
-                self.userPoolUser?.getSession(customUserIdField!, password: customPasswordField!, validationData: nil).continueWithBlock { (task) in
+                self.userPoolUser?.getSession(customUserIdField!, password: customPasswordField!, validationData: nil).continue( { (task) in
                     
                     if task.error != nil {  // some sort of error
-                        completionHandler(nil,task.error!)  // this may not be right..
+                        completionHandler(nil,task.error! as NSError?)  // this may not be right..
                     } else {
                         self.completeLogin()
                     }
                     return nil
-                }
+                })
             } else {
                 // email or password not set - no feedback to user
                 print("Login Called without Username and Password set")
@@ -168,12 +169,12 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
     }
     
     func logout() {
-        NSUserDefaults.standardUserDefaults().removeObjectForKey(AWSCUPIdPSignInProviderKey)
-        self.loggedIn = false
+        UserDefaults.standard.removeObject(forKey: AWSCUPIdPSignInProviderKey)
+        self.isLoggedIn = false
     }
     
     
-    func token() -> AWSTask {
+    func token() -> AWSTask<NSString> {
         return (userPool?.token())!
     }
     
@@ -221,7 +222,7 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
             
             // now we register that pool with the service configuration which will allow us
             // to use the pool
-            AWSCognitoIdentityUserPool.registerCognitoIdentityUserPoolWithConfiguration(serviceConfiguration, userPoolConfiguration: userPoolConfiguration, forKey: ServiceConfigurationKeyForUserPool)
+            AWSCognitoIdentityUserPool.register(with: serviceConfiguration, userPoolConfiguration: userPoolConfiguration, forKey: ServiceConfigurationKeyForUserPool)
             
             // and this gets a working pool.
             self.userPool = AWSCognitoIdentityUserPool(forKey: ServiceConfigurationKeyForUserPool)
@@ -235,13 +236,14 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
         }
     }
     
-    func interceptApplication(application: UIApplication, didFinishLaunchingWithOptions: [NSObject:AnyObject]?) -> Bool {
+    func interceptApplication(_ application: UIApplication, didFinishLaunchingWithOptions: [AnyHashable: Any]?) -> Bool {
         
         configureIdentityManager()
         return true
     }
     
-    func interceptApplication(application: UIApplication, openURL: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+    
+    func interceptApplication(_ application: UIApplication, open url: URL, sourceApplication: String?, annotation: Any) -> Bool {
         // this doesn't happen for us (meaningfully).
         return true
     }

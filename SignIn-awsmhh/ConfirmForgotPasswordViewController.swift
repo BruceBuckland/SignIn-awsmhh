@@ -3,7 +3,26 @@
 //  signin
 //
 //  Created by Bruce Buckland on 7/23/16.
-//  Copyright © 2016 Bruce Buckland. All rights reserved.
+//  Copyright © 2016 Bruce Buckland. 
+//  Permission is hereby granted, free of charge, to any person obtaining a 
+//  copy of this software and associated documentation files (the "Software"),
+//  to deal in the Software without restriction, including without limitation
+//  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+//  and/or sell copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following conditions:
+//  
+//  The above copyright notice and this permission notice shall be included in 
+//  all copies or substantial portions of the Software.
+//  
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+//  IN THE SOFTWARE.
+//
+
 //
 
 import UIKit
@@ -25,7 +44,7 @@ class ConfirmForgotPasswordViewController: UIViewController {
     @IBOutlet weak var newPasswordField: UITextField!
     @IBOutlet weak var updatePasswordButton: FieldSensitiveUIButton!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         if backgroundImageCycler == nil {
             backgroundImageCycler = BackgroundImageCycle(self.imageView, speed: 10 )
@@ -47,7 +66,7 @@ class ConfirmForgotPasswordViewController: UIViewController {
     
     
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         backgroundImageCycler?.stop()
         backgroundImageCycler = nil
     }
@@ -63,28 +82,25 @@ class ConfirmForgotPasswordViewController: UIViewController {
     }
     
     
-    @IBAction func updatePasswordPressed(sender: AnyObject) {
-        self.user?.confirmForgotPassword(self.confirmationCodeField.text!, password: self.newPasswordField.text!).continueWithBlock{ (task) in
+    @IBAction func updatePasswordPressed(_ sender: AnyObject) {
+        self.user?.confirmForgotPassword(self.confirmationCodeField.text!, password: self.newPasswordField.text!).continue({ (task) in
             
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 
                 if task.error != nil {  // some sort of error
-                    let alert = UIAlertController(title: "", message: task.error?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     
-                    NSLog("Domain: " + (task.error?.domain)! + " Code: \(task.error?.code)")
-                    NSLog(task.error?.userInfo["message"] as! String)
-                    
-                    
+                    NSLog("\(task.error)")
                 }
                 else {
-                    self.navigationController?.popToRootViewControllerAnimated(true)
+                    let _ = self.navigationController?.popToRootViewController(animated: true)
                     
                 }
             }
             return nil
-        }
+        })
         
     }
 }

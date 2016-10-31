@@ -11,7 +11,6 @@
 
 #import "AWSMobileHubHelper/AWSMobileHubHelper.h"
 
-
 #endif /* SignIn_awsmhh_Bridging_Header_h */
 
 

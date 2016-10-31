@@ -3,7 +3,26 @@
 //  signin
 //
 //  Created by Bruce Buckland on 7/26/16.
-//  Copyright © 2016 Bruce Buckland. All rights reserved.
+//  Copyright © 2016 Bruce Buckland. 
+//  Permission is hereby granted, free of charge, to any person obtaining a 
+//  copy of this software and associated documentation files (the "Software"),
+//  to deal in the Software without restriction, including without limitation
+//  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+//  and/or sell copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following conditions:
+//  
+//  The above copyright notice and this permission notice shall be included in 
+//  all copies or substantial portions of the Software.
+//  
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+//  IN THE SOFTWARE.
+//
+
 //
 
 import UIKit
@@ -34,15 +53,14 @@ class FieldSensitiveUIButton: UIButton {
 // in the view controller setup the button in viewWillAppear with colors and  (usually) disable the button and then call required fields in viewDidLoad
 
 
-    func requiredFields(nonEmpty: UITextField...) {
+    func requiredFields(_ nonEmpty: UITextField...) {
         self.nonEmptyFields = nonEmpty
         for field in nonEmptyFields! {
-            field.addTarget(self, action: #selector(self.textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
+            field.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
         }
     }
     
-    func colorize(enabledBackgroundAlpha
-            enabledBackgroundAlpha: CGFloat = K.ENABLED_BACKGROUND_ALPHA,
+    func colorize(enabledBackgroundAlpha: CGFloat = K.ENABLED_BACKGROUND_ALPHA,
             disabledBackgroundAlpha: CGFloat = K.DISABLED_BACKGROUND_ALPHA,
             enabledBackgroundColor: UIColor = K.ENABLED_BACKGROUND_COLOR,
             disabledBackgroundColor: UIColor = K.DISABLED_BACKGROUND_COLOR,
@@ -73,17 +91,17 @@ class FieldSensitiveUIButton: UIButton {
     }
     
     func enable(){
-        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.backgroundColor = self.enabledBackgroundColor.colorWithAlphaComponent(self.enabledBackgroundAlpha)
-            self.setTitleColor(self.enabledTitleColor.colorWithAlphaComponent(self.enabledTitleAlpha), forState: UIControlState.Normal)
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.backgroundColor = self.enabledBackgroundColor.withAlphaComponent(self.enabledBackgroundAlpha)
+            self.setTitleColor(self.enabledTitleColor.withAlphaComponent(self.enabledTitleAlpha), for: UIControlState())
             }, completion: nil)
-        self.enabled = true
+        self.isEnabled = true
     }
     func disable(){
-        self.enabled = false
-        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.backgroundColor = self.disabledBackgroundColor.colorWithAlphaComponent(self.disabledBackgroundAlpha)
-            self.setTitleColor(self.disabledTitleColor.colorWithAlphaComponent(self.disabledTitleAlpha), forState: UIControlState.Normal)
+        self.isEnabled = false
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.backgroundColor = self.disabledBackgroundColor.withAlphaComponent(self.disabledBackgroundAlpha)
+            self.setTitleColor(self.disabledTitleColor.withAlphaComponent(self.disabledTitleAlpha), for: UIControlState())
             }, completion: nil)
     }
     

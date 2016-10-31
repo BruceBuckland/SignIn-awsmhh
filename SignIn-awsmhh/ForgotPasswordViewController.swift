@@ -3,7 +3,26 @@
 //  signin
 //
 //  Created by Bruce Buckland on 7/23/16.
-//  Copyright © 2016 Bruce Buckland. All rights reserved.
+//  Copyright © 2016 Bruce Buckland. 
+//  Permission is hereby granted, free of charge, to any person obtaining a 
+//  copy of this software and associated documentation files (the "Software"),
+//  to deal in the Software without restriction, including without limitation
+//  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+//  and/or sell copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following conditions:
+//  
+//  The above copyright notice and this permission notice shall be included in 
+//  all copies or substantial portions of the Software.
+//  
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+//  IN THE SOFTWARE.
+//
+
 //
 
 import UIKit
@@ -32,7 +51,7 @@ class ForgotPasswordViewController: UIViewController {
     
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         if backgroundImageCycler == nil {
             backgroundImageCycler = BackgroundImageCycle(self.imageView, speed: 10 )
@@ -69,7 +88,7 @@ class ForgotPasswordViewController: UIViewController {
     }
     
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         backgroundImageCycler?.stop()
         backgroundImageCycler = nil
     }
@@ -84,51 +103,47 @@ class ForgotPasswordViewController: UIViewController {
         
     }
     
-    func colorInterface(defaultColor: UIColor) {
+    func colorInterface(_ defaultColor: UIColor) {
         
         usernameField.textColor = defaultColor.lighter(0.75)
         usernameField.tintColor = defaultColor
         
-        forgotPasswordButton.colorize(enabledBackgroundAlpha: 0.8, disabledBackgroundAlpha: 0.28, enabledBackgroundColor:defaultColor , disabledBackgroundColor: UIColor.whiteColor(), enabledTitleAlpha: 0.8, disabledTitleAlpha: 0.5, enabledTitleColor: UIColor.whiteColor(), disabledTitleColor: UIColor.whiteColor())
+        forgotPasswordButton.colorize(enabledBackgroundAlpha: 0.8, disabledBackgroundAlpha: 0.28, enabledBackgroundColor:defaultColor , disabledBackgroundColor: UIColor.white, enabledTitleAlpha: 0.8, disabledTitleAlpha: 0.5, enabledTitleColor: UIColor.white, disabledTitleColor: UIColor.white)
         
         
     }
     
     
     
-    @IBAction func forgotPasswordPressed(sender: AnyObject) {
+    @IBAction func forgotPasswordPressed(_ sender: AnyObject) {
         
         self.user = self.pool?.getUser(usernameField.text!)
-        self.user?.forgotPassword().continueWithBlock{ (task) in
+        self.user?.forgotPassword().continue({ (task) in
             
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 
                 if task.error != nil {  // some sort of error
-                    let alert = UIAlertController(title: "", message: task.error?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
-                    
-                    NSLog("Domain: " + (task.error?.domain)! + " Code: \(task.error?.code)")
-                    NSLog(task.error?.userInfo["message"] as! String)
-                    
-                    
+                    let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    NSLog("\(task.error)")
                 }
                 else {
-                    self.performSegueWithIdentifier("confirmForgotPassword", sender: sender)
+                    self.performSegue(withIdentifier: "confirmForgotPassword", sender: sender)
                 }
             }
             return nil
-        }
+        })
     }
     
     
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "confirmForgotPassword" {
             // confirm is done with the same user.
-            (segue.destinationViewController as! ConfirmForgotPasswordViewController).user = self.user
+            (segue.destination as! ConfirmForgotPasswordViewController).user = self.user
         }
     }
     

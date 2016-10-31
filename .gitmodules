@@ -1,0 +1,3 @@
+[submodule "aws-mobilehub-helper-ios"]
+	path = aws-mobilehub-helper-ios
+	url = https://github.com/BruceBuckland/aws-mobilehub-helper-ios.git

@@ -1,17 +1,17 @@
 PODS:
-  - AWSCognito (2.4.9):
-    - AWSCore (= 2.4.9)
-  - AWSCognitoIdentityProvider (2.4.9):
-    - AWSCore (= 2.4.9)
-  - AWSCore (2.4.9)
-  - AWSDynamoDB (2.4.9):
-    - AWSCore (= 2.4.9)
-  - AWSLambda (2.4.9):
-    - AWSCore (= 2.4.9)
-  - AWSS3 (2.4.9):
-    - AWSCore (= 2.4.9)
-  - AWSSNS (2.4.9):
-    - AWSCore (= 2.4.9)
+  - AWSCognito (2.4.11):
+    - AWSCore (= 2.4.11)
+  - AWSCognitoIdentityProvider (2.4.11):
+    - AWSCore (= 2.4.11)
+  - AWSCore (2.4.11)
+  - AWSDynamoDB (2.4.11):
+    - AWSCore (= 2.4.11)
+  - AWSLambda (2.4.11):
+    - AWSCore (= 2.4.11)
+  - AWSS3 (2.4.11):
+    - AWSCore (= 2.4.11)
+  - AWSSNS (2.4.11):
+    - AWSCore (= 2.4.11)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -58,13 +58,13 @@ DEPENDENCIES:
   - GoogleSignIn (~> 4.0.0)
 
 SPEC CHECKSUMS:
-  AWSCognito: 4fa9fefcadae1d8425b01cbde27d564c21e3fd35
-  AWSCognitoIdentityProvider: 34707960c3bd3f4956cb3b9a129dfda12376bd40
-  AWSCore: 175208358b95492e0ebe0337df2ab415300bddac
-  AWSDynamoDB: ba9d90dd6d632197bf24baad824fa918568ba8e6
-  AWSLambda: 5cfb825a83acbfd6b62a6cf109f9c73896f5cc7a
-  AWSS3: e4959b48db48d5f3dcd5cdf9e24a07f60a313611
-  AWSSNS: 85513f30d76556ff43bc0772e65f1a74008a488f
+  AWSCognito: e086ad6f499e309dbf0030170cffc65a0bfd27c6
+  AWSCognitoIdentityProvider: e8b124892dba5bbe32f93194220ad4b17bb50677
+  AWSCore: e66b0f50d68f9897cc9e68471062f0cb5379eec5
+  AWSDynamoDB: 1d54c63fe63c2afcd0caea5ce709d1a0b213213f
+  AWSLambda: a724cdda7d76c8c9d6e8447134c221b22531d2bc
+  AWSS3: 2f90735901744687eaeb91621fa62ee921db6510
+  AWSSNS: 6844814ce167da813e213a4d3f8f0e6c45ae3bed
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
   FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4

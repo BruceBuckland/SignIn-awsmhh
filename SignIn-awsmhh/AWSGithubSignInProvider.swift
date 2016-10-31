@@ -7,7 +7,26 @@
 //  Because GTM OAuth2 supports OAUTH2 providers in general.
 //
 //  Created by Bruce Buckland on 10/29/16.
-//  Copyright © 2016 Bruce Buckland. All rights reserved.
+//  Copyright © 2016 Bruce Buckland. 
+//  Permission is hereby granted, free of charge, to any person obtaining a 
+//  copy of this software and associated documentation files (the "Software"),
+//  to deal in the Software without restriction, including without limitation
+//  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+//  and/or sell copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following conditions:
+//  
+//  The above copyright notice and this permission notice shall be included in 
+//  all copies or substantial portions of the Software.
+//  
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+//  IN THE SOFTWARE.
+//
+
 //
 
 import UIKit
@@ -238,7 +257,8 @@ class AWSGithubIdPSignInProvider: NSObject, AWSSignInProvider {
             print("Info.plist not configured with \(AWSInfoCUPIdPIdentifier)")
         }
     }
-    
+
+
     func interceptApplication(application: UIApplication, didFinishLaunchingWithOptions: [NSObject:AnyObject]?) -> Bool {
         
         configureIdentityManager()
@@ -246,8 +266,14 @@ class AWSGithubIdPSignInProvider: NSObject, AWSSignInProvider {
     }
     
     func interceptApplication(application: UIApplication, openURL: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        // this doesn't happen for us (meaningfully).
-        return true
+
+        if "ppoauthapp" == url.scheme || (url.scheme?.hasPrefix("com.googleusercontent.apps"))! {
+            if let vc = window?.rootViewController as? ViewController {
+                vc.oauth2.handleRedirectURL(url)
+                return true
+            }
+        }
+        return false
     }
 }
 

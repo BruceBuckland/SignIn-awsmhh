@@ -3,7 +3,26 @@
 //  signin
 //
 //  Created by Bruce Buckland on 7/13/16.
-//  Copyright © 2016 Bruce Buckland. All rights reserved.
+//  Copyright © 2016 Bruce Buckland. 
+//  Permission is hereby granted, free of charge, to any person obtaining a 
+//  copy of this software and associated documentation files (the "Software"),
+//  to deal in the Software without restriction, including without limitation
+//  the rights to use, copy, modify, merge, publish, distribute, sublicense,
+//  and/or sell copies of the Software, and to permit persons to whom the
+//  Software is furnished to do so, subject to the following conditions:
+//  
+//  The above copyright notice and this permission notice shall be included in 
+//  all copies or substantial portions of the Software.
+//  
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+//  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+//  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+//  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+//  LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
+//  FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS
+//  IN THE SOFTWARE.
+//
+
 //
 
 import UIKit
@@ -36,7 +55,7 @@ class SignupViewController: UIViewController {
     //MARK: Global Variables for Changing Image Functionality.
     var backgroundImageCycler: BackgroundImageCycle?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         if backgroundImageCycler == nil {
             backgroundImageCycler = BackgroundImageCycle(self.imageView, speed: 8)
@@ -74,7 +93,7 @@ class SignupViewController: UIViewController {
     
     
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         backgroundImageCycler?.stop()
         backgroundImageCycler = nil
     }
@@ -94,7 +113,7 @@ class SignupViewController: UIViewController {
 
     //call the following function to sign up
     
-    @IBAction func signupPressed(sender: AnyObject) {
+    @IBAction func signupPressed(_ sender: AnyObject) {
         var attributes = [AWSCognitoIdentityUserAttributeType]()
         let phone = AWSCognitoIdentityUserAttributeType()
         
@@ -102,56 +121,53 @@ class SignupViewController: UIViewController {
         // http://openid.net/specs/openid-connect-core-1_0.html#StandardClaims
         // I have not found any other documentation of the AWS user attributes
         
-        phone.name = "phone_number"
+        phone?.name = "phone_number"
         
         //requires country code.  Some better processing needed here to help 
         // for instance if it doesn't start with a + we should insert one
         // must be some nice library for that.
         
-        phone.value = phoneField.text
+        phone?.value = phoneField.text
 
         let email = AWSCognitoIdentityUserAttributeType()
-        email.name = "email"
-        email.value = emailField.text
+        email?.name = "email"
+        email?.value = emailField.text
         
-        if email.value != ""{
-            attributes.append(email)
+        if email?.value != ""{
+            attributes.append(email!)
         }
-        if phone.value != ""{
-            attributes.append(phone)
+        if phone?.value != ""{
+            attributes.append(phone!)
         }
         
-        self.pool!.signUp(usernameField.text!, password: passwordField.text!, userAttributes: attributes, validationData: nil).continueWithBlock{ (task) in
+        self.pool!.signUp(usernameField.text!, password: passwordField.text!, userAttributes: attributes, validationData: nil).continue({ (task) in
             // needs to be async so we can ALWAYS return nil for AWSTask
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 
                 if task.error != nil {  // some sort of error
-                    let alert = UIAlertController(title: "", message: task.error?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     
-                    NSLog("Domain: " + (task.error?.domain)! + " Code: \(task.error?.code)")
-                    NSLog(task.error?.userInfo["message"] as! String)
-                    
-                    
+                    NSLog("\(task.error)")
                 }
                 else {
-                    let response: AWSCognitoIdentityUserPoolSignUpResponse = task.result as! AWSCognitoIdentityUserPoolSignUpResponse
-                    // NSLog("AWSCognitoIdentityUserPoolSignUpResponse: \(response)")
+                    let response: AWSCognitoIdentityUserPoolSignUpResponse = task.result!
+
                     self.user = response.user
                     
-                    if (response.userConfirmed != AWSCognitoIdentityUserStatus.Confirmed.rawValue) { // not confirmed
+                    if (response.userConfirmed?.intValue != AWSCognitoIdentityUserStatus.confirmed.rawValue) { // not confirmed
                         
                         // setup to send sentTo thru segue
                         self.sentTo = response.codeDeliveryDetails?.destination
-                        self.performSegueWithIdentifier("confirmSignup", sender: sender)
+                        self.performSegue(withIdentifier: "confirmSignup", sender: sender)
                     } else { // user is confirmed - can it happen?
-                        self.navigationController?.popToRootViewControllerAnimated(true) // back to login
+                        _ = self.navigationController?.popToRootViewController(animated: true) // back to login
                     }
                 }
             }
             return nil
-        }
+        })
     }
 
     
@@ -159,9 +175,9 @@ class SignupViewController: UIViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "confirmSignup" {
-            let confirmViewController = segue.destinationViewController as! ConfirmSignupViewController
+            let confirmViewController = segue.destination as! ConfirmSignupViewController
             confirmViewController.sentTo = self.sentTo
             confirmViewController.user = self.pool?.getUser(self.usernameField.text!)  // why not just use self.user?
         }
