@@ -76,7 +76,7 @@ class ConfirmForgotPasswordViewController: UIViewController {
                     NSLog("\(task.error)")
                 }
                 else {
-                    self.navigationController?.popToRootViewController(animated: true)
+                    let _ = self.navigationController?.popToRootViewController(animated: true)
                     
                 }
             }

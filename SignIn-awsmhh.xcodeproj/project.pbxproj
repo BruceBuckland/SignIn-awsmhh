@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		5C604BF1E3F88ABD3A483037 /* Pods_SignIn_awsmhh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */; };
+		E53FF1CD1DC7A7B200A7F978 /* AWSMobileHubHelper.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53FF1CC1DC7A7B200A7F978 /* AWSMobileHubHelper.framework */; };
 		E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */; };
 		E5C5480F1DBB494E00816386 /* cognito diagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E5C5480E1DBB494E00816386 /* cognito diagram.pdf */; };
 		E5C548691DBC32D100816386 /* AWSCUPIdPSignInProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382B1DB3630900F6E646 /* AWSCUPIdPSignInProvider.swift */; };
@@ -15,7 +16,6 @@
 		E5CB37FB1DB35F2600F6E646 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37FA1DB35F2600F6E646 /* .gitignore */; };
 		E5CB38101DB35F9300F6E646 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38001DB35F9200F6E646 /* AppColor.swift */; };
 		E5CB38111DB35F9300F6E646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38011DB35F9300F6E646 /* AppDelegate.swift */; };
-		E5CB38121DB35F9300F6E646 /* AWSKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E5CB38021DB35F9300F6E646 /* AWSKeys.xcconfig */; };
 		E5CB38131DB35F9300F6E646 /* BackgroundImageCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38031DB35F9300F6E646 /* BackgroundImageCycle.swift */; };
 		E5CB38141DB35F9300F6E646 /* ConfirmAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38041DB35F9300F6E646 /* ConfirmAttributeViewController.swift */; };
 		E5CB38151DB35F9300F6E646 /* ConfirmForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38051DB35F9300F6E646 /* ConfirmForgotPasswordViewController.swift */; };
@@ -38,10 +38,11 @@
 		52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn-awsmhh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh.debug.xcconfig"; sourceTree = "<group>"; };
 		5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn-awsmhh.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh.release.xcconfig"; sourceTree = "<group>"; };
 		6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn_awsmhh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E53FF1CB1DC7A3DF00A7F978 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
+		E53FF1CC1DC7A7B200A7F978 /* AWSMobileHubHelper.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = AWSMobileHubHelper.framework; sourceTree = "<group>"; };
 		E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
 		E58B54FA1DC565E300E381F5 /* AWSGithubSignInProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSGithubSignInProvider.swift; sourceTree = "<group>"; };
 		E5C5480E1DBB494E00816386 /* cognito diagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "cognito diagram.pdf"; sourceTree = "<group>"; };
-		E5C548441DBC1AD200816386 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SignIn-awsmhh-Bridging-Header.h"; path = "SignIn-awsmhh/SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
 		E5CB37E51DB35F0A00F6E646 /* SignIn-awsmhh.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "SignIn-awsmhh.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CB37F21DB35F0A00F6E646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		E5CB37FA1DB35F2600F6E646 /* .gitignore */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -75,6 +76,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E53FF1CD1DC7A7B200A7F978 /* AWSMobileHubHelper.framework in Frameworks */,
 				5C604BF1E3F88ABD3A483037 /* Pods_SignIn_awsmhh.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -85,6 +87,7 @@
 		0C3EE8AFC8B9BE793523355E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E53FF1CC1DC7A7B200A7F978 /* AWSMobileHubHelper.framework */,
 				6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */,
 			);
 			name = Frameworks;
@@ -102,7 +105,6 @@
 		E5CB37DC1DB35F0A00F6E646 = {
 			isa = PBXGroup;
 			children = (
-				E5C548441DBC1AD200816386 /* SignIn-awsmhh-Bridging-Header.h */,
 				E5C5480E1DBB494E00816386 /* cognito diagram.pdf */,
 				E5CB38271DB3629400F6E646 /* Podfile */,
 				E5CB37FA1DB35F2600F6E646 /* .gitignore */,
@@ -125,6 +127,7 @@
 		E5CB37E71DB35F0A00F6E646 /* SignIn-awsmhh */ = {
 			isa = PBXGroup;
 			children = (
+				E53FF1CB1DC7A3DF00A7F978 /* SignIn-awsmhh-Bridging-Header.h */,
 				E5CB382D1DB364DE00F6E646 /* SignIn-awsmhh.entitlements */,
 				E5CB38201DB3601200F6E646 /* Helpers */,
 				E5CB38041DB35F9300F6E646 /* ConfirmAttributeViewController.swift */,
@@ -232,7 +235,6 @@
 			files = (
 				E5CB38221DB3605100F6E646 /* Main.storyboard in Resources */,
 				E5CB39F91DB531C700F6E646 /* Images.xcassets in Resources */,
-				E5CB38121DB35F9300F6E646 /* AWSKeys.xcconfig in Resources */,
 				E5C5480F1DBB494E00816386 /* cognito diagram.pdf in Resources */,
 				E5CB38281DB3629400F6E646 /* Podfile in Resources */,
 				E5CB37FB1DB35F2600F6E646 /* .gitignore in Resources */,
@@ -348,6 +350,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -370,12 +373,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(Project)/SignIn-awsmhh-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/SignIn-awsmhh-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -400,6 +404,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -416,10 +421,11 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(Project)/SignIn-awsmhh-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(PROJECT_DIR)/SignIn-awsmhh-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -449,7 +455,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.odellventures.SignIn-awsmhh";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/SignIn-awsmhh/SignIn-awsmhh-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 3.0;
 			};
@@ -478,7 +483,6 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.odellventures.SignIn-awsmhh";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/SignIn-awsmhh/SignIn-awsmhh-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

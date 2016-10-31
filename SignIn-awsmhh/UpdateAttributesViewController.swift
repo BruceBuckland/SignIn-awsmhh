@@ -178,8 +178,8 @@ class UpdateAttributesViewController: UIViewController {
             if task.error != nil {
                NSLog("\(task.error)")
             }
-        
-        } ) // returns an AWSTask or Nil
+        return nil
+        } )
     }
     
     // recursively goes through the attributes list and
