@@ -20,19 +20,19 @@ import UIKit
 
 class BackgroundImageCycle: NSObject {
     //MARK: Global Variables for Changing Image Functionality.
-    private var idx = 0
-    private var backGroundArray = [UIImage(named: "img1.jpg"),UIImage(named:"img2.jpg"), UIImage(named: "img3.jpg"), UIImage(named: "img4.jpg"),UIImage(named: "img5.jpg")]
+    fileprivate var idx = 0
+    fileprivate var backGroundArray = [UIImage(named: "img1.jpg"),UIImage(named:"img2.jpg"), UIImage(named: "img3.jpg"), UIImage(named: "img4.jpg"),UIImage(named: "img5.jpg")]
         //,UIImage(named: "img6.jpg"),UIImage(named: "img7.jpg"),UIImage(named: "img8.jpg"),UIImage(named: "img9.jpg"),UIImage(named: "img10.jpg"),UIImage(named: "img11.jpg"),UIImage(named: "img12.jpg"),UIImage(named: "img13.jpg"),UIImage(named: "img14.jpg"),UIImage(named: "img15.jpg")]
     // cycle images and put the animations onto the main queue
-    var backgroundImageTimer: NSTimer? = nil
+    var backgroundImageTimer: Timer? = nil
     var viewToCycle: UIImageView?
-    var cycleTime: NSTimeInterval = 6
+    var cycleTime: TimeInterval = 6
 
     override init() { // I think I don't need this.
         super.init()
     }
     
-    convenience init(_ imageView: UIImageView, speed: NSTimeInterval = 6 ) {
+    convenience init(_ imageView: UIImageView, speed: TimeInterval = 6 ) {
         self.init()
         viewToCycle = imageView
         idx = Int(arc4random_uniform(UInt32(backGroundArray.count)))
@@ -54,16 +54,16 @@ class BackgroundImageCycle: NSObject {
         }
     }
 
-    private func cycleBackgroundImages() {
+    fileprivate func cycleBackgroundImages() {
         
 //        // animate in first background without delay
 //        self.changeImage()
         
         // schedule background flips (successful login will shut it down)
-        backgroundImageTimer = NSTimer.scheduledTimerWithTimeInterval(cycleTime, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
+        backgroundImageTimer = Timer.scheduledTimer(timeInterval: cycleTime, target: self, selector: #selector(self.changeImage), userInfo: nil, repeats: true)
     }
     
-    @objc private func changeImage() { // #selector and private requires changeImage @objc
+    @objc fileprivate func changeImage() { // #selector and private requires changeImage @objc
         if idx >= backGroundArray.count-1 {
             idx = 0
         }
@@ -73,7 +73,7 @@ class BackgroundImageCycle: NSObject {
         }
         let toImage = backGroundArray[idx]
 
-        dispatch_async(dispatch_get_main_queue()) { UIView.transitionWithView(self.viewToCycle!, duration: 3, options: .TransitionCrossDissolve, animations: {
+        DispatchQueue.main.async { UIView.transition(with: self.viewToCycle!, duration: 3, options: .transitionCrossDissolve, animations: {
             self.viewToCycle!.image = toImage
             }, completion: nil)
         }

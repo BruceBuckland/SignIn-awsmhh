@@ -15,6 +15,7 @@ import AWSDynamoDB
 
 class MainViewController: UIViewController {
     
+    
     @IBOutlet weak var appNameLabel: UILabel!
     @IBOutlet weak var usernameLabel: UILabel!
     
@@ -43,7 +44,7 @@ class MainViewController: UIViewController {
     // MARK: Global Variables for Changing Image Functionality.
     var backgroundImageCycler: BackgroundImageCycle?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
         // set the default color to the color of the appNameLabel
@@ -60,7 +61,7 @@ class MainViewController: UIViewController {
         
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         backgroundImageCycler?.stop()
         backgroundImageCycler = nil
     }
@@ -78,25 +79,25 @@ class MainViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .Plain, target: nil, action: nil)
-        actionRequiringAuthenticationButton.setTitle("Sign-Out All Accounts", forState: .Normal)
-        actionNotRequiringAuthenticationButton.setTitle("What providers are active?", forState: .Normal)
+        navigationItem.backBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: nil, action: nil)
+        actionRequiringAuthenticationButton.setTitle("Sign-Out All Accounts", for: UIControlState())
+        actionNotRequiringAuthenticationButton.setTitle("What providers are active?", for: UIControlState())
         
-        signInObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self] (note: NSNotification) -> Void in
+        signInObserver = NotificationCenter.default.addObserver(forName: NSNotification.Name.AWSIdentityManagerDidSignIn, object: AWSIdentityManager.defaultIdentityManager(), queue: OperationQueue.main, using: {[weak self] (note: Notification) -> Void in
             guard let strongSelf = self else { return }
             print("Sign In Observer observed sign in.")
             strongSelf.setupBarButtonItems()
             strongSelf.refreshInterface("-SignIn \(strongSelf.authenticatedBy())")
             })
         
-        signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
+        signOutObserver = NotificationCenter.default.addObserver(forName: NSNotification.Name.AWSIdentityManagerDidSignOut, object: AWSIdentityManager.defaultIdentityManager(), queue: OperationQueue.main, using: {[weak self](note: Notification) -> Void in
             guard let strongSelf = self else { return }
             print("Sign Out Observer observed sign out.")
             strongSelf.setupBarButtonItems()
             strongSelf.refreshInterface("-Sign-out says current login is: \(strongSelf.authenticatedBy())")
             })
         // when we really have an identityId - start processing.
-        completeInitializationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSMobileClient.AWSMobileClientDidCompleteInitialization, object: AWSMobileClient.sharedInstance, queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
+        completeInitializationObserver = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: AWSMobileClient.AWSMobileClientDidCompleteInitialization), object: AWSMobileClient.sharedInstance, queue: OperationQueue.main, using: {[weak self](note: Notification) -> Void in
             guard let strongSelf = self else { return }
             print("Initialization of AWSIdentityManager complete, we now have an identityId")
             strongSelf.refreshInterface("-Complete \(strongSelf.authenticatedBy())")
@@ -105,28 +106,24 @@ class MainViewController: UIViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(signInObserver)
-        NSNotificationCenter.defaultCenter().removeObserver(signOutObserver)
+        NotificationCenter.default.removeObserver(signInObserver)
+        NotificationCenter.default.removeObserver(signOutObserver)
     }
     
     func setupBarButtonItems() {
-        struct Static {
-            static var onceToken: dispatch_once_t = 0
-        }
         
-        dispatch_once(&Static.onceToken, {
-            let loginButton: UIBarButtonItem = UIBarButtonItem(title: nil, style: .Done, target: self, action: nil)
+            let loginButton: UIBarButtonItem = UIBarButtonItem(title: nil, style: .done, target: self, action: nil)
             self.navigationItem.rightBarButtonItem = loginButton
-        })
-        
-        if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
+
+
+        if (AWSIdentityManager.defaultIdentityManager().isLoggedIn) {
             navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
             
             navigationItem.rightBarButtonItem!.action = #selector(MainViewController.handleLogout)
-            let mergeButton: UIBarButtonItem = UIBarButtonItem(title: "Sign-In or Link Accounts", style: .Done, target: self, action: #selector(MainViewController.goToLogin))
+            let mergeButton: UIBarButtonItem = UIBarButtonItem(title: "Sign-In or Link Accounts", style: .done, target: self, action: #selector(MainViewController.goToLogin))
             self.navigationItem.leftBarButtonItem = mergeButton
         }
-        if !(AWSIdentityManager.defaultIdentityManager().loggedIn) {
+        if !(AWSIdentityManager.defaultIdentityManager().isLoggedIn) {
             navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-In", comment: "Label for the login button.")
             navigationItem.rightBarButtonItem!.action = #selector(MainViewController.goToLogin)
             self.navigationItem.leftBarButtonItem = nil // can't merge when not logged in
@@ -138,24 +135,24 @@ class MainViewController: UIViewController {
         
         if loginController == nil { // use the same one - or we get multiple observers there
             let loginStoryboard = UIStoryboard(name: "Main", bundle: nil)
-            loginController = loginStoryboard.instantiateViewControllerWithIdentifier("login")
+            loginController = loginStoryboard.instantiateViewController(withIdentifier: "login")
         }
         
         navigationController!.pushViewController(loginController, animated: true)
     }
     
-    func handleLogout(allProviders:Bool = false) {
-        if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
-            AWSIdentityManager.defaultIdentityManager().logoutWithCompletionHandler({(result: AnyObject?, error: NSError?) -> Void in
-                if allProviders && AWSIdentityManager.defaultIdentityManager().loggedIn { // keep logging out till no more providers
+    func handleLogout(_ allProviders:Bool = false) {
+        if (AWSIdentityManager.defaultIdentityManager().isLoggedIn) {
+            AWSIdentityManager.defaultIdentityManager().logout(completionHandler: {(result: Any?, error: Error?) -> Void in
+                if allProviders && AWSIdentityManager.defaultIdentityManager().isLoggedIn { // keep logging out till no more providers
                     self.handleLogout(true)
                 }
                 if error != nil {
                     assert(false)
                 }
-                self.navigationController!.popToRootViewControllerAnimated(false)
+                self.navigationController!.popToRootViewController(animated: false)
                 self.setupBarButtonItems()
-            })
+            } )
             // print("Logout Successful: \(signInProvider.getDisplayName)");
             
         } else {
@@ -164,7 +161,7 @@ class MainViewController: UIViewController {
             // probably a bug in AWSIdentityManager
             NSLog("handleLogout ran when defaultIdentityManager was not loggedIn");
             NSLog(self.authenticatedBy())
-            NSLog(AWSIdentityManager.defaultIdentityManager().currentSignInProvider.identityProviderName)
+            NSLog((AWSIdentityManager.defaultIdentityManager().currentSignInProvider as AnyObject).identityProviderName)
             
             // assert(false)
         }
@@ -172,12 +169,12 @@ class MainViewController: UIViewController {
     
     
     // test routine for something that requires an authenticated user
-    @IBAction func actionRequiringAuthenticationPressed(sender: AnyObject) {
+    @IBAction func actionRequiringAuthenticationPressed(_ sender: AnyObject) {
         handleLogout(true)     // Log out all users
     }
     
     // test routines for something that any user can do, even guests.
-    @IBAction func actionNotRequiringAuthenticationPressed(sender: AnyObject) {
+    @IBAction func actionNotRequiringAuthenticationPressed(_ sender: AnyObject) {
         var line = ""
         for provider in AWSIdentityManager.defaultIdentityManager().activeProviders() as! [AWSSignInProvider] {
             NSLog("provider: \(AWSIdentityManager.defaultIdentityManager().providerKey(provider)) authenticated by: \(self.authenticatedBy()) username: \(provider.userName) imageURL:\(provider.imageURL)")
@@ -208,31 +205,29 @@ class MainViewController: UIViewController {
         }
     }
     
-    func refreshInterface(appendToId: String = "-shouldNotHappen") {
+    func refreshInterface(_ appendToId: String = "-shouldNotHappen") {
         
-        self.updateUserAttributesButton.hidden = true
-        self.actionRequiringAuthenticationButton.hidden = true
+        self.updateUserAttributesButton.isHidden = true
+        self.actionRequiringAuthenticationButton.isHidden = true
         
         if let signInProvider = AWSIdentityManager.defaultIdentityManager().currentSignInProvider as? AWSCUPIdPSignInProvider {
             
             // Here we are dealing with an AWSCUPIdPSignInProvider
             
-            if AWSIdentityManager.defaultIdentityManager().loggedIn  {
-                self.updateUserAttributesButton.hidden = false
+            if AWSIdentityManager.defaultIdentityManager().isLoggedIn  {
+                self.updateUserAttributesButton.isHidden = false
                 NSLog("We have an \(AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider))")
             }
-            signInProvider.user.getDetails().continueWithSuccessBlock() { (task) in
-                dispatch_async(dispatch_get_main_queue()) {
+            signInProvider.user.getDetails().continue( { (task) in
+                DispatchQueue.main.async {
                     if task.error != nil {  // some sort of error
-                        let alert = UIAlertController(title: "", message: task.error?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                        
-                        NSLog("Domain: " + (task.error?.domain)! + " Code: \(task.error?.code)")
-                        NSLog(task.error?.userInfo["message"] as! String)
+                        let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        NSLog("\(task.error)")
                     } else {
                         
-                        if let response = task.result as? AWSCognitoIdentityUserGetDetailsResponse {
+                        if let response = task.result  {
                             if (AWSIdentityManager.defaultIdentityManager().identityId == nil) {
                                 self.otherDataLabel.text! =  "\(appendToId) identityId is nil"  + "\n" + self.otherDataLabel.text!
                             } else {
@@ -249,20 +244,20 @@ class MainViewController: UIViewController {
                     }
                 }
                 return nil  // return from get details synchronously
-            }
+            })
         } else {
             // What can I get if I don't even have a provider (Unauthenticated)
-            self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId!)"  + "\n" + self.otherDataLabel.text!
+ // debug self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId!)"  + "\n" + self.otherDataLabel.text!
         }
         
         // What can I get from every Provider?
         
-        if AWSIdentityManager.defaultIdentityManager().loggedIn {
+        if AWSIdentityManager.defaultIdentityManager().isLoggedIn {
             
             print("Authenticated by: \(self.authenticatedBy())")
             
             self.usernameLabel.text = self.authenticatedBy() + " authenticated " +  AWSIdentityManager.defaultIdentityManager().userName!
-            self.actionRequiringAuthenticationButton.hidden = false
+            self.actionRequiringAuthenticationButton.isHidden = false
         } else {
             self.usernameLabel.text = "Guest User"
         }
@@ -270,9 +265,9 @@ class MainViewController: UIViewController {
         
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "updateAttributes" {
-            let targetViewController = segue.destinationViewController as! UpdateAttributesViewController
+            let targetViewController = segue.destination as! UpdateAttributesViewController
             targetViewController.username = AWSIdentityManager.defaultIdentityManager().userName
             targetViewController.attributes = self.attributes
         }

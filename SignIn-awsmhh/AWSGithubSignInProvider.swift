@@ -238,7 +238,8 @@ class AWSGithubIdPSignInProvider: NSObject, AWSSignInProvider {
             print("Info.plist not configured with \(AWSInfoCUPIdPIdentifier)")
         }
     }
-    
+
+
     func interceptApplication(application: UIApplication, didFinishLaunchingWithOptions: [NSObject:AnyObject]?) -> Bool {
         
         configureIdentityManager()
@@ -246,8 +247,14 @@ class AWSGithubIdPSignInProvider: NSObject, AWSSignInProvider {
     }
     
     func interceptApplication(application: UIApplication, openURL: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
-        // this doesn't happen for us (meaningfully).
-        return true
+
+        if "ppoauthapp" == url.scheme || (url.scheme?.hasPrefix("com.googleusercontent.apps"))! {
+            if let vc = window?.rootViewController as? ViewController {
+                vc.oauth2.handleRedirectURL(url)
+                return true
+            }
+        }
+        return false
     }
 }
 

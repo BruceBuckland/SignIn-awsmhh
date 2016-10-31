@@ -1,6 +1,0 @@
-framework module AWSMobileHubHelper {
-    umbrella header "AWSMobileHubHelper.h"
-    
-    export *
-    module * { export * }
-}

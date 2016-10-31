@@ -34,15 +34,14 @@ class FieldSensitiveUIButton: UIButton {
 // in the view controller setup the button in viewWillAppear with colors and  (usually) disable the button and then call required fields in viewDidLoad
 
 
-    func requiredFields(nonEmpty: UITextField...) {
+    func requiredFields(_ nonEmpty: UITextField...) {
         self.nonEmptyFields = nonEmpty
         for field in nonEmptyFields! {
-            field.addTarget(self, action: #selector(self.textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
+            field.addTarget(self, action: #selector(self.textFieldDidChange), for: UIControlEvents.editingChanged)
         }
     }
     
-    func colorize(enabledBackgroundAlpha
-            enabledBackgroundAlpha: CGFloat = K.ENABLED_BACKGROUND_ALPHA,
+    func colorize(enabledBackgroundAlpha: CGFloat = K.ENABLED_BACKGROUND_ALPHA,
             disabledBackgroundAlpha: CGFloat = K.DISABLED_BACKGROUND_ALPHA,
             enabledBackgroundColor: UIColor = K.ENABLED_BACKGROUND_COLOR,
             disabledBackgroundColor: UIColor = K.DISABLED_BACKGROUND_COLOR,
@@ -73,17 +72,17 @@ class FieldSensitiveUIButton: UIButton {
     }
     
     func enable(){
-        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
-            self.backgroundColor = self.enabledBackgroundColor.colorWithAlphaComponent(self.enabledBackgroundAlpha)
-            self.setTitleColor(self.enabledTitleColor.colorWithAlphaComponent(self.enabledTitleAlpha), forState: UIControlState.Normal)
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
+            self.backgroundColor = self.enabledBackgroundColor.withAlphaComponent(self.enabledBackgroundAlpha)
+            self.setTitleColor(self.enabledTitleColor.withAlphaComponent(self.enabledTitleAlpha), for: UIControlState())
             }, completion: nil)
-        self.enabled = true
+        self.isEnabled = true
     }
     func disable(){
-        self.enabled = false
-        UIView.animateWithDuration(0.3, delay: 0, options: UIViewAnimationOptions.CurveEaseOut, animations: {
-            self.backgroundColor = self.disabledBackgroundColor.colorWithAlphaComponent(self.disabledBackgroundAlpha)
-            self.setTitleColor(self.disabledTitleColor.colorWithAlphaComponent(self.disabledTitleAlpha), forState: UIControlState.Normal)
+        self.isEnabled = false
+        UIView.animate(withDuration: 0.3, delay: 0, options: UIViewAnimationOptions.curveEaseOut, animations: {
+            self.backgroundColor = self.disabledBackgroundColor.withAlphaComponent(self.disabledBackgroundAlpha)
+            self.setTitleColor(self.disabledTitleColor.withAlphaComponent(self.disabledTitleAlpha), for: UIControlState())
             }, completion: nil)
     }
     

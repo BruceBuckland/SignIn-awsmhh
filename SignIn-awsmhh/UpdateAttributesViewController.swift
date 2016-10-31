@@ -38,7 +38,7 @@ class UpdateAttributesViewController: UIViewController {
     //MARK: Global Variables for Changing Image Functionality.
     var backgroundImageCycler: BackgroundImageCycle?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         
         if backgroundImageCycler == nil {
@@ -78,7 +78,7 @@ class UpdateAttributesViewController: UIViewController {
     }
     
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         backgroundImageCycler?.stop()
         backgroundImageCycler = nil
     }
@@ -92,7 +92,7 @@ class UpdateAttributesViewController: UIViewController {
         
     }
     
-    @IBAction func UpdateAttributesPressed(sender: AnyObject) {
+    @IBAction func UpdateAttributesPressed(_ sender: AnyObject) {
         
         
         
@@ -117,9 +117,9 @@ class UpdateAttributesViewController: UIViewController {
                 if attribute.value! != phoneField.text { // changed
                     needAnAttribute = false
                     let reclassedProviderAttribute = AWSCognitoIdentityUserAttributeType()
-                    reclassedProviderAttribute.name = attribute.name
-                    reclassedProviderAttribute.value = phoneField.text
-                    attributesToUpdate.append(reclassedProviderAttribute)
+                    reclassedProviderAttribute?.name = attribute.name
+                    reclassedProviderAttribute?.value = phoneField.text
+                    attributesToUpdate.append(reclassedProviderAttribute!)
                     
                 }
             }
@@ -131,9 +131,9 @@ class UpdateAttributesViewController: UIViewController {
         if needAnAttribute {
             if phoneField.text != "" {
                 let reclassedProviderAttribute = AWSCognitoIdentityUserAttributeType()
-                reclassedProviderAttribute.name = "phone_number"
-                reclassedProviderAttribute.value = phoneField.text
-                attributesToUpdate.append(reclassedProviderAttribute)
+                reclassedProviderAttribute?.name = "phone_number"
+                reclassedProviderAttribute?.value = phoneField.text
+                attributesToUpdate.append(reclassedProviderAttribute!)
                 needAnAttribute = false
             }
         }
@@ -147,9 +147,9 @@ class UpdateAttributesViewController: UIViewController {
                 if attribute.value! != emailField.text { // changed
                     needAnAttribute = false
                     let reclassedProviderAttribute = AWSCognitoIdentityUserAttributeType()
-                    reclassedProviderAttribute.name = attribute.name
-                    reclassedProviderAttribute.value = emailField.text
-                    attributesToUpdate.append(reclassedProviderAttribute)
+                    reclassedProviderAttribute?.name = attribute.name
+                    reclassedProviderAttribute?.value = emailField.text
+                    attributesToUpdate.append(reclassedProviderAttribute!)
                 }
                 
             }
@@ -161,9 +161,9 @@ class UpdateAttributesViewController: UIViewController {
         if needAnAttribute {
             if emailField.text != "" {
                 let reclassedProviderAttribute = AWSCognitoIdentityUserAttributeType()
-                reclassedProviderAttribute.name = "email"
-                reclassedProviderAttribute.value = emailField.text
-                attributesToUpdate.append(reclassedProviderAttribute)
+                reclassedProviderAttribute?.name = "email"
+                reclassedProviderAttribute?.value = emailField.text
+                attributesToUpdate.append(reclassedProviderAttribute!)
                 needAnAttribute = false
             }
         }
@@ -174,49 +174,52 @@ class UpdateAttributesViewController: UIViewController {
         // here we have to figure out if there were attributes to add in case
         // they were not existing attributes.
         
-        updateAnAttribute(attributesToUpdate) // returns an AWSTask or Nil
+        updateAnAttribute(attributesToUpdate)?.continue( {(task) in
+            if task.error != nil {
+               NSLog("\(task.error)")
+            }
+        
+        } ) // returns an AWSTask or Nil
     }
     
     // recursively goes through the attributes list and
     // updates one at a time in sequence
     
-    func updateAnAttribute(remainingAttributes: [AWSCognitoIdentityUserAttributeType]) -> AWSTask? {
+    func updateAnAttribute(_ remainingAttributes: [AWSCognitoIdentityUserAttributeType]) -> AWSTask<AnyObject>? {
         
         var workingAttributes:[AWSCognitoIdentityUserAttributeType] = remainingAttributes
         
         
         if workingAttributes.count >= 1 {
             
-            return self.user?.updateAttributes([workingAttributes.removeFirst() ]).continueWithBlock{ (task) in
+            return self.user?.update([workingAttributes.removeFirst() ]).continue({ (task) in
                 if task.error != nil {
                     NSLog("error\(task.error)")
                 } else {
-                                NSLog("Update Attributes Continuation Block Running for: \((task.result as! AWSCognitoIdentityUserUpdateAttributesResponse).codeDeliveryDetailsList?[0].attributeName) Delivery list count is: \((task.result as! AWSCognitoIdentityUserUpdateAttributesResponse).codeDeliveryDetailsList?.count)")
+                                NSLog("Update Attributes Continuation Block Running for: \((task.result)?.codeDeliveryDetailsList?[0].attributeName) Delivery list count is: \((task.result)?.codeDeliveryDetailsList?.count)")
                 }
 
-                dispatch_async(dispatch_get_main_queue()) {
+                DispatchQueue.main.async {
                     
                     if task.error != nil {  // some sort of error
-                        let alert = UIAlertController(title: "", message: task.error?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                        self.presentViewController(alert, animated: true, completion: nil)
-                        
-                        NSLog("Domain: " + (task.error?.domain)! + " Code: \(task.error?.code)")
-                        NSLog(task.error?.userInfo["message"] as! String)
+                        let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
+                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                        self.present(alert, animated: true, completion: nil)
+                        NSLog("\(task.error)")
                     } else {
-                        let response = task.result as! AWSCognitoIdentityUserUpdateAttributesResponse
+                        let response = task.result 
                         
                         
-                        if let delivery = response.codeDeliveryDetailsList?[0] {
-                            dispatch_async(dispatch_get_main_queue()) {
+                        if let delivery = response?.codeDeliveryDetailsList?[0] {
+                            DispatchQueue.main.async {
                                 // setup to send sentTo thru segue
-                                self.performSegueWithIdentifier("confirmAttribute", sender: delivery)
+                                self.performSegue(withIdentifier: "confirmAttribute", sender: delivery)
                             }
                         }
                     }
                 }
                 return self.updateAnAttribute(workingAttributes)  // recurse
-            }
+            })
         } else {
             
             // no more to update
@@ -232,10 +235,10 @@ class UpdateAttributesViewController: UIViewController {
     // MARK: - Navigation
     
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "confirmAttribute" {
             
-            let confirmViewController = segue.destinationViewController as! ConfirmAttributeViewController
+            let confirmViewController = segue.destination as! ConfirmAttributeViewController
             
             
             confirmViewController.confirmedAttribute = (sender as! AWSCognitoIdentityProviderCodeDeliveryDetailsType).attributeName

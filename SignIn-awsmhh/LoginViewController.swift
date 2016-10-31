@@ -12,6 +12,7 @@ import FBSDKLoginKit
 
 
 class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication {
+
     
     //Mark: Properties
     
@@ -45,7 +46,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     //MARK: View Controller LifeCycle
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
@@ -64,7 +65,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         backgroundImageCycler?.start()
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         backgroundImageCycler?.stop()
         backgroundImageCycler = nil
     }
@@ -101,11 +102,11 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         loginButton.requiredFields(usernameField,passwordField)
         
         
-        didSignInObserver = NSNotificationCenter.defaultCenter().addObserverForName(
-            AWSIdentityManagerDidSignInNotification,
+        didSignInObserver = NotificationCenter.default.addObserver(
+            forName: NSNotification.Name.AWSIdentityManagerDidSignIn,
             object: AWSIdentityManager.defaultIdentityManager(),
-            queue: NSOperationQueue.mainQueue(),
-            usingBlock: {(note: NSNotification) -> Void in
+            queue: OperationQueue.main,
+            using: {(note: Notification) -> Void in
                 
                 // perform successful login actions here
                 if AWSIdentityManager.defaultIdentityManager().currentSignInProvider is AWSCUPIdPSignInProvider {
@@ -122,24 +123,26 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         
         // Facebook login behavior can be optionally set, but must be set
         // to use webview, uncomment out this line.
-        // popup window, doesn't remember username AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Web.rawValue)
-        // seems to use safari, and remembers apparently this is the default. AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Native.rawValue)
-        AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.SystemAccount.rawValue)
+        // popup window, doesn't remember username
+        //AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.web.rawValue)
+        // seems to use safari, and remembers apparently this is the default. 
+        AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.native.rawValue)
+        //AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.systemAccount.rawValue)
         // AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.SystemAccount.rawValue)
         
         // AWSFacebookSignInProvider.sharedInstance().setLoginBehavior(FBSDKLoginBehavior.Browser.rawValue)
         
         
         // Facebook UI Setup
-        facebookButton.addTarget(self, action: #selector(LoginViewController.handleFacebookLogin), forControlEvents: .TouchUpInside)
+        facebookButton.addTarget(self, action: #selector(LoginViewController.handleFacebookLogin), for: .touchUpInside)
         let facebookButtonImage: UIImage? = UIImage(named: "FacebookButton")
         if let facebookButtonImage = facebookButtonImage{
-            facebookButton.setImage(facebookButtonImage, forState: .Normal)
+            facebookButton.setImage(facebookButtonImage, for: UIControlState())
         } else {
             print("Facebook button image unavailable. We're hiding this button.")
-            facebookButton.hidden = true
+            facebookButton.isHidden = true
         }
-        view.addConstraint(NSLayoutConstraint(item: facebookButton, attribute: .Top, relatedBy: .Equal, toItem: anchorViewForFacebook(), attribute: .Bottom, multiplier: 1, constant: 8.0))
+        view.addConstraint(NSLayoutConstraint(item: facebookButton, attribute: .top, relatedBy: .equal, toItem: anchorViewForFacebook(), attribute: .bottom, multiplier: 1, constant: 8.0))
         
         // Google login scopes can be optionally set, but must be set
         // before user authenticates.
@@ -149,37 +152,37 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         AWSGoogleSignInProvider.sharedInstance().setViewControllerForGoogleSignIn(self)
         
         // Google UI Setup
-        googleButton.addTarget(self, action: #selector(LoginViewController.handleGoogleLogin), forControlEvents: .TouchUpInside)
+        googleButton.addTarget(self, action: #selector(LoginViewController.handleGoogleLogin), for: .touchUpInside)
         let googleButtonImage: UIImage? = UIImage(named: "GoogleButton")
         if let googleButtonImage = googleButtonImage {
-            googleButton.setImage(googleButtonImage, forState: .Normal)
+            googleButton.setImage(googleButtonImage, for: UIControlState())
         } else {
             print("Google button image unavailable. We're hiding this button.")
-            googleButton.hidden = true
+            googleButton.isHidden = true
         }
-        view.addConstraint(NSLayoutConstraint(item: googleButton, attribute: .Top, relatedBy: .Equal, toItem: anchorViewForGoogle(), attribute: .Bottom, multiplier: 1, constant: 8.0))
+        view.addConstraint(NSLayoutConstraint(item: googleButton, attribute: .top, relatedBy: .equal, toItem: anchorViewForGoogle(), attribute: .bottom, multiplier: 1, constant: 8.0))
         // CognitoYourUserPools login setup
-        loginButton.addTarget(self, action: #selector(LoginViewController.handleCUPIdPLogin), forControlEvents: .TouchUpInside)
+        loginButton.addTarget(self, action: #selector(LoginViewController.handleCUPIdPLogin), for: .touchUpInside)
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(didSignInObserver)
+        NotificationCenter.default.removeObserver(didSignInObserver)
     }
     
     func dimissController() {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     // this is hooked to a tap gesture recognizer in the storyboard
     
-    @IBAction func backgroundPressed(sender: AnyObject) {
+    @IBAction func backgroundPressed(_ sender: AnyObject) {
         usernameField.resignFirstResponder()
         passwordField.resignFirstResponder()
     }
     
     // MARK: code (currently unused) for AWSCognitoIdentityPasswordAuthentication
     // completion routine returned by getPasswordAuthenticationDetails
-    var passwordAuthenticationCompletion: AWSTaskCompletionSource = AWSTaskCompletionSource.init()
+    var passwordAuthenticationCompletion = AWSTaskCompletionSource<AnyObject>.init()
     
     // MARK: AWSCognitoIdentityPasswordAuthentication delegate must
     // implement getPasswordAuthenticationDetails and
@@ -199,11 +202,16 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     // that point, or whether we need two paths through the code)
     // self.passwordAuthenticationCompletion.setResult(AWSCognitoIdentityPasswordAuthenticationDetails(username: usernameField.text!, password: passwordField.text!))
     
-    
-    func getPasswordAuthenticationDetails(authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource) {
-        self.passwordAuthenticationCompletion = passwordAuthenticationCompletionSource
+    /**
+     Obtain username and password from end user.
+     @param authenticationInput input details including last known username
+     @param passwordAuthenticationCompletionSource set passwordAuthenticationCompletionSource.result
+     with the username and password received from the end user.
+     */
+    func getDetails(_ authenticationInput: AWSCognitoIdentityPasswordAuthenticationInput, passwordAuthenticationCompletionSource: AWSTaskCompletionSource<AWSCognitoIdentityPasswordAuthenticationDetails>) {
+        self.passwordAuthenticationCompletion = passwordAuthenticationCompletionSource as! AWSTaskCompletionSource<AnyObject>
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             
             //            self.usernameText = authenticationInput.lastKnownUsername
             
@@ -217,13 +225,13 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     // viewcontroller.  Or if we get an error, we explain/complain (using just the default
     // error messages) and let the user try again.
     
-    func didCompletePasswordAuthenticationStepWithError(error: NSError?) {
+    func didCompleteStepWithError(_ error: Error?) {
         
-        dispatch_async(dispatch_get_main_queue(), {
-            if let theError = error {
-                let ac = UIAlertController(title: "Authentication Error", message: theError.userInfo["message" as NSObject] as? String, preferredStyle: .Alert)
-                ac.addAction(UIAlertAction(title: "OK", style: .Default, handler: nil))
-                self.presentViewController(ac, animated: true, completion: nil)
+        DispatchQueue.main.async(execute: {
+            if let theError = error as? NSError {
+                let ac = UIAlertController(title: "Authentication Error", message: theError.userInfo["message" as NSObject] as? String, preferredStyle: .alert)
+                ac.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+                self.present(ac, animated: true, completion: nil)
                 
                 // Clear password and user try again
                 self.passwordField.text = nil
@@ -262,7 +270,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     func fadeInInterface() {
         
-        UIView.animateWithDuration(0.6, delay: 0, options: UIViewAnimationOptions.CurveEaseIn, animations: {
+        UIView.animate(withDuration: 0.6, delay: 0, options: UIViewAnimationOptions.curveEaseIn, animations: {
             self.usernameField.alpha = 1.0
             self.passwordField.alpha = 1.0
             self.forgotPasswordButton.alpha = 1.0
@@ -272,16 +280,16 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
             }, completion: nil)
     }
     
-    func handleLoginWithSignInProvider(signInProvider: AWSSignInProvider) {
+    func handleLoginWithSignInProvider(_ signInProvider: AWSSignInProvider) {
         
-        AWSIdentityManager.defaultIdentityManager().loginWithSignInProvider(signInProvider, completionHandler: {(result: AnyObject?, error: NSError?) -> Void in
+        AWSIdentityManager.defaultIdentityManager().loginWithSign(signInProvider, completionHandler: {(result: Any?, error: Error?) -> Void in
             // If no error reported by SignInProvider, discard the sign-in view controller.
             if error == nil {
-                dispatch_async(dispatch_get_main_queue(),{
-                    self.navigationController!.popViewControllerAnimated(true)
+                DispatchQueue.main.async(execute: {
+                    self.navigationController!.popViewController(animated: true)
                 })
             } else {
-                dispatch_async(dispatch_get_main_queue(),{
+                DispatchQueue.main.async(execute: {
                     self.showErrorDialog(AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider), withError: error!)
                 })
             }
@@ -290,19 +298,19 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
         })
     }
     
-    func showAlert(titleText: String, message: String) {
+    func showAlert(_ titleText: String, message: String) {
         var alertController: UIAlertController!
-        alertController = UIAlertController(title: titleText, message: message, preferredStyle: .Alert)
-        let doneAction = UIAlertAction(title: NSLocalizedString("Done", comment: "Label to cancel dialog box."), style: .Cancel, handler: nil)
+        alertController = UIAlertController(title: titleText, message: message, preferredStyle: .alert)
+        let doneAction = UIAlertAction(title: NSLocalizedString("Done", comment: "Label to cancel dialog box."), style: .cancel, handler: nil)
         alertController.addAction(doneAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        present(alertController, animated: true, completion: nil)
     }
     
-    func showErrorDialog(loginProviderName: String, withError error: NSError) {
+    func showErrorDialog(_ loginProviderName: String, withError error: Error) {
         print("\(loginProviderName) failed to sign in w/ error: \(error)")
-        if let message = error.userInfo["message"] {
+        if let message = (error as NSError).userInfo["message"] {
             showAlert(NSLocalizedString("\(loginProviderName) Sign-in Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("Sign in using \(loginProviderName) failed: \(message)", comment: "Sign-in message structure for sign-in failure."))
-        } else if let message = error.userInfo["NSLocalizedDescription"]{
+        } else if let message = (error as NSError).userInfo["NSLocalizedDescription"]{
                         showAlert(NSLocalizedString("\(loginProviderName) Sign-in Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("Sign in using \(loginProviderName) failed: \(message)", comment: "Sign-in message structure for sign-in failure."))
         } else {
             showAlert(NSLocalizedString("\(loginProviderName) Sign-In Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("\(loginProviderName) failed to sign in w/ error: \(error)", comment: "Sign-in message structure for sign-in failure."))
@@ -355,15 +363,15 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
     
     // Prefill the username for forgot password and also for
     // signup now (in case the user tried a username first)
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if let segueID = segue.identifier {
             switch segueID {
             case "forgotPassword":
-                let forgotPasswordViewController = segue.destinationViewController as! ForgotPasswordViewController
+                let forgotPasswordViewController = segue.destination as! ForgotPasswordViewController
                 forgotPasswordViewController.usernameText = self.usernameField.text
             case "signupNow":
-                let signupViewController = segue.destinationViewController as! SignupViewController
+                let signupViewController = segue.destination as! SignupViewController
                 signupViewController.usernameText = self.usernameField.text
             default:
                 break

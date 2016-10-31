@@ -25,7 +25,7 @@ class ConfirmForgotPasswordViewController: UIViewController {
     @IBOutlet weak var newPasswordField: UITextField!
     @IBOutlet weak var updatePasswordButton: FieldSensitiveUIButton!
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         if backgroundImageCycler == nil {
             backgroundImageCycler = BackgroundImageCycle(self.imageView, speed: 10 )
@@ -47,7 +47,7 @@ class ConfirmForgotPasswordViewController: UIViewController {
     
     
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         backgroundImageCycler?.stop()
         backgroundImageCycler = nil
     }
@@ -63,28 +63,25 @@ class ConfirmForgotPasswordViewController: UIViewController {
     }
     
     
-    @IBAction func updatePasswordPressed(sender: AnyObject) {
-        self.user?.confirmForgotPassword(self.confirmationCodeField.text!, password: self.newPasswordField.text!).continueWithBlock{ (task) in
+    @IBAction func updatePasswordPressed(_ sender: AnyObject) {
+        self.user?.confirmForgotPassword(self.confirmationCodeField.text!, password: self.newPasswordField.text!).continue({ (task) in
             
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 
                 if task.error != nil {  // some sort of error
-                    let alert = UIAlertController(title: "", message: task.error?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     
-                    NSLog("Domain: " + (task.error?.domain)! + " Code: \(task.error?.code)")
-                    NSLog(task.error?.userInfo["message"] as! String)
-                    
-                    
+                    NSLog("\(task.error)")
                 }
                 else {
-                    self.navigationController?.popToRootViewControllerAnimated(true)
+                    self.navigationController?.popToRootViewController(animated: true)
                     
                 }
             }
             return nil
-        }
+        })
         
     }
 }

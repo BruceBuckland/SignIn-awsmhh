@@ -33,7 +33,7 @@ class ConfirmSignupViewController: UIViewController {
     var backgroundImageCycler: BackgroundImageCycle?
     
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         if backgroundImageCycler == nil {
             backgroundImageCycler = BackgroundImageCycle(self.imageView, speed: 10 )
@@ -46,7 +46,7 @@ class ConfirmSignupViewController: UIViewController {
     
     }
     
-    override func viewWillDisappear(animated: Bool) {
+    override func viewWillDisappear(_ animated: Bool) {
         backgroundImageCycler?.stop()
         backgroundImageCycler = nil
     }
@@ -75,58 +75,52 @@ class ConfirmSignupViewController: UIViewController {
     
 
     
-    @IBAction func confirmPressed(sender: AnyObject) {
-        self.user?.confirmSignUp(confirmationCodeField.text!).continueWithBlock{ (task) in
+    @IBAction func confirmPressed(_ sender: AnyObject) {
+        self.user?.confirmSignUp(confirmationCodeField.text!).continue ({ (task) in
             // needs to be async so we can ALWAYS return nil for AWSTask
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 
                 if task.error != nil {  // some sort of error
-                    let alert = UIAlertController(title: "", message: task.error?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     
-                    NSLog("Domain: " + (task.error?.domain)! + " Code: \(task.error?.code)")
-                    NSLog(task.error?.userInfo["message"] as! String)
-                    
-                    
+                    NSLog("\(task.error)")
                 } else { // confirmed back to login
                     
 // this was a no-no ... depended on a particular view controller calling me
 //                    (self.navigationController!.viewControllers[0] as! LoginViewController).usernameText = self.user!.username
                     // this viewcontroller makes the assumption that
                     // it is called in a navigation controller
-                    self.navigationController!.popToRootViewControllerAnimated(true)
+                    self.navigationController!.popToRootViewController(animated: true)
                     
                 }
             }
             return nil
-        }
+        })
     }
     
-    @IBAction func resendConfirmationCodePressed(sender: AnyObject) {
-        self.user?.resendConfirmationCode().continueWithBlock{ (task) in
+    @IBAction func resendConfirmationCodePressed(_ sender: AnyObject) {
+        self.user?.resendConfirmationCode().continue({ (task) in
             // needs to be async so we can ALWAYS return nil for AWSTask
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 
                 if task.error != nil {  // some sort of error
-                    let alert = UIAlertController(title: "", message: task.error?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                     
-                    NSLog("Domain: " + (task.error?.domain)! + " Code: \(task.error?.code)")
-                    NSLog(task.error?.userInfo["message"] as! String)
-                    
-                    
+                    NSLog("\(task.error)")
                 } else { // resend successful
-                    let response: AWSCognitoIdentityUserResendConfirmationCodeResponse = task.result as! AWSCognitoIdentityUserResendConfirmationCodeResponse
+                    let response: AWSCognitoIdentityUserResendConfirmationCodeResponse = task.result!
                     
                     let resentTo = response.codeDeliveryDetails?.destination
-                    let alert = UIAlertController(title: "Code Resent", message:  "Code resent to: \(resentTo)", preferredStyle: UIAlertControllerStyle.Alert)
-                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
-                    self.presentViewController(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title: "Code Resent", message:  "Code resent to: \(resentTo)", preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
                 }
             }
             return nil
-        }
+        })
     }
 }

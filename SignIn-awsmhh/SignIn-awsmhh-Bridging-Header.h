@@ -9,7 +9,7 @@
 #ifndef SignIn_awsmhh_Bridging_Header_h
 #define SignIn_awsmhh_Bridging_Header_h
 
-#import "AWSMobileHubHelper/AWSMobileHubHelper.h"
+#import "AWSMobileHubHelper.h"
 
 
 #endif /* SignIn_awsmhh_Bridging_Header_h */
