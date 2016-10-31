@@ -15,6 +15,7 @@
 		E55411031DC7B8C4001B77A8 /* AWSFacebookSignInProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E55410F71DC7B8C4001B77A8 /* AWSFacebookSignInProvider.m */; };
 		E55411041DC7B8C4001B77A8 /* AWSGoogleSignInProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E55410F91DC7B8C4001B77A8 /* AWSGoogleSignInProvider.m */; };
 		E55411051DC7B8C4001B77A8 /* AWSUserFileManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E55410FE1DC7B8C4001B77A8 /* AWSUserFileManager.m */; };
+		E55411091DC7CA03001B77A8 /* LICENSE.txt in Resources */ = {isa = PBXBuildFile; fileRef = E55411081DC7CA03001B77A8 /* LICENSE.txt */; };
 		E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */; };
 		E5C5480F1DBB494E00816386 /* cognito diagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E5C5480E1DBB494E00816386 /* cognito diagram.pdf */; };
 		E5C548691DBC32D100816386 /* AWSCUPIdPSignInProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382B1DB3630900F6E646 /* AWSCUPIdPSignInProvider.swift */; };
@@ -63,6 +64,7 @@
 		E55410FB1DC7B8C4001B77A8 /* AWSSignInProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSignInProvider.h; sourceTree = "<group>"; };
 		E55410FD1DC7B8C4001B77A8 /* AWSUserFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSUserFileManager.h; sourceTree = "<group>"; };
 		E55410FE1DC7B8C4001B77A8 /* AWSUserFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSUserFileManager.m; sourceTree = "<group>"; };
+		E55411081DC7CA03001B77A8 /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
 		E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
 		E58B54FA1DC565E300E381F5 /* AWSGithubSignInProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AWSGithubSignInProvider.swift; sourceTree = "<group>"; };
 		E5C5480E1DBB494E00816386 /* cognito diagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "cognito diagram.pdf"; sourceTree = "<group>"; };
@@ -200,6 +202,7 @@
 		E5CB37DC1DB35F0A00F6E646 = {
 			isa = PBXGroup;
 			children = (
+				E55411081DC7CA03001B77A8 /* LICENSE.txt */,
 				E55410E61DC7B8C4001B77A8 /* AWSMobileHubHelper */,
 				E5C5480E1DBB494E00816386 /* cognito diagram.pdf */,
 				E5CB38271DB3629400F6E646 /* Podfile */,
@@ -333,6 +336,7 @@
 				E5CB39F91DB531C700F6E646 /* Images.xcassets in Resources */,
 				E5C5480F1DBB494E00816386 /* cognito diagram.pdf in Resources */,
 				E5CB38281DB3629400F6E646 /* Podfile in Resources */,
+				E55411091DC7CA03001B77A8 /* LICENSE.txt in Resources */,
 				E5CB37FB1DB35F2600F6E646 /* .gitignore in Resources */,
 				E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */,
 				E5CB37F31DB35F0A00F6E646 /* LaunchScreen.storyboard in Resources */,
