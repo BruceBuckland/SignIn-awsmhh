@@ -202,12 +202,13 @@
 		E5CB37DC1DB35F0A00F6E646 = {
 			isa = PBXGroup;
 			children = (
+				E53FF1CB1DC7A3DF00A7F978 /* SignIn-awsmhh-Bridging-Header.h */,
 				E55411081DC7CA03001B77A8 /* LICENSE.txt */,
-				E55410E61DC7B8C4001B77A8 /* AWSMobileHubHelper */,
 				E5C5480E1DBB494E00816386 /* cognito diagram.pdf */,
 				E5CB38271DB3629400F6E646 /* Podfile */,
 				E5CB37FA1DB35F2600F6E646 /* .gitignore */,
 				E5CB37FD1DB35F5400F6E646 /* README.md */,
+				E55410E61DC7B8C4001B77A8 /* AWSMobileHubHelper */,
 				E5CB37E71DB35F0A00F6E646 /* SignIn-awsmhh */,
 				E5CB37E61DB35F0A00F6E646 /* Products */,
 				830AD8F738DDF768A0CAA644 /* Pods */,
@@ -226,7 +227,6 @@
 		E5CB37E71DB35F0A00F6E646 /* SignIn-awsmhh */ = {
 			isa = PBXGroup;
 			children = (
-				E53FF1CB1DC7A3DF00A7F978 /* SignIn-awsmhh-Bridging-Header.h */,
 				E5CB382D1DB364DE00F6E646 /* SignIn-awsmhh.entitlements */,
 				E5CB38201DB3601200F6E646 /* Helpers */,
 				E5CB38041DB35F9300F6E646 /* ConfirmAttributeViewController.swift */,

@@ -6,11 +6,11 @@
 //  Copyright © 2016 Bruce Buckland. All rights reserved.
 //
 
-#ifndef MySampleApp-Bridging-Header_h
-#define MySampleApp-Bridging-Header_h
+#ifndef SignIn_awsmhh_Bridging_Header_h
+#define SignIn_awsmhh_Bridging_Header_h
 
-#import "AWSMobileHubHelper/AWSMobileHubHelper.h"
+#import "AWSMobileHubHelper.h"
 
-#endif /* MySampleApp-Bridging-Header_h */
+#endif /* SignIn_awsmhh_Bridging_Header_h */
 
 
