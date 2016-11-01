@@ -206,18 +206,7 @@ class AWSGithubIdPSignInProvider: NSObject, AWSSignInProvider {
         if self.userPool != nil { // Cognito Your User Pools is already initialized
             return
         }
-        
-        // AWSInfo lets us get configuration data from the AWS section of Info.plist
-        // serviceInfo gets a dictionary for a key within a key under AWS
-        // IdentityManager - dict
-        //      CognitoYourUserPools - dict
-        // defaultServiceInfo gets a key within the default section of a key under aws
-        // IdentityManager - dict
-        //      Default
-        //          CognitoYourUserPools - dict
-        // So we try to conform to the AWS way of doing it, although it is none too clear
-        // what "Default" means
-        
+
         let defaultDictionary = AWSInfo().defaultServiceInfo(AWSInfoIdentityManager)!.infoDictionary
         
         // Establish the session resume key for this SignInProvider
