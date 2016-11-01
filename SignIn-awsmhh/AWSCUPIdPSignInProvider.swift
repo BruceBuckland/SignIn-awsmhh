@@ -19,7 +19,7 @@ import AWSCognitoIdentityProvider // needed for user pools
 
 
 class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
-    
+
     
     static let sharedInstance = AWSCUPIdPSignInProvider() // create a singleton
     
@@ -94,8 +94,25 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
         }
     }
     
-    var userName:String?
-    var imageURL:URL?
+    /**
+     The URL for profile image of a user.
+     */
+    public var imageURL: URL?
+    
+    /**
+     The User Name of a user.
+     */
+    public var userName: String?
+    
+    /**
+     The phone number of a user.
+     */
+    public var phone: String?
+    
+    /**
+     The email address of a user.
+     */
+    public var email: String?
     
     // pragma mark - methods
     
@@ -109,6 +126,8 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
         self.userName = self.userPoolUser!.username
         
         self.isLoggedIn = true
+        
+        getUserDetails()
         
         AWSIdentityManager.defaultIdentityManager().completeLogin()
     }
@@ -178,7 +197,28 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
         return (userPool?.token())!
     }
     
-    
+    func getUserDetails() {
+        self.user.getDetails().continue( { (task) in
+            DispatchQueue.main.async {
+                if task.error != nil {  // some sort of error
+                    NSLog("\(task.error)")
+                } else {
+                    
+                    if let response = task.result  {
+                        for attribute in response.userAttributes! {
+                            if attribute.name == "email" {
+                                self.email = attribute.value
+                            } else if attribute.name == "phone_number" {
+                                self.phone = attribute.value
+                            }
+                        }
+                    }
+                }
+            }
+            return nil  // return from get details synchronously
+        })
+
+    }
     func configureIdentityManager() {
         
         if self.userPool != nil { // Cognito Your User Pools is already initialized

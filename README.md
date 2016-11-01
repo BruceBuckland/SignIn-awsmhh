@@ -101,6 +101,16 @@ PROJECT_CLIENT_ID = < Not needed... from the Info.plist downloaded when you made
 
 ##### Use modified aws-mobile-hub-helper-ios with AWS Mobile Hub 
 
+The project group SharedMobileHubSources are sources needed by both SignIn-awsmhh and MySampleApp (which was downloaded from the Mobile Hub).  Each of these is included in both targets.
+
+Changes to the Mobile Hub sources were tracked in git, so you can use View-Version Editor to see the differences.  The changes are as follows:
+- Updated to compile using Swift 3
+- Updated to remove the use of //import AWSMobileHubHelper because now it uses SignIn-awsmhh-Bridging-Header.h to access the libraries in the shared submodule aws-mobile-hub-helper-ios.
+- Made changes to SignInViewController to make it log in with User Pools.
+- Made changes to MainViewController to make it log in multiple times to support identity linking.
+
+##### Use modified aws-mobile-hub-helper-ios with YOUR AWS Mobile Hub download
+
 
 **First:**  I assume what you are trying to do is to make one of the MySampleApp's from Mobile Hub work with Cognito User Pools.  And that you have set up a user pool and also have configured the app for google and facebook and your desired capabilities in the mobile hub.
 
