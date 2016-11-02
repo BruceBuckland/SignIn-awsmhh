@@ -54,7 +54,7 @@ playground.xcworkspace
 #
 Pods/
 
-# ignore AWSMobileHubHelper because I just brought it in temporarily so I could do symbolic debugging of it.
+# ignore AWSMobileHubHelper 
 AWSMobileHubHelper/
 
 # Carthage
