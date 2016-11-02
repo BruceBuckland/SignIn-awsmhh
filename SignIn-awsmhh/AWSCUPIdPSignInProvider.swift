@@ -115,9 +115,8 @@ class AWSCUPIdPSignInProvider: NSObject, AWSSignInProvider {
     // using NSUserDefaults the SignInProvider keeps current logged in state even when device is shut down.
     
     func reloadSession()  {
+        configureIdentityManager()  // init pool and current user
         if NSUserDefaults.standardUserDefaults().stringForKey(AWSCUPIdPSignInProviderKey) == "YES" {
-            
-            configureIdentityManager()  // init pool and current user
             self.userPoolUser?.getSession().continueWithBlock { (task) in
                 
                 if task.error != nil {  // some sort of error
