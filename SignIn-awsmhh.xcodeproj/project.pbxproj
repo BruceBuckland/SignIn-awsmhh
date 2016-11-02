@@ -46,6 +46,7 @@
 		5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn-awsmhh.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh.release.xcconfig"; sourceTree = "<group>"; };
 		6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn_awsmhh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53FF1CB1DC7A3DF00A7F978 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
+		E55056BF1DCA4667003C5410 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
 		E55410E71DC7B8C4001B77A8 /* AWSMobileHubHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMobileHubHelper.h; sourceTree = "<group>"; };
 		E55410E91DC7B8C4001B77A8 /* AWSCloudLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCloudLogic.h; sourceTree = "<group>"; };
 		E55410EA1DC7B8C4001B77A8 /* AWSCloudLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCloudLogic.m; sourceTree = "<group>"; };
@@ -202,6 +203,7 @@
 		E5CB37DC1DB35F0A00F6E646 = {
 			isa = PBXGroup;
 			children = (
+				E55056BF1DCA4667003C5410 /* SignIn-awsmhh-Bridging-Header.h */,
 				E55411081DC7CA03001B77A8 /* LICENSE.txt */,
 				E55410E61DC7B8C4001B77A8 /* AWSMobileHubHelper */,
 				E5C5480E1DBB494E00816386 /* cognito diagram.pdf */,
