@@ -11,7 +11,11 @@ def mobile_pods
     pod 'FBSDKLoginKit', '~> 4.13.1'
     pod 'FBSDKCoreKit', '~> 4.13.1'
     pod 'GoogleSignIn', '~> 4.0.0'
-
+    pod 'AWSMobileAnalytics'
+    pod 'AWSSNS', '~>2.4.6'
+    pod 'AWSS3', '~>2.4.6'
+    pod 'AWSLambda', '~>2.4.6'
+end
 
 
 target :'SignIn' do
@@ -22,10 +26,8 @@ end
 
 target :'MySampleApp' do
     mobile_pods
-    pod 'AWSSNS', '~>2.4.6'
-    pod 'AWSS3', '~>2.4.6'
-    pod 'AWSLambda', '~>2.4.6'
-    pod 'AWSMobileAnalytics'
+
+
 end
-end
+
 

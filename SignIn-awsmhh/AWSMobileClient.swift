@@ -13,6 +13,7 @@
 import Foundation
 import UIKit
 import AWSCore
+import AWSMobileAnalytics
 
 /**
  * AWSMobileClient is a singleton that bootstraps the app. It creates an identity manager to establish the user identity with Amazon Cognito.

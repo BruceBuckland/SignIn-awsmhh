@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5C604BF1E3F88ABD3A483037 /* Pods_SignIn_awsmhh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */; };
+		4C51DB5C5DB58EF7D24C5686 /* Pods_MySampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4946DBB1A29D37D3D5D088AE /* Pods_MySampleApp.framework */; };
 		E532119E1DCA6CC700FFA2D7 /* AWSCloudLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = E53211891DCA6CC700FFA2D7 /* AWSCloudLogic.m */; };
 		E532119F1DCA6CC700FFA2D7 /* AWSContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E532118C1DCA6CC700FFA2D7 /* AWSContentManager.m */; };
 		E53211A01DCA6CC700FFA2D7 /* AWSIdentityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E532118F1DCA6CC700FFA2D7 /* AWSIdentityManager.m */; };
@@ -24,7 +24,6 @@
 		E53211E41DCACB3300FFA2D7 /* AWSCUPIdPSignInProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382B1DB3630900F6E646 /* AWSCUPIdPSignInProvider.swift */; };
 		E53211E61DCACB3300FFA2D7 /* AWSFacebookSignInProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E53211961DCA6CC700FFA2D7 /* AWSFacebookSignInProvider.m */; };
 		E53211E81DCACB3300FFA2D7 /* AWSContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E532118C1DCA6CC700FFA2D7 /* AWSContentManager.m */; };
-		E53211EC1DCACB3300FFA2D7 /* Pods_SignIn_awsmhh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */; };
 		E53211EE1DCACB3300FFA2D7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CB38211DB3605100F6E646 /* Main.storyboard */; };
 		E53211F01DCACB3300FFA2D7 /* AWSKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E5CB38021DB35F9300F6E646 /* AWSKeys.xcconfig */; };
 		E53211F11DCACB3300FFA2D7 /* cognito diagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E5C5480E1DBB494E00816386 /* cognito diagram.pdf */; };
@@ -83,13 +82,14 @@
 		E532127D1DCACCA300FFA2D7 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212461DCACCA300FFA2D7 /* GoogleSignIn.framework */; };
 		E532127E1DCACCA300FFA2D7 /* GoogleSymbolUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212471DCACCA300FFA2D7 /* GoogleSymbolUtilities.framework */; };
 		E532127F1DCACCA300FFA2D7 /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212481DCACCA300FFA2D7 /* GoogleUtilities.framework */; };
-		E53212811DCACDCC00FFA2D7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CB39F41DB3FD7E00F6E646 /* Info.plist */; };
-		E53212821DCACDCC00FFA2D7 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CB39F41DB3FD7E00F6E646 /* Info.plist */; };
 		E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */; };
-		E5C5480F1DBB494E00816386 /* cognito diagram.pdf in Resources */ = {isa = PBXBuildFile; fileRef = E5C5480E1DBB494E00816386 /* cognito diagram.pdf */; };
+		E5BA19341DCADD8200F2F8A9 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212341DCACCA300FFA2D7 /* AWSCore.framework */; };
+		E5BA19351DCADD8200F2F8A9 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212351DCACCA300FFA2D7 /* AWSDynamoDB.framework */; };
+		E5BA19361DCADD8200F2F8A9 /* AWSLambda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212361DCACCA300FFA2D7 /* AWSLambda.framework */; };
+		E5BA19371DCADD8200F2F8A9 /* AWSMobileAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212371DCACCA300FFA2D7 /* AWSMobileAnalytics.framework */; };
+		E5BA19381DCADD8200F2F8A9 /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212381DCACCA300FFA2D7 /* AWSS3.framework */; };
 		E5C548691DBC32D100816386 /* AWSCUPIdPSignInProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382B1DB3630900F6E646 /* AWSCUPIdPSignInProvider.swift */; };
 		E5CB37F31DB35F0A00F6E646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37F11DB35F0A00F6E646 /* LaunchScreen.storyboard */; };
-		E5CB37FB1DB35F2600F6E646 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37FA1DB35F2600F6E646 /* .gitignore */; };
 		E5CB38101DB35F9300F6E646 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38001DB35F9200F6E646 /* AppColor.swift */; };
 		E5CB38111DB35F9300F6E646 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38011DB35F9300F6E646 /* AppDelegate.swift */; };
 		E5CB38121DB35F9300F6E646 /* AWSKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E5CB38021DB35F9300F6E646 /* AWSKeys.xcconfig */; };
@@ -105,16 +105,19 @@
 		E5CB381E1DB35F9300F6E646 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB380E1DB35F9300F6E646 /* SignupViewController.swift */; };
 		E5CB381F1DB35F9300F6E646 /* UpdateAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB380F1DB35F9300F6E646 /* UpdateAttributesViewController.swift */; };
 		E5CB38221DB3605100F6E646 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CB38211DB3605100F6E646 /* Main.storyboard */; };
-		E5CB38281DB3629400F6E646 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E5CB38271DB3629400F6E646 /* Podfile */; };
 		E5CB382F1DB3654500F6E646 /* AWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382E1DB3654500F6E646 /* AWSMobileClient.swift */; };
 		E5CB38311DB368BB00F6E646 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38301DB368BB00F6E646 /* MainViewController.swift */; };
 		E5CB39F91DB531C700F6E646 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E5CB39F81DB531C700F6E646 /* Images.xcassets */; };
+		E834B94BCDDA2B141D452DBF /* Pods_SignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 274D360013F9370268E41195 /* Pods_SignIn.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn-awsmhh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh.debug.xcconfig"; sourceTree = "<group>"; };
-		5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn-awsmhh.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh.release.xcconfig"; sourceTree = "<group>"; };
+		2282092F783D435651DB32B0 /* Pods-MySampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		274D360013F9370268E41195 /* Pods_SignIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4946DBB1A29D37D3D5D088AE /* Pods_MySampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn_awsmhh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		92DEEE843184B1701F07123C /* Pods-MySampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		D34A2A2B5225E8E8FA308D9C /* Pods-SignIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn/Pods-SignIn.debug.xcconfig"; sourceTree = "<group>"; };
 		E53211861DCA6CC700FFA2D7 /* AWSMobileHubHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMobileHubHelper.h; sourceTree = "<group>"; };
 		E53211881DCA6CC700FFA2D7 /* AWSCloudLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCloudLogic.h; sourceTree = "<group>"; };
 		E53211891DCA6CC700FFA2D7 /* AWSCloudLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSCloudLogic.m; sourceTree = "<group>"; };
@@ -189,7 +192,7 @@
 		E53212471DCACCA300FFA2D7 /* GoogleSymbolUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleSymbolUtilities.framework; sourceTree = "<group>"; };
 		E53212481DCACCA300FFA2D7 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
 		E53212491DCACCA300FFA2D7 /* MySampleApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MySampleApp.entitlements; sourceTree = "<group>"; };
-		E549F8B41DCAD33C00645F81 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "SignIn-awsmhh-Bridging-Header.h"; path = "SignIn-awsmhh/SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
+		E549F8B41DCAD33C00645F81 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
 		E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
 		E58B54FA1DC565E300E381F5 /* AWSGithubSignInProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWSGithubSignInProvider.swift; path = "SignIn-awsmhh/AWSGithubSignInProvider.swift"; sourceTree = "<group>"; };
 		E5C5480E1DBB494E00816386 /* cognito diagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "cognito diagram.pdf"; sourceTree = "<group>"; };
@@ -219,6 +222,7 @@
 		E5CB38301DB368BB00F6E646 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E5CB39F41DB3FD7E00F6E646 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Info.plist; path = "SignIn-awsmhh/Info.plist"; sourceTree = "<group>"; };
 		E5CB39F81DB531C700F6E646 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		F8C0A6D9E0FED611F7EDEC30 /* Pods-SignIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn/Pods-SignIn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -231,7 +235,6 @@
 				E53212781DCACCA300FFA2D7 /* FBSDKLoginKit.framework in Frameworks */,
 				E532127A1DCACCA300FFA2D7 /* GoogleAuthUtilities.framework in Frameworks */,
 				E53212721DCACCA300FFA2D7 /* AWSS3.framework in Frameworks */,
-				E53211EC1DCACB3300FFA2D7 /* Pods_SignIn_awsmhh.framework in Frameworks */,
 				E532127D1DCACCA300FFA2D7 /* GoogleSignIn.framework in Frameworks */,
 				E532126F1DCACCA300FFA2D7 /* AWSDynamoDB.framework in Frameworks */,
 				E53212741DCACCA300FFA2D7 /* AWSCognito.framework in Frameworks */,
@@ -241,6 +244,7 @@
 				E53212791DCACCA300FFA2D7 /* GoogleAppUtilities.framework in Frameworks */,
 				E532127F1DCACCA300FFA2D7 /* GoogleUtilities.framework in Frameworks */,
 				E532126E1DCACCA300FFA2D7 /* AWSCore.framework in Frameworks */,
+				4C51DB5C5DB58EF7D24C5686 /* Pods_MySampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,7 +252,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5C604BF1E3F88ABD3A483037 /* Pods_SignIn_awsmhh.framework in Frameworks */,
+				E5BA19361DCADD8200F2F8A9 /* AWSLambda.framework in Frameworks */,
+				E5BA19371DCADD8200F2F8A9 /* AWSMobileAnalytics.framework in Frameworks */,
+				E5BA19381DCADD8200F2F8A9 /* AWSS3.framework in Frameworks */,
+				E834B94BCDDA2B141D452DBF /* Pods_SignIn.framework in Frameworks */,
+				E5BA19351DCADD8200F2F8A9 /* AWSDynamoDB.framework in Frameworks */,
+				E5BA19341DCADD8200F2F8A9 /* AWSCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -259,6 +268,8 @@
 			isa = PBXGroup;
 			children = (
 				6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */,
+				4946DBB1A29D37D3D5D088AE /* Pods_MySampleApp.framework */,
+				274D360013F9370268E41195 /* Pods_SignIn.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -266,8 +277,10 @@
 		830AD8F738DDF768A0CAA644 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */,
-				5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */,
+				2282092F783D435651DB32B0 /* Pods-MySampleApp.debug.xcconfig */,
+				92DEEE843184B1701F07123C /* Pods-MySampleApp.release.xcconfig */,
+				D34A2A2B5225E8E8FA308D9C /* Pods-SignIn.debug.xcconfig */,
+				F8C0A6D9E0FED611F7EDEC30 /* Pods-SignIn.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -751,7 +764,6 @@
 				E53211F11DCACB3300FFA2D7 /* cognito diagram.pdf in Resources */,
 				E53211F21DCACB3300FFA2D7 /* Podfile in Resources */,
 				E53212521DCACCA300FFA2D7 /* SignIn.storyboard in Resources */,
-				E53212821DCACDCC00FFA2D7 /* Info.plist in Resources */,
 				E532127C1DCACCA300FFA2D7 /* GoogleSignIn.bundle in Resources */,
 				E53212751DCACCA300FFA2D7 /* NOTICE in Resources */,
 				E532125E1DCACCA300FFA2D7 /* NoSQLDatabase.storyboard in Resources */,
@@ -776,11 +788,7 @@
 			files = (
 				E5CB38221DB3605100F6E646 /* Main.storyboard in Resources */,
 				E5CB39F91DB531C700F6E646 /* Images.xcassets in Resources */,
-				E53212811DCACDCC00FFA2D7 /* Info.plist in Resources */,
 				E5CB38121DB35F9300F6E646 /* AWSKeys.xcconfig in Resources */,
-				E5C5480F1DBB494E00816386 /* cognito diagram.pdf in Resources */,
-				E5CB38281DB3629400F6E646 /* Podfile in Resources */,
-				E5CB37FB1DB35F2600F6E646 /* .gitignore in Resources */,
 				E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */,
 				E5CB37F31DB35F0A00F6E646 /* LaunchScreen.storyboard in Resources */,
 			);
@@ -801,7 +809,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn/Pods-SignIn-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		38A8BDFD900BFF973C7A89DA /* [CP] Check Pods Manifest.lock */ = {
@@ -831,7 +839,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn/Pods-SignIn-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E53211D21DCACB3300FFA2D7 /* [CP] Check Pods Manifest.lock */ = {
@@ -861,7 +869,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E53211F71DCACB3300FFA2D7 /* [CP] Copy Pods Resources */ = {
@@ -876,7 +884,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -965,7 +973,7 @@
 /* Begin XCBuildConfiguration section */
 		E53211F91DCACB3300FFA2D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */;
+			baseConfigurationReference = 2282092F783D435651DB32B0 /* Pods-MySampleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -999,7 +1007,7 @@
 		};
 		E53211FA1DCACB3300FFA2D7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */;
+			baseConfigurationReference = 92DEEE843184B1701F07123C /* Pods-MySampleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1076,7 +1084,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/SignIn-awsmhh/SignIn-awsmhh-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/SignIn-awsmhh-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -1120,7 +1128,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/SignIn-awsmhh/SignIn-awsmhh-Bridging-Header.h";
+				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/SignIn-awsmhh-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1129,7 +1137,7 @@
 		};
 		E5CB37F81DB35F0A00F6E646 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */;
+			baseConfigurationReference = D34A2A2B5225E8E8FA308D9C /* Pods-SignIn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1140,6 +1148,7 @@
 					"$(PROJECT_DIR)/SignIn-awsmhh",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/framework",
+					"$(PROJECT_DIR)/Sdk/Aws",
 				);
 				INFOPLIST_FILE = "SignIn-awsmhh/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
@@ -1158,7 +1167,7 @@
 		};
 		E5CB37F91DB35F0A00F6E646 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */;
+			baseConfigurationReference = F8C0A6D9E0FED611F7EDEC30 /* Pods-SignIn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -1169,6 +1178,7 @@
 					"$(PROJECT_DIR)/SignIn-awsmhh",
 					"$(PROJECT_DIR)",
 					"$(PROJECT_DIR)/framework",
+					"$(PROJECT_DIR)/Sdk/Aws",
 				);
 				INFOPLIST_FILE = "SignIn-awsmhh/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
