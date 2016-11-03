@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		09DDDE11A99A0AA3D5454D93 /* Pods_SignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D7DC91B67F43FFC5BC1B7D6D /* Pods_SignIn.framework */; };
+		2D96D06097275057D51684AC /* Pods_MySampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2E8A9E17867A2B25CE6DB4F2 /* Pods_MySampleApp.framework */; };
 		5C604BF1E3F88ABD3A483037 /* Pods_SignIn_awsmhh.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */; };
 		E55410FF1DC7B8C4001B77A8 /* AWSCloudLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = E55410EA1DC7B8C4001B77A8 /* AWSCloudLogic.m */; };
 		E55411001DC7B8C4001B77A8 /* AWSContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E55410ED1DC7B8C4001B77A8 /* AWSContentManager.m */; };
@@ -68,9 +70,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		24CFAC3E8ECF48957EA36556 /* Pods-MySampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		2ACF834ECCAEDED25D5065C2 /* Pods-MySampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.debug.xcconfig"; sourceTree = "<group>"; };
+		2E8A9E17867A2B25CE6DB4F2 /* Pods_MySampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn-awsmhh.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh.debug.xcconfig"; sourceTree = "<group>"; };
 		5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn-awsmhh.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh.release.xcconfig"; sourceTree = "<group>"; };
 		6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn_awsmhh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		858B9ABF5C4D44DF787D82CC /* Pods-SignIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn/Pods-SignIn.debug.xcconfig"; sourceTree = "<group>"; };
+		D7DC91B67F43FFC5BC1B7D6D /* Pods_SignIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E53FF1CB1DC7A3DF00A7F978 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
 		E55410E71DC7B8C4001B77A8 /* AWSMobileHubHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSMobileHubHelper.h; sourceTree = "<group>"; };
 		E55410E91DC7B8C4001B77A8 /* AWSCloudLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSCloudLogic.h; sourceTree = "<group>"; };
@@ -133,6 +140,7 @@
 		E5CB38301DB368BB00F6E646 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
 		E5CB39F41DB3FD7E00F6E646 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E5CB39F81DB531C700F6E646 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		FCDCB85188863DCA8EF95215 /* Pods-SignIn.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn.release.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn/Pods-SignIn.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -141,6 +149,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				E564047D1DC9141D00A5B2D7 /* Pods_SignIn_awsmhh.framework in Frameworks */,
+				2D96D06097275057D51684AC /* Pods_MySampleApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -149,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5C604BF1E3F88ABD3A483037 /* Pods_SignIn_awsmhh.framework in Frameworks */,
+				09DDDE11A99A0AA3D5454D93 /* Pods_SignIn.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -159,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */,
+				2E8A9E17867A2B25CE6DB4F2 /* Pods_MySampleApp.framework */,
+				D7DC91B67F43FFC5BC1B7D6D /* Pods_SignIn.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -168,6 +180,10 @@
 			children = (
 				52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */,
 				5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */,
+				2ACF834ECCAEDED25D5065C2 /* Pods-MySampleApp.debug.xcconfig */,
+				24CFAC3E8ECF48957EA36556 /* Pods-MySampleApp.release.xcconfig */,
+				858B9ABF5C4D44DF787D82CC /* Pods-SignIn.debug.xcconfig */,
+				FCDCB85188863DCA8EF95215 /* Pods-SignIn.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -319,7 +335,6 @@
 			isa = PBXGroup;
 			children = (
 				E56404D41DC91BE100A5B2D7 /* SharedMobileHubSources */,
-				E564048F1DC9151900A5B2D7 /* MySampleAppSources */,
 				E53FF1CB1DC7A3DF00A7F978 /* SignIn-awsmhh-Bridging-Header.h */,
 				E55411081DC7CA03001B77A8 /* LICENSE.txt */,
 				E5C5480E1DBB494E00816386 /* cognito diagram.pdf */,
@@ -327,6 +342,7 @@
 				E5CB37FA1DB35F2600F6E646 /* .gitignore */,
 				E5CB37FD1DB35F5400F6E646 /* README.md */,
 				E5CB37E71DB35F0A00F6E646 /* SignInSources */,
+				E564048F1DC9151900A5B2D7 /* MySampleAppSources */,
 				E5CB37E61DB35F0A00F6E646 /* Products */,
 				830AD8F738DDF768A0CAA644 /* Pods */,
 				E55410E61DC7B8C4001B77A8 /* AWSMobileHubHelper */,
@@ -518,7 +534,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn/Pods-SignIn-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		38A8BDFD900BFF973C7A89DA /* [CP] Check Pods Manifest.lock */ = {
@@ -548,7 +564,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn/Pods-SignIn-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E56404631DC9141D00A5B2D7 /* [CP] Check Pods Manifest.lock */ = {
@@ -578,7 +594,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E56404881DC9141D00A5B2D7 /* [CP] Copy Pods Resources */ = {
@@ -593,7 +609,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn-awsmhh/Pods-SignIn-awsmhh-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -667,7 +683,7 @@
 /* Begin XCBuildConfiguration section */
 		E564048A1DC9141D00A5B2D7 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */;
+			baseConfigurationReference = 2ACF834ECCAEDED25D5065C2 /* Pods-MySampleApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -699,7 +715,7 @@
 		};
 		E564048B1DC9141D00A5B2D7 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */;
+			baseConfigurationReference = 24CFAC3E8ECF48957EA36556 /* Pods-MySampleApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -833,7 +849,7 @@
 		};
 		E5CB37F81DB35F0A00F6E646 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52C67D59078468F3F7678A04 /* Pods-SignIn-awsmhh.debug.xcconfig */;
+			baseConfigurationReference = 858B9ABF5C4D44DF787D82CC /* Pods-SignIn.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -861,7 +877,7 @@
 		};
 		E5CB37F91DB35F0A00F6E646 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5D36C3D2DC8D1264D84AD6B3 /* Pods-SignIn-awsmhh.release.xcconfig */;
+			baseConfigurationReference = FCDCB85188863DCA8EF95215 /* Pods-SignIn.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
