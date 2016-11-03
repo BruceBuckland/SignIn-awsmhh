@@ -10,6 +10,7 @@
 #define SignIn_awsmhh_Bridging_Header_h
 
 #import "AWSMobileHubHelper.h"
+#import "AWSMobileAnalytics.h"
 
 
 #endif /* SignIn_awsmhh_Bridging_Header_h */

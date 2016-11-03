@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Data Storage-->
+        <scene sceneID="NsN-12-mTW">
+            <objects>
+                <viewController storyboardIdentifier="UserDataStorage" title="User Data Storage" id="QZX-86-oqd" customClass="UserDataStorageViewController" customModule="MySampleApp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="NPa-Dh-0Ht"/>
+                        <viewControllerLayoutGuide type="bottom" id="RP2-6B-Pzx"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="4na-UR-0hG">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Amazon Cognito and Amazon S3" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cbl-0d-bSR">
+                                <rect key="frame" x="182" y="438" width="236" height="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Am7-D0-mho">
+                                <rect key="frame" x="20" y="8" width="71" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="240" verticalCompressionResistancePriority="240" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsLetterSpacingToFitWidth="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yRx-V7-luP">
+                                <rect key="frame" x="20" y="36" width="560" height="41"/>
+                                <string key="text">Store user files such as photos in the cloud. Save user data in key/value pairs and sync across devices that are signed-in with the same user.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample App Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v9d-dx-2mc">
+                                <rect key="frame" x="20" y="85" width="162" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="adb-y0-B80">
+                                <rect key="frame" x="199" y="460" width="202" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Demo User File Storage" image="UserFilesIconSmall">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="demoUserFileStorage:" destination="QZX-86-oqd" eventType="touchUpInside" id="p12-hJ-JqC"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="93Q-ii-i5A">
+                                <rect key="frame" x="200" y="498" width="200" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Demo User Profile Data" image="UserProfileDataSmall">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="demoUserSettings:" destination="QZX-86-oqd" eventType="touchUpInside" id="K8O-NZ-F9t"/>
+                                </connections>
+                            </button>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EY4-ws-Uey">
+                                <rect key="frame" x="20" y="113" width="560" height="317"/>
+                                <string key="text">The Sample App demonstrates User File Storage and User Profile Data. The User File Storage demonstration includes a remote file explorer, which allows you to upload and download files from your Amazon S3 bucket. You will have access to two folders, a public folder where files are accessible to all users and a private folder where files are only accessible by the current app user.
+
+The User Profile Data demonstration stores an app color theme using Amazon Cognito Sync and synchronizes that data across all of the user's devices as key/value pairs.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="leadingMargin" secondItem="EY4-ws-Uey" secondAttribute="leading" id="1v6-eZ-qBi"/>
+                            <constraint firstItem="cbl-0d-bSR" firstAttribute="top" secondItem="EY4-ws-Uey" secondAttribute="bottom" constant="8" symbolic="YES" id="6fM-9G-LUU"/>
+                            <constraint firstItem="93Q-ii-i5A" firstAttribute="top" secondItem="adb-y0-B80" secondAttribute="bottom" constant="8" symbolic="YES" id="752-o3-ocj"/>
+                            <constraint firstItem="v9d-dx-2mc" firstAttribute="leading" secondItem="yRx-V7-luP" secondAttribute="leading" id="8u1-ZR-4hC"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Am7-D0-mho" secondAttribute="leading" id="FPD-Wx-Gpg"/>
+                            <constraint firstItem="Am7-D0-mho" firstAttribute="top" secondItem="NPa-Dh-0Ht" secondAttribute="bottom" constant="8" symbolic="YES" id="Ko0-zY-X5s"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="yRx-V7-luP" secondAttribute="trailing" id="QkX-sl-ICr"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EY4-ws-Uey" secondAttribute="trailing" id="Tw4-u8-xeq"/>
+                            <constraint firstItem="adb-y0-B80" firstAttribute="centerX" secondItem="4na-UR-0hG" secondAttribute="centerX" id="fF3-SZ-cgw"/>
+                            <constraint firstItem="v9d-dx-2mc" firstAttribute="top" secondItem="yRx-V7-luP" secondAttribute="bottom" constant="8" symbolic="YES" id="hG7-9A-UX2"/>
+                            <constraint firstItem="yRx-V7-luP" firstAttribute="leading" secondItem="Am7-D0-mho" secondAttribute="leading" id="hJ0-7s-3Y7"/>
+                            <constraint firstItem="93Q-ii-i5A" firstAttribute="centerX" secondItem="4na-UR-0hG" secondAttribute="centerX" id="kbH-Pn-OVI"/>
+                            <constraint firstItem="RP2-6B-Pzx" firstAttribute="top" secondItem="93Q-ii-i5A" secondAttribute="bottom" constant="8" symbolic="YES" id="rja-P9-wbl"/>
+                            <constraint firstItem="yRx-V7-luP" firstAttribute="top" secondItem="Am7-D0-mho" secondAttribute="bottom" constant="8" symbolic="YES" id="s60-qO-RAm"/>
+                            <constraint firstItem="EY4-ws-Uey" firstAttribute="top" secondItem="v9d-dx-2mc" secondAttribute="bottom" constant="8" symbolic="YES" id="uix-d6-oHj"/>
+                            <constraint firstItem="adb-y0-B80" firstAttribute="top" secondItem="cbl-0d-bSR" secondAttribute="bottom" constant="8" symbolic="YES" id="wxG-yp-yHA"/>
+                            <constraint firstItem="cbl-0d-bSR" firstAttribute="centerX" secondItem="93Q-ii-i5A" secondAttribute="centerX" id="zLe-CS-dvA"/>
+                        </constraints>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                    <connections>
+                        <outlet property="featureTextView" destination="EY4-ws-Uey" id="mSG-lX-wv7"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wSZ-if-rA8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="241" y="364"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="UserFilesIconSmall" width="30" height="30"/>
+        <image name="UserProfileDataSmall" width="30" height="30"/>
+    </resources>
+</document>

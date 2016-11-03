@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Identity-->
+        <scene sceneID="e2Z-X7-nKA">
+            <objects>
+                <viewController storyboardIdentifier="UserIdentity" title="User Identity" id="XAe-6D-inr" customClass="FeatureDescriptionViewController" customModule="MySampleApp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="PoC-zG-Ln8"/>
+                        <viewControllerLayoutGuide type="bottom" id="b5n-5V-2Nm"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="oTC-KH-ri5">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DZn-n8-V8Z">
+                                <rect key="frame" x="215" y="498" width="170" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Demo User Identity" image="UserIdentityIconSmall">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="hif-eS-niX" kind="show" id="C73-om-wf5"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Amazon Cognito" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cgi-Bh-epE">
+                                <rect key="frame" x="224" y="470.5" width="151" height="13.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RTz-1t-und">
+                                <rect key="frame" x="20" y="8" width="71" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kPF-xm-gfO">
+                                <rect key="frame" x="20" y="35.5" width="560" height="61.5"/>
+                                <string key="text">Whether your users sign in or not, the User sign-in feature configures Amazon Cognito to uniquely identify the user and provide your app the appropriate credentials to access your AWS resources.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample App Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EGr-Wy-2Bc">
+                                <rect key="frame" x="20" y="105" width="161.5" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gIj-LR-7Kc">
+                                <rect key="frame" x="20" y="132.5" width="560" height="82.5"/>
+                                <string key="text">The Sample App demonstrates assignment of a unique identifier for the user, the Amazon Cognito User ID. If optional or mandatory User Sign-in has been enabled in your project, then the Sample App also includes a sign-in screen, with a button for each configured sign-in provider.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="b5n-5V-2Nm" firstAttribute="top" secondItem="DZn-n8-V8Z" secondAttribute="bottom" constant="8" symbolic="YES" id="0Dn-8c-bH1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="gIj-LR-7Kc" secondAttribute="trailing" id="3kr-Yz-AWG"/>
+                            <constraint firstItem="EGr-Wy-2Bc" firstAttribute="top" secondItem="kPF-xm-gfO" secondAttribute="bottom" constant="8" symbolic="YES" id="9Hv-Ze-1bs"/>
+                            <constraint firstItem="DZn-n8-V8Z" firstAttribute="centerX" secondItem="oTC-KH-ri5" secondAttribute="centerX" id="Dvs-0z-oHd"/>
+                            <constraint firstItem="kPF-xm-gfO" firstAttribute="leading" secondItem="RTz-1t-und" secondAttribute="leading" id="HTw-sY-508"/>
+                            <constraint firstItem="Cgi-Bh-epE" firstAttribute="centerX" secondItem="DZn-n8-V8Z" secondAttribute="centerX" id="LSa-L9-MrO"/>
+                            <constraint firstItem="DZn-n8-V8Z" firstAttribute="top" secondItem="Cgi-Bh-epE" secondAttribute="bottom" constant="14" id="PfQ-c0-eUj"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="kPF-xm-gfO" secondAttribute="trailing" id="PvW-jE-bt4"/>
+                            <constraint firstItem="gIj-LR-7Kc" firstAttribute="leading" secondItem="EGr-Wy-2Bc" secondAttribute="leading" id="be7-gj-AJR"/>
+                            <constraint firstItem="gIj-LR-7Kc" firstAttribute="leading" secondItem="Cgi-Bh-epE" secondAttribute="trailing" constant="-355.5" id="dc8-PK-Pox"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="RTz-1t-und" secondAttribute="leading" id="e1K-u5-yen"/>
+                            <constraint firstItem="gIj-LR-7Kc" firstAttribute="top" secondItem="EGr-Wy-2Bc" secondAttribute="bottom" constant="8" symbolic="YES" id="kGT-if-1CK"/>
+                            <constraint firstItem="EGr-Wy-2Bc" firstAttribute="leading" secondItem="kPF-xm-gfO" secondAttribute="leading" id="mDQ-pN-dIg"/>
+                            <constraint firstItem="kPF-xm-gfO" firstAttribute="top" secondItem="RTz-1t-und" secondAttribute="bottom" constant="8" symbolic="YES" id="rAe-kx-cOZ"/>
+                            <constraint firstItem="RTz-1t-und" firstAttribute="top" secondItem="PoC-zG-Ln8" secondAttribute="bottom" constant="8" symbolic="YES" id="xwm-6g-eNs"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="dc8-PK-Pox"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Fy5-rW-NBc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="241" y="364"/>
+        </scene>
+        <!--User Identity-->
+        <scene sceneID="N3v-4H-Oy9">
+            <objects>
+                <viewController title="User Identity" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hif-eS-niX" customClass="UserIdentityViewController" customModule="MySampleApp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="db7-Pg-fLO"/>
+                        <viewControllerLayoutGuide type="bottom" id="KfG-cT-FDa"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="kpE-Pz-4OC">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="UserIcon" translatesAutoresizingMaskIntoConstraints="NO" id="9uY-3n-rL1">
+                                <rect key="frame" x="225" y="100" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="D0F-CF-3zN"/>
+                                    <constraint firstAttribute="width" secondItem="9uY-3n-rL1" secondAttribute="height" multiplier="1:1" id="uJQ-xg-vBq"/>
+                                </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="D0F-CF-3zN"/>
+                                        <exclude reference="uJQ-xg-vBq"/>
+                                    </mask>
+                                </variation>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Guest User" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ipd-BY-jJ5">
+                                <rect key="frame" x="258" y="271.5" width="85" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User's unique identifier" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tT5-pb-Rro">
+                                <rect key="frame" x="239" y="299" width="122" height="13.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&lt;UNKNOWN IDENTITY&gt;" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="AHP-BY-rSy">
+                                <rect key="frame" x="20" y="312.5" width="560" height="19.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="User's name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xoT-sv-9ZC">
+                                <rect key="frame" x="267.5" y="258" width="65.5" height="13.5"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="AHP-BY-rSy" secondAttribute="trailing" id="6Ux-OS-057"/>
+                            <constraint firstItem="AHP-BY-rSy" firstAttribute="centerX" secondItem="tT5-pb-Rro" secondAttribute="centerX" id="6hM-3s-Fqx"/>
+                            <constraint firstItem="9uY-3n-rL1" firstAttribute="centerX" secondItem="kpE-Pz-4OC" secondAttribute="centerX" id="75g-Gt-lqf"/>
+                            <constraint firstItem="tT5-pb-Rro" firstAttribute="centerX" secondItem="AHP-BY-rSy" secondAttribute="centerX" id="LGV-Vp-rye"/>
+                            <constraint firstItem="AHP-BY-rSy" firstAttribute="centerX" secondItem="kpE-Pz-4OC" secondAttribute="centerX" id="Peq-cK-Agm"/>
+                            <constraint firstItem="xoT-sv-9ZC" firstAttribute="top" secondItem="9uY-3n-rL1" secondAttribute="bottom" constant="8" symbolic="YES" id="Pge-Ep-eAL"/>
+                            <constraint firstItem="9uY-3n-rL1" firstAttribute="top" secondItem="db7-Pg-fLO" secondAttribute="bottom" constant="100" id="Vg5-th-oFv"/>
+                            <constraint firstItem="xoT-sv-9ZC" firstAttribute="centerX" secondItem="9uY-3n-rL1" secondAttribute="centerX" id="cj6-ja-WF1"/>
+                            <constraint firstItem="9uY-3n-rL1" firstAttribute="centerY" secondItem="kpE-Pz-4OC" secondAttribute="centerY" id="eO8-GU-ZJK"/>
+                            <constraint firstItem="AHP-BY-rSy" firstAttribute="top" secondItem="tT5-pb-Rro" secondAttribute="bottom" constant="8" symbolic="YES" id="ef8-LX-iFN"/>
+                            <constraint firstItem="KfG-cT-FDa" firstAttribute="top" secondItem="AHP-BY-rSy" secondAttribute="bottom" constant="8" symbolic="YES" id="jBt-up-ADp"/>
+                            <constraint firstItem="tT5-pb-Rro" firstAttribute="centerX" secondItem="kpE-Pz-4OC" secondAttribute="centerX" id="lYQ-gV-U40"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="AHP-BY-rSy" secondAttribute="leading" id="poy-cx-cnc"/>
+                            <constraint firstItem="tT5-pb-Rro" firstAttribute="top" secondItem="ipd-BY-jJ5" secondAttribute="bottom" constant="8" symbolic="YES" id="r9c-7I-uMU"/>
+                            <constraint firstItem="ipd-BY-jJ5" firstAttribute="centerX" secondItem="9uY-3n-rL1" secondAttribute="centerX" id="rcP-dR-fcE"/>
+                            <constraint firstItem="ipd-BY-jJ5" firstAttribute="top" secondItem="xoT-sv-9ZC" secondAttribute="bottom" id="vMy-mp-Hr3"/>
+                            <constraint firstItem="AHP-BY-rSy" firstAttribute="top" secondItem="tT5-pb-Rro" secondAttribute="bottom" id="yHm-5E-rAh"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="eO8-GU-ZJK"/>
+                                <exclude reference="Peq-cK-Agm"/>
+                                <exclude reference="ef8-LX-iFN"/>
+                                <exclude reference="poy-cx-cnc"/>
+                                <exclude reference="LGV-Vp-rye"/>
+                                <exclude reference="jBt-up-ADp"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <connections>
+                        <outlet property="userID" destination="AHP-BY-rSy" id="48E-fW-CUf"/>
+                        <outlet property="userImageView" destination="9uY-3n-rL1" id="iMc-Ky-f7u"/>
+                        <outlet property="userName" destination="ipd-BY-jJ5" id="GeL-0m-Zvx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="GyI-an-rtc" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="966" y="364"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="UserIcon" width="150" height="150"/>
+        <image name="UserIdentityIconSmall" width="30" height="30"/>
+    </resources>
+</document>

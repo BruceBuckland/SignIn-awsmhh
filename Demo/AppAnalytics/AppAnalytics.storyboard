@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--App Analytics-->
+        <scene sceneID="GeX-Tx-6qu">
+            <objects>
+                <viewController title="App Analytics" useStoryboardIdentifierAsRestorationIdentifier="YES" id="R64-dI-Pj0" customClass="AppAnalyticsViewController" customModule="MySampleApp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="cj9-to-7uV"/>
+                        <viewControllerLayoutGuide type="bottom" id="BMv-da-vi3"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="tNu-Cv-a9J">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IN3-30-meg">
+                                <rect key="frame" x="304" y="147" width="276" height="242"/>
+                                <color key="backgroundColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="MonetizationEvent">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="clickedMonetizationEvent:" destination="R64-dI-Pj0" eventType="touchUpInside" id="BZw-vv-bgd"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generate Monetization Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="CXM-QA-eNz">
+                                <rect key="frame" x="304" y="397" width="276" height="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Generate Custom Event" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="LYg-47-DRh">
+                                <rect key="frame" x="20" y="397" width="276" height="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="E30-ec-1ta">
+                                <rect key="frame" x="20" y="147" width="276" height="242"/>
+                                <color key="backgroundColor" name="secondarySelectedControlColor" catalog="System" colorSpace="catalog"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="CHe-LP-AfK"/>
+                                    <constraint firstAttribute="width" secondItem="E30-ec-1ta" secondAttribute="height" multiplier="8:7" id="G6A-rm-CMa"/>
+                                    <constraint firstAttribute="width" constant="160" id="P7X-aR-zkF"/>
+                                    <constraint firstAttribute="height" constant="140" id="ibp-Bw-RcM"/>
+                                </constraints>
+                                <inset key="contentEdgeInsets" minX="5" minY="5" maxX="5" maxY="5"/>
+                                <state key="normal" image="CustomEvent">
+                                    <color key="titleColor" name="disabledControlTextColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="CHe-LP-AfK"/>
+                                        <exclude reference="P7X-aR-zkF"/>
+                                        <exclude reference="ibp-Bw-RcM"/>
+                                    </mask>
+                                </variation>
+                                <connections>
+                                    <action selector="clickedCustomEvent:" destination="R64-dI-Pj0" eventType="touchUpInside" id="spS-gt-ikp"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Note that events are batch processed and may take up to 60 minutes to display in the console." textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="5" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="etI-5U-ryr">
+                                <rect key="frame" x="162" y="22" width="276" height="181"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="276" id="4fI-Sv-K1a"/>
+                                    <constraint firstAttribute="height" constant="181" id="ZWP-9s-bhz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="LYg-47-DRh" firstAttribute="top" secondItem="E30-ec-1ta" secondAttribute="bottom" constant="8" symbolic="YES" id="3S6-Rh-amI"/>
+                            <constraint firstItem="etI-5U-ryr" firstAttribute="centerX" secondItem="tNu-Cv-a9J" secondAttribute="centerX" id="5oe-Zq-8WE"/>
+                            <constraint firstItem="CXM-QA-eNz" firstAttribute="centerX" secondItem="IN3-30-meg" secondAttribute="centerX" id="7p3-cq-CVt"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="CXM-QA-eNz" secondAttribute="trailing" id="Bdg-LY-lWQ"/>
+                            <constraint firstItem="E30-ec-1ta" firstAttribute="width" secondItem="IN3-30-meg" secondAttribute="width" id="Dye-66-qVm"/>
+                            <constraint firstItem="etI-5U-ryr" firstAttribute="top" secondItem="cj9-to-7uV" secondAttribute="bottom" constant="22" id="Gx4-We-WJH"/>
+                            <constraint firstItem="E30-ec-1ta" firstAttribute="centerY" secondItem="tNu-Cv-a9J" secondAttribute="centerY" id="NMa-AF-5VO"/>
+                            <constraint firstItem="E30-ec-1ta" firstAttribute="leading" secondItem="tNu-Cv-a9J" secondAttribute="leadingMargin" id="RNe-OF-Jwn"/>
+                            <constraint firstItem="LYg-47-DRh" firstAttribute="centerX" secondItem="E30-ec-1ta" secondAttribute="centerX" id="Tz2-CD-73H"/>
+                            <constraint firstItem="E30-ec-1ta" firstAttribute="height" secondItem="IN3-30-meg" secondAttribute="height" id="XPP-yR-OOo"/>
+                            <constraint firstItem="CXM-QA-eNz" firstAttribute="leading" secondItem="LYg-47-DRh" secondAttribute="trailing" constant="8" symbolic="YES" id="dsY-Oz-1AI"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="IN3-30-meg" secondAttribute="trailing" id="fYG-ie-3Kw"/>
+                            <constraint firstItem="IN3-30-meg" firstAttribute="centerY" secondItem="tNu-Cv-a9J" secondAttribute="centerY" id="mc7-Ig-Uuw"/>
+                            <constraint firstItem="IN3-30-meg" firstAttribute="leading" secondItem="E30-ec-1ta" secondAttribute="trailing" constant="8" symbolic="YES" id="qN3-1X-xjU"/>
+                            <constraint firstItem="LYg-47-DRh" firstAttribute="width" secondItem="CXM-QA-eNz" secondAttribute="width" id="v1M-Ny-fPj"/>
+                            <constraint firstItem="CXM-QA-eNz" firstAttribute="top" secondItem="IN3-30-meg" secondAttribute="bottom" constant="8" symbolic="YES" id="wd3-bv-QGB"/>
+                            <constraint firstItem="LYg-47-DRh" firstAttribute="leading" secondItem="tNu-Cv-a9J" secondAttribute="leadingMargin" id="zhA-2A-Xcz"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="Tz2-CD-73H"/>
+                                <exclude reference="7p3-cq-CVt"/>
+                            </mask>
+                        </variation>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6t5-Cn-17v" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="797" y="395"/>
+        </scene>
+        <!--App Analytics-->
+        <scene sceneID="F4O-BL-XD9">
+            <objects>
+                <viewController storyboardIdentifier="AppAnalytics" title="App Analytics" id="wfy-FH-dZT" customClass="FeatureDescriptionViewController" customModule="MySampleApp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Xah-0z-GtC"/>
+                        <viewControllerLayoutGuide type="bottom" id="fBa-zY-ugI"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Cf5-sU-E24">
+                        <rect key="frame" x="0.0" y="64" width="600" height="536"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Overview" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gvi-DL-q8q">
+                                <rect key="frame" x="20" y="8" width="71" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="e2Q-sS-I3n">
+                                <rect key="frame" x="20" y="36" width="560" height="83"/>
+                                <string key="text">Amazon Mobile Analytics allows you to collect, visualize, and export app event data. You can track app usage and monetization in the Amazon Mobile Analytics console, or run custom analysis by automatically exporting app events to Amazon S3 and Amazon Redshift.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sample App Features" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cxt-QV-L7B">
+                                <rect key="frame" x="20" y="127" width="162" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleHeadline"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="eJS-Fz-Cz6">
+                                <rect key="frame" x="20" y="155" width="560" height="83"/>
+                                <string key="text">The Sample App records user session activity in metrics that may be viewed in the Amazon Mobile Analytics console. It also provides buttons to demonstrate generating a custom or monetization event, which records user activity, such as the sale of an in-app purchase item.</string>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Powered by Amazon Mobile Analytics" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0qQ-mi-Sc8">
+                                <rect key="frame" x="202" y="470" width="196" height="14"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleCaption1"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DXX-EG-E7X">
+                                <rect key="frame" x="212" y="498" width="177" height="30"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <state key="normal" title="Demo App Analytics" image="AppAnalyticsIconSmall">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <connections>
+                                    <segue destination="R64-dI-Pj0" kind="show" id="nlQ-KD-CqD"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailingMargin" secondItem="e2Q-sS-I3n" secondAttribute="trailing" id="1S0-Cj-ec4"/>
+                            <constraint firstItem="0qQ-mi-Sc8" firstAttribute="centerX" secondItem="DXX-EG-E7X" secondAttribute="centerX" id="2EZ-gB-TBS"/>
+                            <constraint firstItem="Gvi-DL-q8q" firstAttribute="top" secondItem="Xah-0z-GtC" secondAttribute="bottom" constant="8" symbolic="YES" id="99R-Xp-LAv"/>
+                            <constraint firstItem="eJS-Fz-Cz6" firstAttribute="leading" secondItem="0qQ-mi-Sc8" secondAttribute="trailing" constant="-355.5" id="B32-vS-d9I"/>
+                            <constraint firstItem="DXX-EG-E7X" firstAttribute="centerX" secondItem="Cf5-sU-E24" secondAttribute="centerX" id="CBF-Lq-0vY"/>
+                            <constraint firstItem="e2Q-sS-I3n" firstAttribute="top" secondItem="Gvi-DL-q8q" secondAttribute="bottom" constant="8" symbolic="YES" id="GXu-4y-67H"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Gvi-DL-q8q" secondAttribute="leading" id="HGA-J5-g75"/>
+                            <constraint firstItem="eJS-Fz-Cz6" firstAttribute="top" secondItem="Cxt-QV-L7B" secondAttribute="bottom" constant="8" symbolic="YES" id="Pcq-Lv-LVm"/>
+                            <constraint firstItem="eJS-Fz-Cz6" firstAttribute="leading" secondItem="Cxt-QV-L7B" secondAttribute="leading" id="TOp-HZ-CZU"/>
+                            <constraint firstItem="Cxt-QV-L7B" firstAttribute="leading" secondItem="e2Q-sS-I3n" secondAttribute="leading" id="WS2-WP-9QW"/>
+                            <constraint firstItem="Cxt-QV-L7B" firstAttribute="top" secondItem="e2Q-sS-I3n" secondAttribute="bottom" constant="8" symbolic="YES" id="biF-BM-HEs"/>
+                            <constraint firstItem="fBa-zY-ugI" firstAttribute="top" secondItem="DXX-EG-E7X" secondAttribute="bottom" constant="8" symbolic="YES" id="g31-kE-FFN"/>
+                            <constraint firstItem="DXX-EG-E7X" firstAttribute="top" secondItem="0qQ-mi-Sc8" secondAttribute="bottom" constant="14" id="lII-AN-FzN"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="eJS-Fz-Cz6" secondAttribute="trailing" id="p4U-LV-uCc"/>
+                            <constraint firstItem="e2Q-sS-I3n" firstAttribute="leading" secondItem="Gvi-DL-q8q" secondAttribute="leading" id="q5t-2q-fr3"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="B32-vS-d9I"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" translucent="NO" prompted="NO"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3Ve-7G-U1A" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="86" y="395"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="AppAnalyticsIconSmall" width="30" height="30"/>
+        <image name="CustomEvent" width="150" height="150"/>
+        <image name="MonetizationEvent" width="150" height="150"/>
+    </resources>
+</document>

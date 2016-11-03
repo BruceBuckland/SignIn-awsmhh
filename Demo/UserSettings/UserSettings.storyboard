@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--User Profile Data-->
+        <scene sceneID="YnE-kL-8p8">
+            <objects>
+                <viewController storyboardIdentifier="UserSettings" title="User Profile Data" id="zL5-Yd-Sla" customClass="UserSettingsViewController" customModule="MySampleApp" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="WSX-Gn-Ay0"/>
+                        <viewControllerLayoutGuide type="bottom" id="g8I-Yw-Kvs"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ze8-4Q-Ir4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Bc1-0I-qhe">
+                                <rect key="frame" x="20" y="68" width="276" height="183"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="Bc1-0I-qhe" secondAttribute="height" multiplier="92:61" id="rZ7-FF-D1o"/>
+                                </constraints>
+                                <state key="normal" title="User Settings 1" image="Theme1">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handlerSettings0:" destination="zL5-Yd-Sla" eventType="touchUpInside" id="beN-x5-2A5"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G1p-P4-vkt">
+                                <rect key="frame" x="304" y="259" width="276" height="183"/>
+                                <state key="normal" title="User Settings 4" image="Theme4">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handlerSettings3:" destination="zL5-Yd-Sla" eventType="touchUpInside" id="J2Z-w4-6Og"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose a theme:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="c8J-nj-OKa">
+                                <rect key="frame" x="20" y="40" width="173" height="20"/>
+                                <fontDescription key="fontDescription" style="UICTFontTextStyleBody"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zEb-vt-xsQ">
+                                <rect key="frame" x="304" y="68" width="276" height="183"/>
+                                <state key="normal" title="User Settings 2" image="Theme2">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handlerSettings1:" destination="zL5-Yd-Sla" eventType="touchUpInside" id="rkh-X7-xlK"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ND4-O3-RAs">
+                                <rect key="frame" x="20" y="259" width="276" height="183"/>
+                                <state key="normal" title="User Settings 3" image="Theme3">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="handlerSettings2:" destination="zL5-Yd-Sla" eventType="touchUpInside" id="CUc-Vr-ZCa"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="G1p-P4-vkt" firstAttribute="top" secondItem="zEb-vt-xsQ" secondAttribute="bottom" constant="8" symbolic="YES" id="44d-eb-DD6"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="Bc1-0I-qhe" secondAttribute="leading" id="4uP-go-B6o"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="zEb-vt-xsQ" secondAttribute="trailing" id="5iQ-tD-N1n"/>
+                            <constraint firstItem="zEb-vt-xsQ" firstAttribute="leading" secondItem="Bc1-0I-qhe" secondAttribute="trailing" constant="8" symbolic="YES" id="62C-HL-jms"/>
+                            <constraint firstItem="G1p-P4-vkt" firstAttribute="leading" secondItem="ND4-O3-RAs" secondAttribute="trailing" constant="8" symbolic="YES" id="DFz-cG-7wW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="ND4-O3-RAs" secondAttribute="leading" id="EIg-PG-yOz"/>
+                            <constraint firstItem="Bc1-0I-qhe" firstAttribute="width" secondItem="G1p-P4-vkt" secondAttribute="width" id="HUr-SI-3cC"/>
+                            <constraint firstItem="Bc1-0I-qhe" firstAttribute="top" secondItem="c8J-nj-OKa" secondAttribute="bottom" constant="8" symbolic="YES" id="MVD-6P-kXS"/>
+                            <constraint firstItem="Bc1-0I-qhe" firstAttribute="width" secondItem="zEb-vt-xsQ" secondAttribute="width" id="TY6-ar-Nm1"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="G1p-P4-vkt" secondAttribute="trailing" id="Whm-nQ-Pwo"/>
+                            <constraint firstItem="ND4-O3-RAs" firstAttribute="top" secondItem="Bc1-0I-qhe" secondAttribute="bottom" constant="8" symbolic="YES" id="YW2-O7-qHe"/>
+                            <constraint firstItem="Bc1-0I-qhe" firstAttribute="height" secondItem="zEb-vt-xsQ" secondAttribute="height" id="anX-if-twO"/>
+                            <constraint firstItem="c8J-nj-OKa" firstAttribute="leading" secondItem="ze8-4Q-Ir4" secondAttribute="leadingMargin" id="bxa-qz-h3e"/>
+                            <constraint firstItem="c8J-nj-OKa" firstAttribute="top" secondItem="WSX-Gn-Ay0" secondAttribute="bottom" constant="20" id="c0U-Jb-3zC"/>
+                            <constraint firstItem="Bc1-0I-qhe" firstAttribute="height" secondItem="G1p-P4-vkt" secondAttribute="height" id="eOf-8X-ETS"/>
+                            <constraint firstItem="zEb-vt-xsQ" firstAttribute="top" secondItem="Bc1-0I-qhe" secondAttribute="top" id="iXD-kW-2hl"/>
+                            <constraint firstItem="Bc1-0I-qhe" firstAttribute="width" secondItem="ND4-O3-RAs" secondAttribute="width" id="ic8-Ut-lnd"/>
+                            <constraint firstItem="Bc1-0I-qhe" firstAttribute="height" secondItem="ND4-O3-RAs" secondAttribute="height" id="qoM-Jn-2Vx"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="a7H-oN-LOy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1208" y="438"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="Theme1" width="720" height="530"/>
+        <image name="Theme2" width="720" height="530"/>
+        <image name="Theme3" width="720" height="530"/>
+        <image name="Theme4" width="720" height="530"/>
+    </resources>
+</document>
