@@ -14,7 +14,7 @@
 import Foundation
 import UIKit
 import AWSDynamoDB
-import AWSMobileHubHelper
+// import AWSMobileHubHelper
 
 class GraffitiTable: NSObject, Table {
     

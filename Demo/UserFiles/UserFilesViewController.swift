@@ -15,7 +15,7 @@ import UIKit
 import WebKit
 import MediaPlayer
 import MobileCoreServices
-import AWSMobileHubHelper
+// import AWSMobileHubHelper
 
 import ObjectiveC
 
@@ -43,7 +43,7 @@ class UserFilesViewController: UITableViewController {
         manager = AWSUserFileManager.defaultUserFileManager()
         
         // Sets up the UIs.
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: "showContentManagerActionOptions:")
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .Action, target: self, action: #selector(UserFilesViewController.showContentManagerActionOptions(_:)))
         
         // Sets up the date formatter.
         dateFormatter = NSDateFormatter()
@@ -628,7 +628,7 @@ class UserFilesWebViewController: UIViewController, UIWebViewDelegate {
         webView.loadRequest(NSURLRequest(URL: url))
     }
     
-    func webView(webView: UIWebView, didFailLoadWithError error: NSError?) {
+    func webView(webView: UIWebView, didFailLoadWithError error: NSError) {
         print("The URL content failed to load \(error)")
         webView.loadHTMLString("<html><body><h1>Cannot Open the content of the URL.</h1></body></html>", baseURL: nil)
     }

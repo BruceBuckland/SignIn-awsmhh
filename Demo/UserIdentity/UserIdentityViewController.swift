@@ -13,7 +13,7 @@
 
 import Foundation
 import UIKit
-import AWSMobileHubHelper
+// import AWSMobileHubHelper
 
 class UserIdentityViewController: UIViewController {
     

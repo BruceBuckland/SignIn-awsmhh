@@ -26,6 +26,11 @@ PODS:
     - FBSDKCoreKit
   - GoogleAppUtilities (1.1.2):
     - GoogleSymbolUtilities (~> 1.1)
+  - GoogleAuthUtilities (2.0.2):
+    - GoogleNetworkingUtilities (~> 1.2)
+    - GoogleSymbolUtilities (~> 1.1)
+  - GoogleNetworkingUtilities (1.2.2):
+    - GoogleSymbolUtilities (~> 1.1)
   - GoogleSignIn (4.0.1):
     - GoogleAppUtilities (~> 1.1)
     - GoogleToolboxForMac/NSDictionary+URLArguments (~> 2.1)
@@ -40,6 +45,8 @@ PODS:
     - GoogleToolboxForMac/Defines (= 2.1.0)
     - GoogleToolboxForMac/NSString+URLArguments (= 2.1.0)
   - GoogleToolboxForMac/NSString+URLArguments (2.1.0)
+  - GoogleUtilities (1.3.2):
+    - GoogleSymbolUtilities (~> 1.1)
   - GTMOAuth2 (1.1.4):
     - GTMSessionFetcher (~> 1.1)
   - GTMSessionFetcher (1.1.7):
@@ -58,7 +65,12 @@ DEPENDENCIES:
   - AWSSNS (~> 2.4.6)
   - FBSDKCoreKit (~> 4.13.1)
   - FBSDKLoginKit (~> 4.13.1)
+  - GoogleAppUtilities
+  - GoogleAuthUtilities
+  - GoogleNetworkingUtilities
   - GoogleSignIn (~> 4.0.0)
+  - GoogleSymbolUtilities
+  - GoogleUtilities
 
 SPEC CHECKSUMS:
   AWSCognito: e086ad6f499e309dbf0030170cffc65a0bfd27c6
@@ -73,12 +85,15 @@ SPEC CHECKSUMS:
   FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
   FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
   GoogleAppUtilities: a8a552aa74f6597f805e45b5a3962766c3134973
+  GoogleAuthUtilities: ccad2e0a9284699973ff57c0dd24c3893657fda4
+  GoogleNetworkingUtilities: 3edd3a8161347494f2da60ea0deddc8a472d94cb
   GoogleSignIn: a8694c0a8e6d1b0ec77c58014de5bfd4ba2fa766
   GoogleSymbolUtilities: 631ee17048aa5e9ab133470d768ea997a5ef9b96
   GoogleToolboxForMac: 2b2596cbb7186865e98cadf2b1e262d851c2b168
+  GoogleUtilities: 8bbc733218aad26306f9d4a253823986110e3358
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
 
-PODFILE CHECKSUM: ce284faf2db1232cc85db18b1d2b82ffea2880e0
+PODFILE CHECKSUM: 3db889025651ead386a89959784e32227925ec57
 
 COCOAPODS: 1.0.1

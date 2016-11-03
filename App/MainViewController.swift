@@ -12,7 +12,7 @@
 //
 
 import UIKit
-import AWSMobileHubHelper
+// import AWSMobileHubHelper
 
 class MainViewController: UITableViewController {
     
@@ -124,11 +124,11 @@ class MainViewController: UITableViewController {
             
             if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
                 navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
-                navigationItem.rightBarButtonItem!.action = "handleLogout"
+                navigationItem.rightBarButtonItem!.action = #selector(MainViewController.handleLogout)
             }
             if !(AWSIdentityManager.defaultIdentityManager().loggedIn) {
                 navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-In", comment: "Label for the login button.")
-                navigationItem.rightBarButtonItem!.action = "goToLogin"
+                navigationItem.rightBarButtonItem!.action = #selector(MainViewController.goToLogin)
             }
     }
     

@@ -12,7 +12,7 @@
 //
 
 import UIKit
-import AWSMobileHubHelper
+// import AWSMobileHubHelper
 
 class CloudLogicViewController: UIViewController {
     
