@@ -3,18 +3,18 @@
 //  signin
 //
 //  Created by Bruce Buckland on 7/10/16.
-//  Copyright © 2016 Bruce Buckland. 
-//  Permission is hereby granted, free of charge, to any person obtaining a 
+//  Copyright © 2016 Bruce Buckland.
+//  Permission is hereby granted, free of charge, to any person obtaining a
 //  copy of this software and associated documentation files (the "Software"),
 //  to deal in the Software without restriction, including without limitation
 //  the rights to use, copy, modify, merge, publish, distribute, sublicense,
 //  and/or sell copies of the Software, and to permit persons to whom the
 //  Software is furnished to do so, subject to the following conditions:
-//  
-//  The above copyright notice and this permission notice shall be included in 
+//
+//  The above copyright notice and this permission notice shall be included in
 //  all copies or substantial portions of the Software.
-//  
-//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+//
+//  THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 //  IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 //  FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
 //  AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
@@ -131,10 +131,10 @@ class MainViewController: UIViewController {
     
     func setupBarButtonItems() {
         
-            let loginButton: UIBarButtonItem = UIBarButtonItem(title: nil, style: .done, target: self, action: nil)
-            self.navigationItem.rightBarButtonItem = loginButton
-
-
+        let loginButton: UIBarButtonItem = UIBarButtonItem(title: nil, style: .done, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = loginButton
+        
+        
         if (AWSIdentityManager.defaultIdentityManager().isLoggedIn) {
             navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
             
@@ -197,7 +197,7 @@ class MainViewController: UIViewController {
         var line = ""
         for provider in AWSIdentityManager.defaultIdentityManager().activeProviders() as! [AWSSignInProvider] {
             NSLog("provider: \(AWSIdentityManager.defaultIdentityManager().providerKey(provider)) authenticated by: \(self.authenticatedBy()) username: \(provider.userName) imageURL:\(provider.imageURL)")
-        
+            
             if AWSIdentityManager.defaultIdentityManager().providerKey(provider) == self.authenticatedBy() {
                 if provider.userName == nil { // should not happen but currently does when errors or cancel on signin
                     line += "Sign On Error Not Properly Reversed by Mobile Hub Helper on *" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ", "
@@ -213,7 +213,7 @@ class MainViewController: UIViewController {
         if line == "" {
             line = "None, just a " + self.authenticatedBy()
         }
-        self.otherDataLabel.text! = "-Authenticated users:" + line + " \(AWSIdentityManager.defaultIdentityManager().identityId!)\n" + self.otherDataLabel.text!
+        self.otherDataLabel.text! = "-Authenticated users:" + line + "\n\n" + self.otherDataLabel.text!
     }
     
     func authenticatedBy() -> String {
@@ -226,56 +226,43 @@ class MainViewController: UIViewController {
     
     func refreshInterface(_ appendToId: String = "-shouldNotHappen") {
         
+        
         self.updateUserAttributesButton.isHidden = true
         self.actionRequiringAuthenticationButton.isHidden = true
         
-        if let signInProvider = AWSIdentityManager.defaultIdentityManager().currentSignInProvider as? AWSCUPIdPSignInProvider {
-            
-            // Here we are dealing with an AWSCUPIdPSignInProvider
-            
-            if AWSIdentityManager.defaultIdentityManager().isLoggedIn  {
+        let identityManager = AWSIdentityManager.defaultIdentityManager()
+        
+        if identityManager.isLoggedIn  {
+            if let signInProvider = identityManager.currentSignInProvider as? AWSCUPIdPSignInProvider {
+                // Here we are dealing with an AWSCUPIdPSignInProvider
                 self.updateUserAttributesButton.isHidden = false
-                NSLog("We have an \(AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider))")
+                getCUPIdPAttributes(signInProvider: signInProvider)
             }
-            signInProvider.user.getDetails().continue( { (task) in
-                DispatchQueue.main.async {
-                    if task.error != nil {  // some sort of error
-                        let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
-                        alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-                        self.present(alert, animated: true, completion: nil)
-                        NSLog("\(task.error)")
-                    } else {
-                        
-                        if let response = task.result  {
-                            if (AWSIdentityManager.defaultIdentityManager().identityId == nil) {
-                                self.otherDataLabel.text! =  "\(appendToId) identityId is nil"  + "\n" + self.otherDataLabel.text!
-                            } else {
-                                self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId!)"  + "\n" + self.otherDataLabel.text!
-                            }
-                            
-                            
-                            for attribute in response.userAttributes! {
-                                self.otherDataLabel.text! = attribute.name! +  ":" + attribute.value! + "\n" + self.otherDataLabel.text!
-                                
-                                self.attributes.append(attribute) // keep for seque
-                            }
-                        }
-                    }
-                }
-                return nil  // return from get details synchronously
-            })
+            
+            self.otherDataLabel.text! =  "\n" + self.otherDataLabel.text!
+            if let email = identityManager.email {
+                self.otherDataLabel.text! = "Email:" + email + "\n" + self.otherDataLabel.text!
+            }
+            if let phone = identityManager.phone {
+                self.otherDataLabel.text! = "Phone:" + phone + "\n" + self.otherDataLabel.text!
+            }
+            self.otherDataLabel.text! =  "\(appendToId) \(identityManager.identityId!)"  + "\n" + self.otherDataLabel.text!
+            
+            
+            
+            
         } else {
             // What can I get if I don't even have a provider (Unauthenticated)
- // debug self.otherDataLabel.text! =  "\(appendToId) \(AWSIdentityManager.defaultIdentityManager().identityId!)"  + "\n" + self.otherDataLabel.text!
+            // debug self.otherDataLabel.text! =  "\(appendToId) \(identityManager.identityId!)"  + "\n" + self.otherDataLabel.text!
         }
         
         // What can I get from every Provider?
         
-        if AWSIdentityManager.defaultIdentityManager().isLoggedIn {
+        if identityManager.isLoggedIn {
             
             print("Authenticated by: \(self.authenticatedBy())")
             
-            self.usernameLabel.text = self.authenticatedBy() + " authenticated " +  AWSIdentityManager.defaultIdentityManager().userName!
+            self.usernameLabel.text = self.authenticatedBy() + " authenticated " +  identityManager.userName!
             self.actionRequiringAuthenticationButton.isHidden = false
         } else {
             self.usernameLabel.text = "Guest User"
@@ -283,11 +270,33 @@ class MainViewController: UIViewController {
         
         
     }
-    
+    func getCUPIdPAttributes(signInProvider: AWSCUPIdPSignInProvider)  {
+        signInProvider.user.getDetails().continue( { (task) in
+            DispatchQueue.main.async {
+                if task.error != nil {  // some sort of error
+                    let alert = UIAlertController(title: "", message: (task.error as? NSError)?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.alert)
+                    alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+                    self.present(alert, animated: true, completion: nil)
+                    NSLog("\(task.error)")
+                } else {
+                    if let response = task.result  {
+                        
+                        self.attributes = response.userAttributes!
+                        //                        for attribute in response.userAttributes! {
+                        //                            self.attributes.append(attribute) // keep for seque
+                        //                        }
+                    }
+                }
+            }
+            return nil  // return from get details synchronously
+        })
+    }
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "updateAttributes" {
             let targetViewController = segue.destination as! UpdateAttributesViewController
             targetViewController.username = AWSIdentityManager.defaultIdentityManager().userName
+            
+            
             targetViewController.attributes = self.attributes
         }
     }
