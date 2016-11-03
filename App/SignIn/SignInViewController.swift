@@ -132,12 +132,27 @@ class SignInViewController: UIViewController {
         handleLoginWithSignInProvider(AWSGoogleSignInProvider.sharedInstance())
     }
     
+    // CUPIdP changes
+    
+    // Now facebook and Google prompt for UID password, but here we prompt
+    // for them BEFORE calling handleLoginWithSignInProvider.
+    // Best solution is probably to make CUPIdP login work just like Google
+    // and Facebook and let it prompt for it's own password.  If we did that we could
+    // just have a row of "login with..." buttons on the home screen that
+    // would disappear upon successful login.
+    
     func handleCustomLogin() {
-        // Handle Login logic for custom sign-in here.
-        let alertController = UIAlertController(title: NSLocalizedString("Custom Sign-In Demo", comment: "Label for custom sign-in dialog."), message: NSLocalizedString("This is just a demo of custom sign-in.", comment: "Sign-in message structure for custom sign-in stub."), preferredStyle: .Alert)
-        let doneAction = UIAlertAction(title: NSLocalizedString("Done", comment: "Label to complete stubbed custom sign-in."), style: .Cancel, handler: nil)
-        alertController.addAction(doneAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        
+        if (customUserIdField.text != nil) && (customPasswordField.text != nil) {
+            
+            let customSignInProvider = AWSCUPIdPSignInProvider.sharedInstance
+            
+            // Push userId and password to our AWSCUPIdPSignInProvider
+            customSignInProvider.customUserIdField = customUserIdField.text
+            customSignInProvider.customPasswordField = customPasswordField.text
+            
+            handleLoginWithSignInProvider(customSignInProvider)
+        }
     }
     
     func handleCustomCreateAccount() {

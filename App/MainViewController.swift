@@ -91,7 +91,7 @@ class MainViewController: UITableViewController {
                 signInObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self] (note: NSNotification) -> Void in
                         guard let strongSelf = self else { return }
                         print("Sign In Observer observed sign in.")
-                        strongSelf.setupRightBarButtonItem()
+                        strongSelf.setupBarButtonItems()
                         // You need to call `updateTheme` here in case the sign-in happens after `- viewWillAppear:` is called.
                         strongSelf.updateTheme()
                 })
@@ -99,11 +99,11 @@ class MainViewController: UITableViewController {
                 signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
                         guard let strongSelf = self else { return }
                         print("Sign Out Observer observed sign out.")
-                        strongSelf.setupRightBarButtonItem()
+                        strongSelf.setupBarButtonItems()
                         strongSelf.updateTheme()
                 })
                 
-                setupRightBarButtonItem()
+                setupBarButtonItems()
     }
     
     deinit {
@@ -112,24 +112,25 @@ class MainViewController: UITableViewController {
         NSNotificationCenter.defaultCenter().removeObserver(willEnterForegroundObserver)
     }
 
-    func setupRightBarButtonItem() {
-            struct Static {
-                static var onceToken: dispatch_once_t = 0
-            }
+    func setupBarButtonItems() {
+        
+        let loginButton: UIBarButtonItem = UIBarButtonItem(title: nil, style: .Done, target: self, action: nil)
+        self.navigationItem.rightBarButtonItem = loginButton
+        
+        if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
+            navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
             
-            dispatch_once(&Static.onceToken, {
-                let loginButton: UIBarButtonItem = UIBarButtonItem(title: nil, style: .Done, target: self, action: nil)
-                self.navigationItem.rightBarButtonItem = loginButton
-            })
+            navigationItem.rightBarButtonItem!.action = #selector(MainViewController.handleLogout)
             
-            if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
-                navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-Out", comment: "Label for the logout button.")
-                navigationItem.rightBarButtonItem!.action = #selector(MainViewController.handleLogout)
-            }
-            if !(AWSIdentityManager.defaultIdentityManager().loggedIn) {
-                navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-In", comment: "Label for the login button.")
-                navigationItem.rightBarButtonItem!.action = #selector(MainViewController.goToLogin)
-            }
+            let mergeButton: UIBarButtonItem = UIBarButtonItem(title: "Link Accounts", style: .Done, target: self, action: #selector(MainViewController.goToLogin))
+            self.navigationItem.leftBarButtonItem = mergeButton
+        }
+        if !(AWSIdentityManager.defaultIdentityManager().loggedIn) {
+            navigationItem.rightBarButtonItem!.title = NSLocalizedString("Sign-In", comment: "Label for the login button.")
+            navigationItem.rightBarButtonItem!.action = #selector(MainViewController.goToLogin)
+            
+            self.navigationItem.leftBarButtonItem = nil // can't merge when not logged in
+        }
     }
     
     // MARK: - UITableViewController delegates
@@ -184,7 +185,7 @@ class MainViewController: UITableViewController {
             ColorThemeSettings.sharedInstance.wipe()
             AWSIdentityManager.defaultIdentityManager().logoutWithCompletionHandler({(result: AnyObject?, error: NSError?) -> Void in
                 self.navigationController!.popToRootViewControllerAnimated(false)
-                self.setupRightBarButtonItem()
+                self.setupBarButtonItems()
             })
             // print("Logout Successful: \(signInProvider.getDisplayName)");
         } else {
