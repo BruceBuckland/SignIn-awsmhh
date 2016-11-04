@@ -18,6 +18,8 @@ class NoSQLTableFactory {
         return [
 
             GraffitiTable(),
+
+            NewsTable(),
         ]
     }
 }

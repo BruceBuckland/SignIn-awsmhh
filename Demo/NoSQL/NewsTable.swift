@@ -1,5 +1,5 @@
 //
-//  GraffitiTable.swift
+//  NewsTable.swift
 //  MySampleApp
 //
 //
@@ -14,9 +14,9 @@
 import Foundation
 import UIKit
 import AWSDynamoDB
-//import AWSMobileHubHelper
+// import AWSMobileHubHelper
 
-class GraffitiTable: NSObject, Table {
+class NewsTable: NSObject, Table {
     
     var tableName: String
     var partitionKeyName: String
@@ -30,23 +30,25 @@ class GraffitiTable: NSObject, Table {
     }
     var tableDisplayName: String {
 
-        return "Graffiti"
+        return "News"
     }
     
     override init() {
 
-        model = Graffiti()
+        model = News()
         
         tableName = model.classForCoder.dynamoDBTableName()
         partitionKeyName = model.classForCoder.hashKeyAttribute()
         partitionKeyType = "String"
         indexes = [
 
-            GraffitiPrimaryIndex(),
+            NewsPrimaryIndex(),
+
+            NewsCategories(),
         ]
         if (model.classForCoder.respondsToSelector("rangeKeyAttribute")) {
             sortKeyName = model.classForCoder.rangeKeyAttribute!()
-            sortKeyType = "Number"
+            sortKeyType = "String"
         }
         super.init()
     }
@@ -59,16 +61,16 @@ class GraffitiTable: NSObject, Table {
      */
 
     func tableAttributeName(dataObjectAttributeName: String) -> String {
-        return Graffiti.JSONKeyPathsByPropertyKey()[dataObjectAttributeName] as! String
+        return News.JSONKeyPathsByPropertyKey()[dataObjectAttributeName] as! String
     }
     
     func getItemDescription() -> String {
-        return "Find Item with userId = \(AWSIdentityManager.defaultIdentityManager().identityId!) and lastUpdatedDate = \(1111500000)."
+        return "Find Item with userId = \(AWSIdentityManager.defaultIdentityManager().identityId!) and articleId = \("demo-articleId-500000")."
     }
     
     func getItemWithCompletionHandler(completionHandler: (response: AWSDynamoDBObjectModel?, error: NSError?) -> Void) {
         let objectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
-        objectMapper.load(Graffiti.self, hashKey: AWSIdentityManager.defaultIdentityManager().identityId!, rangeKey: 1111500000, completionHandler: {(response: AWSDynamoDBObjectModel?, error: NSError?) -> Void in
+        objectMapper.load(News.self, hashKey: AWSIdentityManager.defaultIdentityManager().identityId!, rangeKey: "demo-articleId-500000", completionHandler: {(response: AWSDynamoDBObjectModel?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 completionHandler(response: response, error: error)
             })
@@ -84,7 +86,7 @@ class GraffitiTable: NSObject, Table {
         let scanExpression = AWSDynamoDBScanExpression()
         scanExpression.limit = 5
 
-        objectMapper.scan(Graffiti.self, expression: scanExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+        objectMapper.scan(News.self, expression: scanExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 completionHandler(response: response, error: error)
             })
@@ -92,18 +94,18 @@ class GraffitiTable: NSObject, Table {
     }
     
     func scanWithFilterDescription() -> String {
-        return "Find all items with contents < \("demo-contents-500000")."
+        return "Find all items with author < \("demo-author-500000")."
     }
     
     func scanWithFilterWithCompletionHandler(completionHandler: (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void) {
         let objectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let scanExpression = AWSDynamoDBScanExpression()
         
-        scanExpression.filterExpression = "#contents < :contents"
-        scanExpression.expressionAttributeNames = ["#contents": "contents" ,]
-        scanExpression.expressionAttributeValues = [":contents": "demo-contents-500000" ,]
+        scanExpression.filterExpression = "#author < :author"
+        scanExpression.expressionAttributeNames = ["#author": "author" ,]
+        scanExpression.expressionAttributeValues = [":author": "demo-author-500000" ,]
 
-        objectMapper.scan(Graffiti.self, expression: scanExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+        objectMapper.scan(News.self, expression: scanExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 completionHandler(response: response, error: error)
             })
@@ -117,13 +119,16 @@ class GraffitiTable: NSObject, Table {
         let numberOfObjects = 20
         
 
-        let itemForGet = Graffiti()
+        let itemForGet = News()
         
         itemForGet._userId = AWSIdentityManager.defaultIdentityManager().identityId!
-        itemForGet._lastUpdatedDate = 1111500000
-        itemForGet._contents = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("contents")
-        itemForGet._contributors = NoSQLSampleDataGenerator.randomSampleStringSet()
-        itemForGet._drawingId = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("drawingId")
+        itemForGet._articleId = "demo-articleId-500000"
+        itemForGet._author = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("author")
+        itemForGet._category = NoSQLSampleDataGenerator.randomPartitionSampleStringWithAttributeName("category")
+        itemForGet._content = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("content")
+        itemForGet._creationDate = NoSQLSampleDataGenerator.randomSampleNumber()
+        itemForGet._keywords = NoSQLSampleDataGenerator.randomSampleStringSet()
+        itemForGet._title = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("title")
         
         
         dispatch_group_enter(group)
@@ -140,12 +145,15 @@ class GraffitiTable: NSObject, Table {
         
         for _ in 1..<numberOfObjects {
 
-            let item: Graffiti = Graffiti()
+            let item: News = News()
             item._userId = AWSIdentityManager.defaultIdentityManager().identityId!
-            item._lastUpdatedDate = NoSQLSampleDataGenerator.randomSampleNumber()
-            item._contents = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("contents")
-            item._contributors = NoSQLSampleDataGenerator.randomSampleStringSet()
-            item._drawingId = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("drawingId")
+            item._articleId = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("articleId")
+            item._author = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("author")
+            item._category = NoSQLSampleDataGenerator.randomPartitionSampleStringWithAttributeName("category")
+            item._content = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("content")
+            item._creationDate = NoSQLSampleDataGenerator.randomSampleNumber()
+            item._keywords = NoSQLSampleDataGenerator.randomSampleStringSet()
+            item._title = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("title")
             
             dispatch_group_enter(group)
             
@@ -176,7 +184,7 @@ class GraffitiTable: NSObject, Table {
         queryExpression.expressionAttributeNames = ["#userId": "userId"]
         queryExpression.expressionAttributeValues = [":userId": AWSIdentityManager.defaultIdentityManager().identityId!,]
 
-        objectMapper.query(Graffiti.self, expression: queryExpression) { (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+        objectMapper.query(News.self, expression: queryExpression) { (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
             if let error = error {
                 dispatch_async(dispatch_get_main_queue(), {
                     completionHandler(errors: [error]);
@@ -211,11 +219,14 @@ class GraffitiTable: NSObject, Table {
         let objectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         
 
-        let itemToUpdate: Graffiti = item as! Graffiti
+        let itemToUpdate: News = item as! News
         
-        itemToUpdate._contents = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("contents")
-        itemToUpdate._contributors = NoSQLSampleDataGenerator.randomSampleStringSet()
-        itemToUpdate._drawingId = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("drawingId")
+        itemToUpdate._author = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("author")
+        itemToUpdate._category = NoSQLSampleDataGenerator.randomPartitionSampleStringWithAttributeName("category")
+        itemToUpdate._content = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("content")
+        itemToUpdate._creationDate = NoSQLSampleDataGenerator.randomSampleNumber()
+        itemToUpdate._keywords = NoSQLSampleDataGenerator.randomSampleStringSet()
+        itemToUpdate._title = NoSQLSampleDataGenerator.randomSampleStringWithAttributeName("title")
         
         objectMapper.save(itemToUpdate, completionHandler: {(error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
@@ -235,7 +246,7 @@ class GraffitiTable: NSObject, Table {
     }
 }
 
-class GraffitiPrimaryIndex: NSObject, Index {
+class NewsPrimaryIndex: NSObject, Index {
     
     var indexName: String? {
         return nil
@@ -262,7 +273,7 @@ class GraffitiPrimaryIndex: NSObject, Index {
         queryExpression.expressionAttributeNames = ["#userId": "userId",]
         queryExpression.expressionAttributeValues = [":userId": AWSIdentityManager.defaultIdentityManager().identityId!,]
 
-        objectMapper.query(Graffiti.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+        objectMapper.query(News.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 completionHandler(response: response, error: error)
             })
@@ -270,7 +281,7 @@ class GraffitiPrimaryIndex: NSObject, Index {
     }
     
     func queryWithPartitionKeyAndFilterDescription() -> String {
-        return "Find all items with userId = \(AWSIdentityManager.defaultIdentityManager().identityId!) and contents > \("demo-contents-500000")."
+        return "Find all items with userId = \(AWSIdentityManager.defaultIdentityManager().identityId!) and author > \("demo-author-500000")."
     }
     
     func queryWithPartitionKeyAndFilterWithCompletionHandler(completionHandler: (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void) {
@@ -278,18 +289,18 @@ class GraffitiPrimaryIndex: NSObject, Index {
         let queryExpression = AWSDynamoDBQueryExpression()
         
         queryExpression.keyConditionExpression = "#userId = :userId"
-        queryExpression.filterExpression = "#contents > :contents"
+        queryExpression.filterExpression = "#author > :author"
         queryExpression.expressionAttributeNames = [
             "#userId": "userId",
-            "#contents": "contents",
+            "#author": "author",
         ]
         queryExpression.expressionAttributeValues = [
             ":userId": AWSIdentityManager.defaultIdentityManager().identityId!,
-            ":contents": "demo-contents-500000",
+            ":author": "demo-author-500000",
         ]
         
 
-        objectMapper.query(Graffiti.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+        objectMapper.query(News.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 completionHandler(response: response, error: error)
             })
@@ -297,25 +308,25 @@ class GraffitiPrimaryIndex: NSObject, Index {
     }
     
     func queryWithPartitionKeyAndSortKeyDescription() -> String {
-        return "Find all items with userId = \(AWSIdentityManager.defaultIdentityManager().identityId!) and lastUpdatedDate < \(1111500000)."
+        return "Find all items with userId = \(AWSIdentityManager.defaultIdentityManager().identityId!) and articleId < \("demo-articleId-500000")."
     }
     
     func queryWithPartitionKeyAndSortKeyWithCompletionHandler(completionHandler: (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void) {
         let objectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let queryExpression = AWSDynamoDBQueryExpression()
         
-        queryExpression.keyConditionExpression = "#userId = :userId AND #lastUpdatedDate < :lastUpdatedDate"
+        queryExpression.keyConditionExpression = "#userId = :userId AND #articleId < :articleId"
         queryExpression.expressionAttributeNames = [
             "#userId": "userId",
-            "#lastUpdatedDate": "lastUpdatedDate",
+            "#articleId": "articleId",
         ]
         queryExpression.expressionAttributeValues = [
             ":userId": AWSIdentityManager.defaultIdentityManager().identityId!,
-            ":lastUpdatedDate": 1111500000,
+            ":articleId": "demo-articleId-500000",
         ]
         
 
-        objectMapper.query(Graffiti.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+        objectMapper.query(News.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 completionHandler(response: response, error: error)
             })
@@ -323,28 +334,154 @@ class GraffitiPrimaryIndex: NSObject, Index {
     }
     
     func queryWithPartitionKeyAndSortKeyAndFilterDescription() -> String {
-        return "Find all items with userId = \(AWSIdentityManager.defaultIdentityManager().identityId!), lastUpdatedDate < \(1111500000), and contents > \("demo-contents-500000")."
+        return "Find all items with userId = \(AWSIdentityManager.defaultIdentityManager().identityId!), articleId < \("demo-articleId-500000"), and author > \("demo-author-500000")."
     }
     
     func queryWithPartitionKeyAndSortKeyAndFilterWithCompletionHandler(completionHandler: (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void) {
         let objectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
         let queryExpression = AWSDynamoDBQueryExpression()
         
-        queryExpression.keyConditionExpression = "#userId = :userId AND #lastUpdatedDate < :lastUpdatedDate"
-        queryExpression.filterExpression = "#contents > :contents"
+        queryExpression.keyConditionExpression = "#userId = :userId AND #articleId < :articleId"
+        queryExpression.filterExpression = "#author > :author"
         queryExpression.expressionAttributeNames = [
             "#userId": "userId",
-            "#lastUpdatedDate": "lastUpdatedDate",
-            "#contents": "contents",
+            "#articleId": "articleId",
+            "#author": "author",
         ]
         queryExpression.expressionAttributeValues = [
             ":userId": AWSIdentityManager.defaultIdentityManager().identityId!,
-            ":lastUpdatedDate": 1111500000,
-            ":contents": "demo-contents-500000",
+            ":articleId": "demo-articleId-500000",
+            ":author": "demo-author-500000",
         ]
         
 
-        objectMapper.query(Graffiti.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+        objectMapper.query(News.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                completionHandler(response: response, error: error)
+            })
+        })
+    }
+}
+
+class NewsCategories: NSObject, Index {
+    
+    var indexName: String? {
+
+        return "Categories"
+    }
+    
+    func supportedOperations() -> [String] {
+        return [
+            QueryWithPartitionKey,
+            QueryWithPartitionKeyAndFilter,
+            QueryWithPartitionKeyAndSortKey,
+            QueryWithPartitionKeyAndSortKeyAndFilter,
+        ]
+    }
+    
+    func queryWithPartitionKeyDescription() -> String {
+        return "Find all items with category = \("demo-category-3")."
+    }
+    
+    func queryWithPartitionKeyWithCompletionHandler(completionHandler: (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void) {
+        let objectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let queryExpression = AWSDynamoDBQueryExpression()
+        
+
+        queryExpression.indexName = "Categories"
+        queryExpression.keyConditionExpression = "#category = :category"
+        queryExpression.expressionAttributeNames = ["#category": "category",]
+        queryExpression.expressionAttributeValues = [":category": "demo-category-3",]
+
+        objectMapper.query(News.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                completionHandler(response: response, error: error)
+            })
+        })
+    }
+    
+    func queryWithPartitionKeyAndFilterDescription() -> String {
+        return "Find all items with category = \("demo-category-3") and articleId > \("demo-articleId-500000")."
+    }
+    
+    func queryWithPartitionKeyAndFilterWithCompletionHandler(completionHandler: (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void) {
+        let objectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let queryExpression = AWSDynamoDBQueryExpression()
+        
+
+        queryExpression.indexName = "Categories"
+        queryExpression.keyConditionExpression = "#category = :category"
+        queryExpression.filterExpression = "#articleId > :articleId"
+        queryExpression.expressionAttributeNames = [
+            "#category": "category",
+            "#articleId": "articleId",
+        ]
+        queryExpression.expressionAttributeValues = [
+            ":category": "demo-category-3",
+            ":articleId": "demo-articleId-500000",
+        ]
+        
+
+        objectMapper.query(News.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                completionHandler(response: response, error: error)
+            })
+        })
+    }
+    
+    func queryWithPartitionKeyAndSortKeyDescription() -> String {
+        return "Find all items with category = \("demo-category-3") and creationDate < \(1111500000)."
+    }
+    
+    func queryWithPartitionKeyAndSortKeyWithCompletionHandler(completionHandler: (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void) {
+        let objectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let queryExpression = AWSDynamoDBQueryExpression()
+        
+
+        queryExpression.indexName = "Categories"
+        queryExpression.keyConditionExpression = "#category = :category AND #creationDate < :creationDate"
+        queryExpression.expressionAttributeNames = [
+            "#category": "category",
+            "#creationDate": "creationDate",
+        ]
+        queryExpression.expressionAttributeValues = [
+            ":category": "demo-category-3",
+            ":creationDate": 1111500000,
+        ]
+        
+
+        objectMapper.query(News.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
+            dispatch_async(dispatch_get_main_queue(), {
+                completionHandler(response: response, error: error)
+            })
+        })
+    }
+    
+    func queryWithPartitionKeyAndSortKeyAndFilterDescription() -> String {
+        return "Find all items with category = \("demo-category-3"), creationDate < \(1111500000), and articleId > \("demo-articleId-500000")."
+    }
+    
+    func queryWithPartitionKeyAndSortKeyAndFilterWithCompletionHandler(completionHandler: (response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void) {
+        let objectMapper = AWSDynamoDBObjectMapper.defaultDynamoDBObjectMapper()
+        let queryExpression = AWSDynamoDBQueryExpression()
+        
+
+        queryExpression.indexName = "Categories"
+        queryExpression.keyConditionExpression = "#category = :category AND #creationDate < :creationDate"
+        queryExpression.filterExpression = "#articleId > :articleId"
+        queryExpression.expressionAttributeNames = [
+            "#category": "category",
+            "#creationDate": "creationDate",
+            "#articleId": "articleId",
+        ]
+        queryExpression.expressionAttributeValues = [
+            ":category": "demo-category-3",
+            ":creationDate": 1111500000,
+            ":articleId": "demo-articleId-500000",
+        ]
+        
+
+        objectMapper.query(News.self, expression: queryExpression, completionHandler: {(response: AWSDynamoDBPaginatedOutput?, error: NSError?) -> Void in
             dispatch_async(dispatch_get_main_queue(), {
                 completionHandler(response: response, error: error)
             })

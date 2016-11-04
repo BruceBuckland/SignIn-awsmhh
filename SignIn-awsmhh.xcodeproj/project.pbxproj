@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		4C51DB5C5DB58EF7D24C5686 /* Pods_MySampleApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4946DBB1A29D37D3D5D088AE /* Pods_MySampleApp.framework */; };
+		96A4BB25F809CFB027D0FE0C /* Pods_Dom.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9958A399FF4971073B93BE0E /* Pods_Dom.framework */; };
 		E50F974F1DCAE6DC00D71D5A /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212341DCACCA300FFA2D7 /* AWSCore.framework */; };
 		E50F97511DCAE6DC00D71D5A /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212351DCACCA300FFA2D7 /* AWSDynamoDB.framework */; };
 		E50F97571DCAE6DC00D71D5A /* AWSS3.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212381DCACCA300FFA2D7 /* AWSS3.framework */; };
@@ -41,7 +42,6 @@
 		E53211F21DCACB3300FFA2D7 /* Podfile in Resources */ = {isa = PBXBuildFile; fileRef = E5CB38271DB3629400F6E646 /* Podfile */; };
 		E53211F31DCACB3300FFA2D7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37FA1DB35F2600F6E646 /* .gitignore */; };
 		E53211F51DCACB3300FFA2D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37F11DB35F0A00F6E646 /* LaunchScreen.storyboard */; };
-		E532124C1DCACCA300FFA2D7 /* Graffiti.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212031DCACCA300FFA2D7 /* Graffiti.swift */; };
 		E532124D1DCACCA300FFA2D7 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212051DCACCA300FFA2D7 /* AppDelegate.swift */; };
 		E532124E1DCACCA300FFA2D7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E53212061DCACCA300FFA2D7 /* Images.xcassets */; };
 		E532124F1DCACCA300FFA2D7 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53212071DCACCA300FFA2D7 /* Launch Screen.storyboard */; };
@@ -52,19 +52,9 @@
 		E53212551DCACCA300FFA2D7 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212101DCACCA300FFA2D7 /* UtilityFunctions.swift */; };
 		E53212561DCACCA300FFA2D7 /* AppAnalytics.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53212131DCACCA300FFA2D7 /* AppAnalytics.storyboard */; };
 		E53212571DCACCA300FFA2D7 /* AppAnalyticsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212141DCACCA300FFA2D7 /* AppAnalyticsViewController.swift */; };
-		E53212581DCACCA300FFA2D7 /* CloudLogic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53212161DCACCA300FFA2D7 /* CloudLogic.storyboard */; };
-		E53212591DCACCA300FFA2D7 /* CloudLogicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212171DCACCA300FFA2D7 /* CloudLogicViewController.swift */; };
 		E532125A1DCACCA300FFA2D7 /* ContentDelivery.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53212191DCACCA300FFA2D7 /* ContentDelivery.storyboard */; };
 		E532125B1DCACCA300FFA2D7 /* ContentDeliveryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532121A1DCACCA300FFA2D7 /* ContentDeliveryViewController.swift */; };
 		E532125C1DCACCA300FFA2D7 /* DemoFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532121B1DCACCA300FFA2D7 /* DemoFeature.swift */; };
-		E532125D1DCACCA300FFA2D7 /* GraffitiTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532121D1DCACCA300FFA2D7 /* GraffitiTable.swift */; };
-		E532125E1DCACCA300FFA2D7 /* NoSQLDatabase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E532121E1DCACCA300FFA2D7 /* NoSQLDatabase.storyboard */; };
-		E532125F1DCACCA300FFA2D7 /* NoSQLModelHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E532121F1DCACCA300FFA2D7 /* NoSQLModelHelpers.swift */; };
-		E53212601DCACCA300FFA2D7 /* NoSQLQueryResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212201DCACCA300FFA2D7 /* NoSQLQueryResultViewController.swift */; };
-		E53212611DCACCA300FFA2D7 /* NoSQLSampleDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212211DCACCA300FFA2D7 /* NoSQLSampleDataGenerator.swift */; };
-		E53212621DCACCA300FFA2D7 /* NoSQLTableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212221DCACCA300FFA2D7 /* NoSQLTableFactory.swift */; };
-		E53212631DCACCA300FFA2D7 /* NoSQLTableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212231DCACCA300FFA2D7 /* NoSQLTableListViewController.swift */; };
-		E53212641DCACCA300FFA2D7 /* NoSQLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212241DCACCA300FFA2D7 /* NoSQLTableViewController.swift */; };
 		E53212651DCACCA300FFA2D7 /* UserDataStorage.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53212261DCACCA300FFA2D7 /* UserDataStorage.storyboard */; };
 		E53212661DCACCA300FFA2D7 /* UserDataStorageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E53212271DCACCA300FFA2D7 /* UserDataStorageViewController.swift */; };
 		E53212671DCACCA300FFA2D7 /* UserFiles.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E53212291DCACCA300FFA2D7 /* UserFiles.storyboard */; };
@@ -82,8 +72,32 @@
 		E532127C1DCACCA300FFA2D7 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E53212451DCACCA300FFA2D7 /* GoogleSignIn.bundle */; };
 		E532127D1DCACCA300FFA2D7 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212461DCACCA300FFA2D7 /* GoogleSignIn.framework */; };
 		E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */; };
+		E55B88231DCC518100E437ED /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B88221DCC518100E437ED /* News.swift */; };
+		E55B88311DCC52B500E437ED /* CloudLogic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55B88251DCC52B500E437ED /* CloudLogic.storyboard */; };
+		E55B88321DCC52B500E437ED /* CloudLogicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B88261DCC52B500E437ED /* CloudLogicViewController.swift */; };
+		E55B88331DCC52B500E437ED /* GraffitiTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B88281DCC52B500E437ED /* GraffitiTable.swift */; };
+		E55B88341DCC52B500E437ED /* NewsTable.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B88291DCC52B500E437ED /* NewsTable.swift */; };
+		E55B88351DCC52B500E437ED /* NoSQLDatabase.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55B882A1DCC52B500E437ED /* NoSQLDatabase.storyboard */; };
+		E55B88361DCC52B500E437ED /* NoSQLModelHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B882B1DCC52B500E437ED /* NoSQLModelHelpers.swift */; };
+		E55B88371DCC52B500E437ED /* NoSQLQueryResultViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B882C1DCC52B500E437ED /* NoSQLQueryResultViewController.swift */; };
+		E55B88381DCC52B500E437ED /* NoSQLSampleDataGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B882D1DCC52B500E437ED /* NoSQLSampleDataGenerator.swift */; };
+		E55B88391DCC52B500E437ED /* NoSQLTableFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B882E1DCC52B500E437ED /* NoSQLTableFactory.swift */; };
+		E55B883A1DCC52B500E437ED /* NoSQLTableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B882F1DCC52B500E437ED /* NoSQLTableListViewController.swift */; };
+		E55B883B1DCC52B500E437ED /* NoSQLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B88301DCC52B500E437ED /* NoSQLTableViewController.swift */; };
+		E55B883D1DCC5F5E00E437ED /* Graffiti.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B883C1DCC5F5E00E437ED /* Graffiti.swift */; };
 		E587A18B1DCAF53800E13E81 /* UserIdentity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E587A18A1DCAF53800E13E81 /* UserIdentity.storyboard */; };
-		E587A18D1DCB04C600E13E81 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E587A18C1DCB04C600E13E81 /* Info.plist */; };
+		E587A1961DCB9D3100E13E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587A1951DCB9D3100E13E81 /* AppDelegate.swift */; };
+		E587A1981DCB9D3100E13E81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587A1971DCB9D3100E13E81 /* ViewController.swift */; };
+		E587A19B1DCB9D3100E13E81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E587A1991DCB9D3100E13E81 /* Main.storyboard */; };
+		E587A19D1DCB9D3100E13E81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E587A19C1DCB9D3100E13E81 /* Assets.xcassets */; };
+		E587A1A01DCB9D3100E13E81 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E587A19E1DCB9D3100E13E81 /* LaunchScreen.storyboard */; };
+		E587A1A51DCBA10100E13E81 /* AWSMobileClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382E1DB3654500F6E646 /* AWSMobileClient.swift */; };
+		E587A1A61DCBA10100E13E81 /* AWSCUPIdPSignInProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382B1DB3630900F6E646 /* AWSCUPIdPSignInProvider.swift */; };
+		E587A1A71DCBA10100E13E81 /* AWSKeys.xcconfig in Resources */ = {isa = PBXBuildFile; fileRef = E5CB38021DB35F9300F6E646 /* AWSKeys.xcconfig */; };
+		E587A1A91DCBA24C00E13E81 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E587A1A81DCBA24C00E13E81 /* AWSCore.framework */; };
+		E587A1AD1DCBA3D900E13E81 /* AWSIdentityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E532118F1DCA6CC700FFA2D7 /* AWSIdentityManager.m */; };
+		E587A1AE1DCBA3E700E13E81 /* AWSFacebookSignInProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E53211961DCA6CC700FFA2D7 /* AWSFacebookSignInProvider.m */; };
+		E587A1AF1DCBA3EC00E13E81 /* AWSGoogleSignInProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E53211981DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.m */; };
 		E5BA19341DCADD8200F2F8A9 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212341DCACCA300FFA2D7 /* AWSCore.framework */; };
 		E5BA19351DCADD8200F2F8A9 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212351DCACCA300FFA2D7 /* AWSDynamoDB.framework */; };
 		E5BA19361DCADD8200F2F8A9 /* AWSLambda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212361DCACCA300FFA2D7 /* AWSLambda.framework */; };
@@ -112,11 +126,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		059274BE4BA3ECB9E6834BBE /* Pods-Dom.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dom.release.xcconfig"; path = "Pods/Target Support Files/Pods-Dom/Pods-Dom.release.xcconfig"; sourceTree = "<group>"; };
 		2282092F783D435651DB32B0 /* Pods-MySampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		274D360013F9370268E41195 /* Pods_SignIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4946DBB1A29D37D3D5D088AE /* Pods_MySampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn_awsmhh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DEEE843184B1701F07123C /* Pods-MySampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.release.xcconfig"; sourceTree = "<group>"; };
+		9958A399FF4971073B93BE0E /* Pods_Dom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		A4F6FEAF6DC21CA002E3AAC7 /* Pods-Dom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dom/Pods-Dom.debug.xcconfig"; sourceTree = "<group>"; };
 		D34A2A2B5225E8E8FA308D9C /* Pods-SignIn.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SignIn.debug.xcconfig"; path = "Pods/Target Support Files/Pods-SignIn/Pods-SignIn.debug.xcconfig"; sourceTree = "<group>"; };
 		E50F976E1DCAE75100D71D5A /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
 		E50F97701DCAE75F00D71D5A /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
@@ -138,10 +155,7 @@
 		E532119A1DCA6CC700FFA2D7 /* AWSSignInProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSignInProvider.h; sourceTree = "<group>"; };
 		E532119C1DCA6CC700FFA2D7 /* AWSUserFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSUserFileManager.h; sourceTree = "<group>"; };
 		E532119D1DCA6CC700FFA2D7 /* AWSUserFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSUserFileManager.m; sourceTree = "<group>"; };
-		E53211D01DCACABD00FFA2D7 /* SignIn copy-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SignIn copy-Info.plist"; path = "/Users/bhb/Developer/BruceBuckland/SignIn-awsmhh/SignIn copy-Info.plist"; sourceTree = "<absolute>"; };
 		E53211FB1DCACB3300FFA2D7 /* MySampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MySampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		E53211FC1DCACB3400FFA2D7 /* SignIn copy2-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = "SignIn copy2-Info.plist"; path = "/Users/bhb/Developer/BruceBuckland/SignIn-awsmhh/SignIn copy2-Info.plist"; sourceTree = "<absolute>"; };
-		E53212031DCACCA300FFA2D7 /* Graffiti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graffiti.swift; sourceTree = "<group>"; };
 		E53212051DCACCA300FFA2D7 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		E53212061DCACCA300FFA2D7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E53212071DCACCA300FFA2D7 /* Launch Screen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -152,19 +166,9 @@
 		E53212101DCACCA300FFA2D7 /* UtilityFunctions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		E53212131DCACCA300FFA2D7 /* AppAnalytics.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = AppAnalytics.storyboard; sourceTree = "<group>"; };
 		E53212141DCACCA300FFA2D7 /* AppAnalyticsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppAnalyticsViewController.swift; sourceTree = "<group>"; };
-		E53212161DCACCA300FFA2D7 /* CloudLogic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CloudLogic.storyboard; sourceTree = "<group>"; };
-		E53212171DCACCA300FFA2D7 /* CloudLogicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudLogicViewController.swift; sourceTree = "<group>"; };
 		E53212191DCACCA300FFA2D7 /* ContentDelivery.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ContentDelivery.storyboard; sourceTree = "<group>"; };
 		E532121A1DCACCA300FFA2D7 /* ContentDeliveryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentDeliveryViewController.swift; sourceTree = "<group>"; };
 		E532121B1DCACCA300FFA2D7 /* DemoFeature.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DemoFeature.swift; sourceTree = "<group>"; };
-		E532121D1DCACCA300FFA2D7 /* GraffitiTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraffitiTable.swift; sourceTree = "<group>"; };
-		E532121E1DCACCA300FFA2D7 /* NoSQLDatabase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NoSQLDatabase.storyboard; sourceTree = "<group>"; };
-		E532121F1DCACCA300FFA2D7 /* NoSQLModelHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLModelHelpers.swift; sourceTree = "<group>"; };
-		E53212201DCACCA300FFA2D7 /* NoSQLQueryResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLQueryResultViewController.swift; sourceTree = "<group>"; };
-		E53212211DCACCA300FFA2D7 /* NoSQLSampleDataGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLSampleDataGenerator.swift; sourceTree = "<group>"; };
-		E53212221DCACCA300FFA2D7 /* NoSQLTableFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLTableFactory.swift; sourceTree = "<group>"; };
-		E53212231DCACCA300FFA2D7 /* NoSQLTableListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLTableListViewController.swift; sourceTree = "<group>"; };
-		E53212241DCACCA300FFA2D7 /* NoSQLTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLTableViewController.swift; sourceTree = "<group>"; };
 		E53212261DCACCA300FFA2D7 /* UserDataStorage.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserDataStorage.storyboard; sourceTree = "<group>"; };
 		E53212271DCACCA300FFA2D7 /* UserDataStorageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserDataStorageViewController.swift; sourceTree = "<group>"; };
 		E53212291DCACCA300FFA2D7 /* UserFiles.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserFiles.storyboard; sourceTree = "<group>"; };
@@ -193,8 +197,31 @@
 		E53212481DCACCA300FFA2D7 /* GoogleUtilities.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = GoogleUtilities.framework; sourceTree = "<group>"; };
 		E53212491DCACCA300FFA2D7 /* MySampleApp.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = MySampleApp.entitlements; sourceTree = "<group>"; };
 		E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
+		E55B88221DCC518100E437ED /* News.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = News.swift; sourceTree = "<group>"; };
+		E55B88251DCC52B500E437ED /* CloudLogic.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = CloudLogic.storyboard; sourceTree = "<group>"; };
+		E55B88261DCC52B500E437ED /* CloudLogicViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CloudLogicViewController.swift; sourceTree = "<group>"; };
+		E55B88281DCC52B500E437ED /* GraffitiTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GraffitiTable.swift; sourceTree = "<group>"; };
+		E55B88291DCC52B500E437ED /* NewsTable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTable.swift; sourceTree = "<group>"; };
+		E55B882A1DCC52B500E437ED /* NoSQLDatabase.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = NoSQLDatabase.storyboard; sourceTree = "<group>"; };
+		E55B882B1DCC52B500E437ED /* NoSQLModelHelpers.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLModelHelpers.swift; sourceTree = "<group>"; };
+		E55B882C1DCC52B500E437ED /* NoSQLQueryResultViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLQueryResultViewController.swift; sourceTree = "<group>"; };
+		E55B882D1DCC52B500E437ED /* NoSQLSampleDataGenerator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLSampleDataGenerator.swift; sourceTree = "<group>"; };
+		E55B882E1DCC52B500E437ED /* NoSQLTableFactory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLTableFactory.swift; sourceTree = "<group>"; };
+		E55B882F1DCC52B500E437ED /* NoSQLTableListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLTableListViewController.swift; sourceTree = "<group>"; };
+		E55B88301DCC52B500E437ED /* NoSQLTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLTableViewController.swift; sourceTree = "<group>"; };
+		E55B883C1DCC5F5E00E437ED /* Graffiti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graffiti.swift; sourceTree = "<group>"; };
 		E587A18A1DCAF53800E13E81 /* UserIdentity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserIdentity.storyboard; sourceTree = "<group>"; };
 		E587A18C1DCB04C600E13E81 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E587A1931DCB9D3100E13E81 /* Dom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dom.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		E587A1951DCB9D3100E13E81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		E587A1971DCB9D3100E13E81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		E587A19A1DCB9D3100E13E81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		E587A19C1DCB9D3100E13E81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		E587A19F1DCB9D3100E13E81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		E587A1A11DCB9D3100E13E81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		E587A1A81DCBA24C00E13E81 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = "../../../Library/Developer/Xcode/DerivedData/SignIn-awsmhh-foggkucsmenkvmebhddwjugylciu/Build/Products/Debug-iphonesimulator/AWSCore/AWSCore.framework"; sourceTree = "<group>"; };
+		E587A1AA1DCBA25400E13E81 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = "../../../Library/Developer/Xcode/DerivedData/SignIn-awsmhh-foggkucsmenkvmebhddwjugylciu/Build/Products/Debug-iphonesimulator/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework"; sourceTree = "<group>"; };
+		E587A1AC1DCBA31100E13E81 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
 		E58B54FA1DC565E300E381F5 /* AWSGithubSignInProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWSGithubSignInProvider.swift; path = "SignIn-awsmhh/AWSGithubSignInProvider.swift"; sourceTree = "<group>"; };
 		E5C5480E1DBB494E00816386 /* cognito diagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "cognito diagram.pdf"; sourceTree = "<group>"; };
 		E5CB37E51DB35F0A00F6E646 /* SignIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -251,6 +278,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		E587A1901DCB9D3100E13E81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E587A1A91DCBA24C00E13E81 /* AWSCore.framework in Frameworks */,
+				96A4BB25F809CFB027D0FE0C /* Pods_Dom.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		E5CB37E21DB35F0A00F6E646 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -270,11 +306,14 @@
 		0C3EE8AFC8B9BE793523355E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E587A1AA1DCBA25400E13E81 /* AWSCognitoIdentityProvider.framework */,
+				E587A1A81DCBA24C00E13E81 /* AWSCore.framework */,
 				E50F97701DCAE75F00D71D5A /* libsqlite3.tbd */,
 				E50F976E1DCAE75100D71D5A /* libz.tbd */,
 				6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */,
 				4946DBB1A29D37D3D5D088AE /* Pods_MySampleApp.framework */,
 				274D360013F9370268E41195 /* Pods_SignIn.framework */,
+				9958A399FF4971073B93BE0E /* Pods_Dom.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -286,6 +325,8 @@
 				92DEEE843184B1701F07123C /* Pods-MySampleApp.release.xcconfig */,
 				D34A2A2B5225E8E8FA308D9C /* Pods-SignIn.debug.xcconfig */,
 				F8C0A6D9E0FED611F7EDEC30 /* Pods-SignIn.release.xcconfig */,
+				A4F6FEAF6DC21CA002E3AAC7 /* Pods-Dom.debug.xcconfig */,
+				059274BE4BA3ECB9E6834BBE /* Pods-Dom.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -395,7 +436,8 @@
 		E53212021DCACCA300FFA2D7 /* NoSQL */ = {
 			isa = PBXGroup;
 			children = (
-				E53212031DCACCA300FFA2D7 /* Graffiti.swift */,
+				E55B883C1DCC5F5E00E437ED /* Graffiti.swift */,
+				E55B88221DCC518100E437ED /* News.swift */,
 			);
 			path = NoSQL;
 			sourceTree = "<group>";
@@ -443,11 +485,11 @@
 		E53212111DCACCA300FFA2D7 /* Demo */ = {
 			isa = PBXGroup;
 			children = (
+				E55B88241DCC52B500E437ED /* CloudLogic */,
+				E55B88271DCC52B500E437ED /* NoSQL */,
 				E53212121DCACCA300FFA2D7 /* AppAnalytics */,
-				E53212151DCACCA300FFA2D7 /* CloudLogic */,
 				E53212181DCACCA300FFA2D7 /* ContentDelivery */,
 				E532121B1DCACCA300FFA2D7 /* DemoFeature.swift */,
-				E532121C1DCACCA300FFA2D7 /* NoSQL */,
 				E53212251DCACCA300FFA2D7 /* UserDataStorage */,
 				E53212281DCACCA300FFA2D7 /* UserFiles */,
 				E532122B1DCACCA300FFA2D7 /* UserIdentity */,
@@ -465,15 +507,6 @@
 			path = AppAnalytics;
 			sourceTree = "<group>";
 		};
-		E53212151DCACCA300FFA2D7 /* CloudLogic */ = {
-			isa = PBXGroup;
-			children = (
-				E53212161DCACCA300FFA2D7 /* CloudLogic.storyboard */,
-				E53212171DCACCA300FFA2D7 /* CloudLogicViewController.swift */,
-			);
-			path = CloudLogic;
-			sourceTree = "<group>";
-		};
 		E53212181DCACCA300FFA2D7 /* ContentDelivery */ = {
 			isa = PBXGroup;
 			children = (
@@ -481,21 +514,6 @@
 				E532121A1DCACCA300FFA2D7 /* ContentDeliveryViewController.swift */,
 			);
 			path = ContentDelivery;
-			sourceTree = "<group>";
-		};
-		E532121C1DCACCA300FFA2D7 /* NoSQL */ = {
-			isa = PBXGroup;
-			children = (
-				E532121D1DCACCA300FFA2D7 /* GraffitiTable.swift */,
-				E532121E1DCACCA300FFA2D7 /* NoSQLDatabase.storyboard */,
-				E532121F1DCACCA300FFA2D7 /* NoSQLModelHelpers.swift */,
-				E53212201DCACCA300FFA2D7 /* NoSQLQueryResultViewController.swift */,
-				E53212211DCACCA300FFA2D7 /* NoSQLSampleDataGenerator.swift */,
-				E53212221DCACCA300FFA2D7 /* NoSQLTableFactory.swift */,
-				E53212231DCACCA300FFA2D7 /* NoSQLTableListViewController.swift */,
-				E53212241DCACCA300FFA2D7 /* NoSQLTableViewController.swift */,
-			);
-			path = NoSQL;
 			sourceTree = "<group>";
 		};
 		E53212251DCACCA300FFA2D7 /* UserDataStorage */ = {
@@ -603,9 +621,48 @@
 			name = "Common-Sources";
 			sourceTree = "<group>";
 		};
+		E55B88241DCC52B500E437ED /* CloudLogic */ = {
+			isa = PBXGroup;
+			children = (
+				E55B88251DCC52B500E437ED /* CloudLogic.storyboard */,
+				E55B88261DCC52B500E437ED /* CloudLogicViewController.swift */,
+			);
+			path = CloudLogic;
+			sourceTree = "<group>";
+		};
+		E55B88271DCC52B500E437ED /* NoSQL */ = {
+			isa = PBXGroup;
+			children = (
+				E55B88281DCC52B500E437ED /* GraffitiTable.swift */,
+				E55B88291DCC52B500E437ED /* NewsTable.swift */,
+				E55B882A1DCC52B500E437ED /* NoSQLDatabase.storyboard */,
+				E55B882B1DCC52B500E437ED /* NoSQLModelHelpers.swift */,
+				E55B882C1DCC52B500E437ED /* NoSQLQueryResultViewController.swift */,
+				E55B882D1DCC52B500E437ED /* NoSQLSampleDataGenerator.swift */,
+				E55B882E1DCC52B500E437ED /* NoSQLTableFactory.swift */,
+				E55B882F1DCC52B500E437ED /* NoSQLTableListViewController.swift */,
+				E55B88301DCC52B500E437ED /* NoSQLTableViewController.swift */,
+			);
+			path = NoSQL;
+			sourceTree = "<group>";
+		};
+		E587A1941DCB9D3100E13E81 /* Dom */ = {
+			isa = PBXGroup;
+			children = (
+				E587A1951DCB9D3100E13E81 /* AppDelegate.swift */,
+				E587A1971DCB9D3100E13E81 /* ViewController.swift */,
+				E587A1991DCB9D3100E13E81 /* Main.storyboard */,
+				E587A19C1DCB9D3100E13E81 /* Assets.xcassets */,
+				E587A19E1DCB9D3100E13E81 /* LaunchScreen.storyboard */,
+				E587A1A11DCB9D3100E13E81 /* Info.plist */,
+			);
+			path = Dom;
+			sourceTree = "<group>";
+		};
 		E5CB37DC1DB35F0A00F6E646 = {
 			isa = PBXGroup;
 			children = (
+				E587A1AC1DCBA31100E13E81 /* SignIn-awsmhh-Bridging-Header.h */,
 				E53211851DCA6CC700FFA2D7 /* AWSMobileHubHelper */,
 				E5C5480E1DBB494E00816386 /* cognito diagram.pdf */,
 				E5CB38271DB3629400F6E646 /* Podfile */,
@@ -614,11 +671,10 @@
 				E53212801DCACD9E00FFA2D7 /* Common-Sources */,
 				E5CB37E71DB35F0A00F6E646 /* SignIn-Sources */,
 				E53211FD1DCACB6700FFA2D7 /* MySampleApp-sources */,
+				E587A1941DCB9D3100E13E81 /* Dom */,
 				E5CB37E61DB35F0A00F6E646 /* Products */,
 				830AD8F738DDF768A0CAA644 /* Pods */,
 				0C3EE8AFC8B9BE793523355E /* Frameworks */,
-				E53211D01DCACABD00FFA2D7 /* SignIn copy-Info.plist */,
-				E53211FC1DCACB3400FFA2D7 /* SignIn copy2-Info.plist */,
 			);
 			sourceTree = "<group>";
 		};
@@ -627,6 +683,7 @@
 			children = (
 				E5CB37E51DB35F0A00F6E646 /* SignIn.app */,
 				E53211FB1DCACB3300FFA2D7 /* MySampleApp.app */,
+				E587A1931DCB9D3100E13E81 /* Dom.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -690,6 +747,26 @@
 			productReference = E53211FB1DCACB3300FFA2D7 /* MySampleApp.app */;
 			productType = "com.apple.product-type.application";
 		};
+		E587A1921DCB9D3100E13E81 /* Dom */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = E587A1A41DCB9D3100E13E81 /* Build configuration list for PBXNativeTarget "Dom" */;
+			buildPhases = (
+				1C7C3BFE4C7E5D5532D6B620 /* [CP] Check Pods Manifest.lock */,
+				E587A18F1DCB9D3100E13E81 /* Sources */,
+				E587A1901DCB9D3100E13E81 /* Frameworks */,
+				E587A1911DCB9D3100E13E81 /* Resources */,
+				392F778E503D8A887A050384 /* [CP] Embed Pods Frameworks */,
+				84BFCF2DE1A0D0A4430659FF /* [CP] Copy Pods Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Dom;
+			productName = Dom;
+			productReference = E587A1931DCB9D3100E13E81 /* Dom.app */;
+			productType = "com.apple.product-type.application";
+		};
 		E5CB37E41DB35F0A00F6E646 /* SignIn */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = E5CB37F71DB35F0A00F6E646 /* Build configuration list for PBXNativeTarget "SignIn" */;
@@ -723,6 +800,11 @@
 					E53211D11DCACB3300FFA2D7 = {
 						DevelopmentTeam = AD9YE96MF3;
 					};
+					E587A1921DCB9D3100E13E81 = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = AD9YE96MF3;
+						ProvisioningStyle = Automatic;
+					};
 					E5CB37E41DB35F0A00F6E646 = {
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = AD9YE96MF3;
@@ -751,6 +833,7 @@
 			targets = (
 				E5CB37E41DB35F0A00F6E646 /* SignIn */,
 				E53211D11DCACB3300FFA2D7 /* MySampleApp */,
+				E587A1921DCB9D3100E13E81 /* Dom */,
 			);
 		};
 /* End PBXProject section */
@@ -760,6 +843,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55B88311DCC52B500E437ED /* CloudLogic.storyboard in Resources */,
 				E532124F1DCACCA300FFA2D7 /* Launch Screen.storyboard in Resources */,
 				E53212671DCACCA300FFA2D7 /* UserFiles.storyboard in Resources */,
 				E532124E1DCACCA300FFA2D7 /* Images.xcassets in Resources */,
@@ -768,9 +852,7 @@
 				E53212521DCACCA300FFA2D7 /* SignIn.storyboard in Resources */,
 				E532127C1DCACCA300FFA2D7 /* GoogleSignIn.bundle in Resources */,
 				E53212751DCACCA300FFA2D7 /* NOTICE in Resources */,
-				E532125E1DCACCA300FFA2D7 /* NoSQLDatabase.storyboard in Resources */,
 				E53212561DCACCA300FFA2D7 /* AppAnalytics.storyboard in Resources */,
-				E53212581DCACCA300FFA2D7 /* CloudLogic.storyboard in Resources */,
 				E532126C1DCACCA300FFA2D7 /* UserSettings.storyboard in Resources */,
 				E53212501DCACCA300FFA2D7 /* Main.storyboard in Resources */,
 				E53211F31DCACB3300FFA2D7 /* .gitignore in Resources */,
@@ -778,9 +860,20 @@
 				E53211F51DCACB3300FFA2D7 /* LaunchScreen.storyboard in Resources */,
 				E53212651DCACCA300FFA2D7 /* UserDataStorage.storyboard in Resources */,
 				E53212761DCACCA300FFA2D7 /* CheckXcodeVersion.sh in Resources */,
+				E55B88351DCC52B500E437ED /* NoSQLDatabase.storyboard in Resources */,
 				E53212731DCACCA300FFA2D7 /* Amazon_Software_License.txt in Resources */,
 				E587A18B1DCAF53800E13E81 /* UserIdentity.storyboard in Resources */,
-				E587A18D1DCB04C600E13E81 /* Info.plist in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E587A1911DCB9D3100E13E81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E587A1A01DCB9D3100E13E81 /* LaunchScreen.storyboard in Resources */,
+				E587A19D1DCB9D3100E13E81 /* Assets.xcassets in Resources */,
+				E587A1A71DCBA10100E13E81 /* AWSKeys.xcconfig in Resources */,
+				E587A19B1DCB9D3100E13E81 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -799,6 +892,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		1C7C3BFE4C7E5D5532D6B620 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 		1D7FF5A72B304174F86DB307 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -829,6 +937,21 @@
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
+		392F778E503D8A887A050384 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dom/Pods-Dom-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		55A1D85CD1A4F791D8A467FC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -842,6 +965,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-SignIn/Pods-SignIn-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		84BFCF2DE1A0D0A4430659FF /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Dom/Pods-Dom-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E53211D21DCACB3300FFA2D7 /* [CP] Check Pods Manifest.lock */ = {
@@ -896,36 +1034,52 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E55B88371DCC52B500E437ED /* NoSQLQueryResultViewController.swift in Sources */,
+				E55B88331DCC52B500E437ED /* GraffitiTable.swift in Sources */,
 				E53212531DCACCA300FFA2D7 /* SignInViewController.swift in Sources */,
+				E55B88361DCC52B500E437ED /* NoSQLModelHelpers.swift in Sources */,
 				E532124D1DCACCA300FFA2D7 /* AppDelegate.swift in Sources */,
 				E53212511DCACCA300FFA2D7 /* MainViewController.swift in Sources */,
 				E53212551DCACCA300FFA2D7 /* UtilityFunctions.swift in Sources */,
 				E532126D1DCACCA300FFA2D7 /* UserSettingsViewController.swift in Sources */,
 				E53211D61DCACB3300FFA2D7 /* AWSCloudLogic.m in Sources */,
-				E53212591DCACCA300FFA2D7 /* CloudLogicViewController.swift in Sources */,
-				E53212621DCACCA300FFA2D7 /* NoSQLTableFactory.swift in Sources */,
 				E53212571DCACCA300FFA2D7 /* AppAnalyticsViewController.swift in Sources */,
 				E532126A1DCACCA300FFA2D7 /* UserIdentityViewController.swift in Sources */,
-				E53212601DCACCA300FFA2D7 /* NoSQLQueryResultViewController.swift in Sources */,
-				E532125F1DCACCA300FFA2D7 /* NoSQLModelHelpers.swift in Sources */,
-				E53212611DCACCA300FFA2D7 /* NoSQLSampleDataGenerator.swift in Sources */,
+				E55B88231DCC518100E437ED /* News.swift in Sources */,
 				E53211D81DCACB3300FFA2D7 /* AWSIdentityManager.m in Sources */,
+				E55B883B1DCC52B500E437ED /* NoSQLTableViewController.swift in Sources */,
+				E55B88391DCC52B500E437ED /* NoSQLTableFactory.swift in Sources */,
 				E532126B1DCACCA300FFA2D7 /* ColorThemeSettings.swift in Sources */,
+				E55B88381DCC52B500E437ED /* NoSQLSampleDataGenerator.swift in Sources */,
 				E532125C1DCACCA300FFA2D7 /* DemoFeature.swift in Sources */,
-				E532125D1DCACCA300FFA2D7 /* GraffitiTable.swift in Sources */,
+				E55B88341DCC52B500E437ED /* NewsTable.swift in Sources */,
 				E53211DB1DCACB3300FFA2D7 /* AWSMobileClient.swift in Sources */,
+				E55B88321DCC52B500E437ED /* CloudLogicViewController.swift in Sources */,
+				E55B883D1DCC5F5E00E437ED /* Graffiti.swift in Sources */,
 				E53211DD1DCACB3300FFA2D7 /* AWSGoogleSignInProvider.m in Sources */,
 				E53211DE1DCACB3300FFA2D7 /* AWSPushManager.m in Sources */,
+				E55B883A1DCC52B500E437ED /* NoSQLTableListViewController.swift in Sources */,
 				E53211E01DCACB3300FFA2D7 /* AWSUserFileManager.m in Sources */,
-				E53212641DCACCA300FFA2D7 /* NoSQLTableViewController.swift in Sources */,
 				E53211E41DCACB3300FFA2D7 /* AWSCUPIdPSignInProvider.swift in Sources */,
 				E53212681DCACCA300FFA2D7 /* UserFilesViewController.swift in Sources */,
-				E532124C1DCACCA300FFA2D7 /* Graffiti.swift in Sources */,
 				E53212661DCACCA300FFA2D7 /* UserDataStorageViewController.swift in Sources */,
-				E53212631DCACCA300FFA2D7 /* NoSQLTableListViewController.swift in Sources */,
 				E53211E61DCACB3300FFA2D7 /* AWSFacebookSignInProvider.m in Sources */,
 				E532125B1DCACCA300FFA2D7 /* ContentDeliveryViewController.swift in Sources */,
 				E53211E81DCACB3300FFA2D7 /* AWSContentManager.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		E587A18F1DCB9D3100E13E81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				E587A1AF1DCBA3EC00E13E81 /* AWSGoogleSignInProvider.m in Sources */,
+				E587A1981DCB9D3100E13E81 /* ViewController.swift in Sources */,
+				E587A1961DCB9D3100E13E81 /* AppDelegate.swift in Sources */,
+				E587A1A51DCBA10100E13E81 /* AWSMobileClient.swift in Sources */,
+				E587A1A61DCBA10100E13E81 /* AWSCUPIdPSignInProvider.swift in Sources */,
+				E587A1AE1DCBA3E700E13E81 /* AWSFacebookSignInProvider.m in Sources */,
+				E587A1AD1DCBA3D900E13E81 /* AWSIdentityManager.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -962,6 +1116,22 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
+		E587A1991DCB9D3100E13E81 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E587A19A1DCB9D3100E13E81 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		E587A19E1DCB9D3100E13E81 /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				E587A19F1DCB9D3100E13E81 /* Base */,
+			);
+			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
 		E5CB37F11DB35F0A00F6E646 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -985,7 +1155,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SignIn-awsmhh",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/framework",
 					"$(PROJECT_DIR)/AmazonAws",
 					"$(PROJECT_DIR)/Sdk/Aws",
 					"$(PROJECT_DIR)/Sdk/Aws/extras",
@@ -1019,7 +1188,6 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/SignIn-awsmhh",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/framework",
 					"$(PROJECT_DIR)/AmazonAws",
 					"$(PROJECT_DIR)/Sdk/Aws",
 					"$(PROJECT_DIR)/Sdk/Aws/extras",
@@ -1036,6 +1204,36 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.odellventures.MySampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(inherited)";
+				SWIFT_VERSION = 2.3;
+			};
+			name = Release;
+		};
+		E587A1A21DCB9D3100E13E81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = A4F6FEAF6DC21CA002E3AAC7 /* Pods-Dom.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AD9YE96MF3;
+				INFOPLIST_FILE = Dom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.odellventures.Dom;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 2.3;
+			};
+			name = Debug;
+		};
+		E587A1A31DCB9D3100E13E81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 059274BE4BA3ECB9E6834BBE /* Pods-Dom.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = AD9YE96MF3;
+				INFOPLIST_FILE = Dom/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.odellventures.Dom;
+				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 2.3;
 			};
 			name = Release;
@@ -1206,6 +1404,15 @@
 			buildConfigurations = (
 				E53211F91DCACB3300FFA2D7 /* Debug */,
 				E53211FA1DCACB3300FFA2D7 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		E587A1A41DCB9D3100E13E81 /* Build configuration list for PBXNativeTarget "Dom" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				E587A1A21DCB9D3100E13E81 /* Debug */,
+				E587A1A31DCB9D3100E13E81 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

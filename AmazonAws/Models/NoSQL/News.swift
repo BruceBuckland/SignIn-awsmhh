@@ -1,5 +1,5 @@
 //
-//  Graffiti.swift
+//  News.swift
 //  MySampleApp
 //
 //
@@ -15,17 +15,20 @@ import Foundation
 import UIKit
 import AWSDynamoDB
 
-class Graffiti: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
+class News: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
     var _userId: String?
-    var _lastUpdatedDate: NSNumber?
-    var _contents: String?
-    var _contributors: Set<String>?
-    var _drawingId: String?
+    var _articleId: String?
+    var _author: String?
+    var _category: String?
+    var _content: String?
+    var _creationDate: NSNumber?
+    var _keywords: Set<String>?
+    var _title: String?
     
     class func dynamoDBTableName() -> String {
 
-        return "fullsample-mobilehub-1182182639-Graffiti"
+        return "fullsample-mobilehub-1182182639-News"
     }
     
     class func hashKeyAttribute() -> String {
@@ -35,16 +38,19 @@ class Graffiti: AWSDynamoDBObjectModel, AWSDynamoDBModeling {
     
     class func rangeKeyAttribute() -> String {
 
-        return "_lastUpdatedDate"
+        return "_articleId"
     }
     
     override class func JSONKeyPathsByPropertyKey() -> [NSObject : AnyObject] {
         return [
                "_userId" : "userId",
-               "_lastUpdatedDate" : "lastUpdatedDate",
-               "_contents" : "contents",
-               "_contributors" : "contributors",
-               "_drawingId" : "drawingId",
+               "_articleId" : "articleId",
+               "_author" : "author",
+               "_category" : "category",
+               "_content" : "content",
+               "_creationDate" : "creationDate",
+               "_keywords" : "keywords",
+               "_title" : "title",
         ]
     }
 }

@@ -1,12 +1,21 @@
 # SignIn-awsmhh
 ##### Overview
-SignIn-awsmhh is an example of an AWS User Pools authentication for IOS written in Swift. 
+The SignIn app is an example of an AWS User Pools authentication for IOS written in Swift. 
 - "Cognito Your User Pools" login is implemented
 - Facebook and Google+ login is implemented
 - Signup, Forgot Password and Update Attributes are implemented
 - While some functions require entry of a verification code and that is implemented, if you terminate the app there needs to be a way to enter that code, and that is NOT implemented.
 - MFA (multi-factor authentication) is not implemented.
 - Supports identity linking
+
+MySampleApp
+- This is the source downloaded from MobileHub with most of the capabilities turned on.
+- It uses the same MobileHubHelper as SignIn does.  The nice thing is that this means it has access to all of the capabilities of the modified MobileHubHelper, including identity linking and user pools.
+- Small changes were required to make the code work in this project.
+ - Removed some imports from the source, because I am using a bridging-header.
+ - Changed the MainViewController to make it allow "linking" (which is really just signing in a second time with a different provider)
+ - MySampleApp does not implement the SignUp Forgot Password etc in the sample app, but that would be pretty easy (I did that in the SignIn app)
+ - Changed the SignInViewController to actually log in with User Pools when you type a username and password and click signin.  
 
 
 ##### Background
@@ -78,7 +87,7 @@ PROJECT_CLIENT_ID = < from the Info.plist downloaded when you made a mobile hub 
 - This app uses an AWSSignInProvider class called AWSCUPIdPSignInProvider that allows authentication using Cognito Your User Pools. If you want to write your own AWSSignInProvider for another IdentityProvider this class provides a model
 
 ##### Changes to aws/mobile-hub-helper
-- The following changes were required and have been made. If you want to use user pools or developer identities and/or link identities, these are fixes.  If you want to use only google or facebook, and one at a time these are enhancements.
+- The following changes were required and have been made. If you want to use user pools or developer identities and/or link identities, these are needed fixes.  
     -   Expose the required method completeLogin and allow AWSSignInProvider's to resume sessions when the app restarts (in addition to the hard-coded Google and Facebook). Required to allow a swift AWSSignInManager (without using bridging headers).
     -   Enhancement to provide currentSignInProvider externally to AWSIdentityManager (via the currentSignInProvider and providerKey methods) so that Cognito User Pools providers (and developer providers) can manage signup, signin, update attributes, forgot password etc.  To do those you need to be get at your user pool from within the app (unless you want to do the web redirection approach used by google and facebook (which is unnecessarily complex for developer providers).
     -   The mobile-hub-helper has a hard-coded affinity for Google+ and Facebook.  Only those two providers may resume sessions using AWSIdentityManager. While it is possible to try to go around AWSIdentityManager and AWSMobileClient using appDelegate code, a better solution is to make AWSIdentityManager resume any type of session that any AWSSignInProvider produces. Added a SignInProviderKeyDictionary entry to Info.plist.  This dictionary relates AWSSignInProvider class names to keys stored in NSUserDefaults, instead of just hard coding "Google" and "Facebook".
@@ -86,3 +95,4 @@ PROJECT_CLIENT_ID = < from the Info.plist downloaded when you made a mobile hub 
     -   Added the ability to find out the name of the key in NSUserDefaults (Google, Facebook, and whatever friendly key name you use for User Pools) which is useful for the App being able to tell what Authentication Provider is giving the error (ex: "Login with Google failed Because" rather than "Login failed because")
     -   Added the ability to merge identities. If you set the boolean Info.plist key “Allow Merged Identities” to YES, AWSIdentityManager will maintain an NSDictionary called cachedLogins, which is added to when a new login call is made and which is shortened when a logout call is made.  Then when it returns logins it always returns the loginCache. (This code now works even if identities cannot be merged.  In that case the merge request should be canceled so: the provider is logged out (this removes that new identity that was unmergable from the running app, wipes the keychain, cleans up loginCache and removes the NSUserDefaults session key) and the application goes through a resume process where it starts any remaining sessions (there will always be at least one). 
     -   Modified to reload all the signInProviders that left NSUserDefaults keys, not just one of them as before).  Now maintains a cache of the providers (in addition to a cache of logins). Supports providerKey(signInProvider) method to get current provider key name (a friendly name) for ANY provider (not just the currently active provider).  Use of all of this is demonstrated in the SignIn-awsmhh app.  What this will let us do is improve the above behavior when a login error occurs because identities cannot be be merged, and leave the user authenticated with the prior signInProvider after that rejection (code to do that is in test).
+

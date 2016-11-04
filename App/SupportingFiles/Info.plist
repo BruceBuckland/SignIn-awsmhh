@@ -27,7 +27,7 @@
 				<key>Region</key>
 				<string>us-east-1</string>
 				<key>S3Bucket</key>
-				<string>mhcognito-contentdelivery-mobilehub-1247754423</string>
+				<string>$(CONTENT_MANAGER_S3_BUCKET)</string>
 			</dict>
 		</dict>
 		<key>CredentialsProvider</key>
@@ -95,7 +95,7 @@
 			<key>Default</key>
 			<dict>
 				<key>AppId</key>
-				<string>abd240b466b0417e9c1d017d65856265</string>
+				<string>$(MOBILE_ANALYTICS_APP_ID)</string>
 				<key>Region</key>
 				<string>us-east-1</string>
 			</dict>
@@ -112,7 +112,7 @@
 				<key>Region</key>
 				<string>us-east-1</string>
 				<key>S3Bucket</key>
-				<string>mhcognito-userfiles-mobilehub-1247754423</string>
+				<string>$(USER_FILE_MANAGER_S3_BUCKET)</string>
 			</dict>
 		</dict>
 	</dict>

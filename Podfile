@@ -20,6 +20,9 @@ def mobile_pods
 
 end
 
+target :'Dom' do
+    mobile_pods
+end
 
 target :'SignIn' do
     mobile_pods
