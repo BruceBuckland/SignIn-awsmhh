@@ -44,7 +44,7 @@ class ViewController: UIViewController, AWSCognitoIdentityPasswordAuthentication
         // when we really have an identityId - start processing.
         didCompleteInitializationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSMobileClient.AWSMobileClientDidCompleteInitialization, object: AWSMobileClient.sharedInstance, queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
             
-            print(">>>>> Initialization of AWSIdentityManager complete, we now have an identityId \(AWSIdentityManager.defaultIdentityManager().identityId)")
+            NSLog(">>>>> Initialization of AWSIdentityManager complete, we now have an identityId \(AWSIdentityManager.defaultIdentityManager().identityId)"))
             })
         
         

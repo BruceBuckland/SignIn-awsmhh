@@ -48,26 +48,26 @@ class UserIdentityViewController: UIViewController {
             }
         }
         
-        if let email = identityManager.email {
-            userEMail.text = email
-        } else {
-            userEMail.text = NSLocalizedString("N/A", comment: "Placeholder text for Not Available")
-        }
-        
-        if let phone = identityManager.phone {
-            userPhone.text = phone
-        } else {
-            userPhone.text = NSLocalizedString("N/A", comment: "Placeholder text for Not Available")
-        }
+//        if let email = identityManager.email {
+//            userEMail.text = email
+//        } else {
+//            userEMail.text = NSLocalizedString("N/A", comment: "Placeholder text for Not Available")
+//        }
+//        
+//        if let phone = identityManager.phone {
+//            userPhone.text = phone
+//        } else {
+//            userPhone.text = NSLocalizedString("N/A", comment: "Placeholder text for Not Available")
+//        }
         
         if identityManager.loggedIn {
             authenticator.text = identityManager.providerKey(identityManager.currentSignInProvider as! AWSSignInProvider)
         }
         openSessions.text = ""
         for provider in identityManager.activeProviders() {
-            openSessions.text = openSessions.text! + identityManager.providerKey(provider as! AWSSignInProvider) + " "
+            if authenticator.text != identityManager.providerKey(provider as! AWSSignInProvider) {
+            openSessions.text = openSessions.text! + "(" + identityManager.providerKey(provider as! AWSSignInProvider) + ") "
+            }
         }
-        
-        
     }
 }

@@ -98,7 +98,7 @@ class MainViewController: UIViewController {
         // when we really have an identityId - start processing.
         completeInitializationObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSMobileClient.AWSMobileClientDidCompleteInitialization, object: AWSMobileClient.sharedInstance, queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
             guard let strongSelf = self else { return }
-            print("Initialization of AWSIdentityManager complete, we now have an identityId")
+            NSLog(">>>>> Initialization of AWSIdentityManager complete, we now have an identityId \(AWSIdentityManager.defaultIdentityManager().identityId)")
             strongSelf.refreshInterface("-Complete \(strongSelf.authenticatedBy())")
             })
         setupBarButtonItems()
@@ -266,7 +266,6 @@ class MainViewController: UIViewController {
         } else {
             self.usernameLabel.text = "Guest User"
         }
-        
         
     }
     
