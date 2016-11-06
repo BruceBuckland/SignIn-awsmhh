@@ -35,6 +35,8 @@ class SignInViewController: UIViewController {
     
     
     var didSignInObserver: AnyObject!
+    var customForgotPasswordViewController:UIViewController!
+    var customCreateAccountViewController:UIViewController!
     
     // MARK: - View lifecycle
     
@@ -103,24 +105,42 @@ class SignInViewController: UIViewController {
     // MARK: - Utility Methods
     
     func handleLoginWithSignInProvider(signInProvider: AWSSignInProvider) {
+        
         AWSIdentityManager.defaultIdentityManager().loginWithSignInProvider(signInProvider, completionHandler: {(result: AnyObject?, error: NSError?) -> Void in
             // If no error reported by SignInProvider, discard the sign-in view controller.
             if error == nil {
                 dispatch_async(dispatch_get_main_queue(),{
-                        self.navigationController!.popViewControllerAnimated(true)
+                    self.navigationController!.popViewControllerAnimated(true)
+                })
+            } else {
+                dispatch_async(dispatch_get_main_queue(),{
+                    self.showErrorDialog(AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider), withError: error!)
                 })
             }
-             print("result = \(result), error = \(error)")
+            print("result = \(result), error = \(error)")
+            
         })
     }
-
-    func showErrorDialog(loginProviderName: String, withError error: NSError) {
-         print("\(loginProviderName) failed to sign in w/ error: \(error)")
-        let alertController = UIAlertController(title: NSLocalizedString("Sign-in Provider Sign-In Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("\(loginProviderName) failed to sign in w/ error: \(error)", comment: "Sign-in message structure for sign-in failure."), preferredStyle: .Alert)
-        let doneAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: "Label to cancel sign-in failure."), style: .Cancel, handler: nil)
+    
+    func showAlert(titleText: String, message: String) {
+        var alertController: UIAlertController!
+        alertController = UIAlertController(title: titleText, message: message, preferredStyle: .Alert)
+        let doneAction = UIAlertAction(title: NSLocalizedString("Done", comment: "Label to cancel dialog box."), style: .Cancel, handler: nil)
         alertController.addAction(doneAction)
         presentViewController(alertController, animated: true, completion: nil)
     }
+    
+    func showErrorDialog(loginProviderName: String, withError error: NSError) {
+        print("\(loginProviderName) failed to sign in w/ error: \(error)")
+        if let message = error.userInfo["message"] {
+            showAlert(NSLocalizedString("\(loginProviderName) Sign-in Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("Sign in using \(loginProviderName) failed: \(message)", comment: "Sign-in message structure for sign-in failure."))
+        } else if let message = error.userInfo["NSLocalizedDescription"]{
+            showAlert(NSLocalizedString("\(loginProviderName) Sign-in Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("Sign in using \(loginProviderName) failed: \(message)", comment: "Sign-in message structure for sign-in failure."))
+        } else {
+            showAlert(NSLocalizedString("\(loginProviderName) Sign-In Error", comment: "Sign-in error for sign-in failure."), message: NSLocalizedString("\(loginProviderName) failed to sign in w/ error: \(error)", comment: "Sign-in message structure for sign-in failure."))
+        }
+    }
+    
 
     // MARK: - IBActions
     func handleFacebookLogin() {
@@ -157,18 +177,20 @@ class SignInViewController: UIViewController {
     
     func handleCustomCreateAccount() {
         // Handle Create Account action for custom sign-in here.
-        let alertController = UIAlertController(title: NSLocalizedString("Custom Sign-In Demo", comment: "Label for custom sign-in dialog."), message: NSLocalizedString("This is just a demo of custom sign-in Create Account Button.", comment: "Sign-in message structure for custom sign-in stub."), preferredStyle: .Alert)
-        let doneAction = UIAlertAction(title: NSLocalizedString("Done", comment: "Label to complete stubbed custom sign-in."), style: .Cancel, handler: nil)
-        alertController.addAction(doneAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        if customCreateAccountViewController == nil { // use the same one - or we get multiple observers there
+            let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
+            customCreateAccountViewController = storyboard.instantiateViewControllerWithIdentifier("signUp")
+        }
+        navigationController!.pushViewController(customCreateAccountViewController, animated: true)
     }
     
     func handleCustomForgotPassword() {
         // Handle Forgot Password action for custom sign-in here.
-        let alertController = UIAlertController(title: NSLocalizedString("Custom Sign-In Demo", comment: "Label for custom sign-in dialog."), message: NSLocalizedString("This is just a demo of custom sign-in Forgot Password button.", comment: "Sign-in message structure for custom sign-in stub."), preferredStyle: .Alert)
-        let doneAction = UIAlertAction(title: NSLocalizedString("Done", comment: "Label to complete stubbed custom sign-in."), style: .Cancel, handler: nil)
-        alertController.addAction(doneAction)
-        presentViewController(alertController, animated: true, completion: nil)
+        if customForgotPasswordViewController == nil { // use the same one - or we get multiple observers there
+            let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
+            customForgotPasswordViewController = storyboard.instantiateViewControllerWithIdentifier("signUp")
+        }
+        navigationController!.pushViewController(customForgotPasswordViewController, animated: true)
     }
 
     func anchorViewForFacebook() -> UIView {

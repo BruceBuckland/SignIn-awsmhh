@@ -1,4 +1,5 @@
 # SignIn-awsmhh
+
 ##### Overview
 The SignIn app is an example of an AWS User Pools authentication for IOS written in Swift. 
 - "Cognito Your User Pools" login is implemented
@@ -23,11 +24,10 @@ This app was built to use the far superior mobile-hub-helper framework to replac
 
 ##### What the App does
 The app is written in Swift using AWS Mobile Hub Helper and AWS Mobile Client (from the AWS Mobile Hub). The app has a logged in and a not logged in state.  Both should be allowed (in your cognito console federated identity choose -allow unauthenticated identities). The app will allow login using Facebook, Google and a custom User Pool that you create in Cognito User Pools. You can switch between identities  or link identities.  The app allows you to Sign Out (which simply signs you out of one SignInProvider account, possibly leaving you logged in as the same identity on another linked account).  The app also allows you to Sign Out of ALL accounts . The app supports the latest AWS IOS SDK and currently is written in Swift 2.
-
-##### Building SignIn-awsmhh
-- Clone or download the repository
+#Building
+##### Building SignIn
+- Clone the repository using the --recursive flag, that way you will get the aws-mobilehub-helper-ios installed for you.
 - Install cocoapods
-- Install the AWS IOS SDK (Tested with version 2.4.9 or greater).
 - Use AWS account and create a User Pool in the Cognito console.
     -   Make sure you make a User Pool not a Federated Identities Pool
     -   Configure your User Pool with email as a required field (aka Attribute) and no other required fields. If you want phone number to be required, or want more fields then you would need to change the SignupViewController.swift to require the required ones, and allow input of all attributes.  As delivered Signin requires only Username, Password (which are required by default) and Email Address (A real email is needed to get the Confirmation Number).
@@ -36,10 +36,7 @@ The app is written in Swift using AWS Mobile Hub Helper and AWS Mobile Client (f
     -   Take a look at the Policies section of the Pool Details page to see what password requirements you want to implement.  I unchecked "Require special characters" and required a minimum length of only 6.  If you use something other than that edit the storyboard text for the signup view controller to say that they are required.  
 - Use AWS account and create a Federated identity pool in the Cognito console.
 - To build the app you need an enhanced version of the mobile-hub-helper (changes are described at the bottom of the README.md). Clone the mobile-hub-helper fork at https://github.com/BruceBuckland/aws-mobilehub-helper-ios which has a few small fixes in it to make it handle User Pools and/or developer identities.
-- cd top level directory aws-mobile-hub-helper
 - pod install
-- Scripts/GenerateHelperFramework.sh (This puts a builtFramework directory at top level)
-- In xcode open SignIn-awsmhh remove the AWSMobileHubHelper.framework from that app and add the file aws-mobilehub-helper-ios/builtFramework/framework/AWSMobileHubHelper.framework to your app.
 - The easiest way to do this next step may be to use AWS Mobile Hub to create configure and download an app using your google and facebook keys, and then copy the data you need from the Info.plist in that downloaded app.   But if you understand the console or aws cli, and are comfortable with Cognito and IAM, you can build the required config there and grab the id's needed for AWSKeys.config.
 Create a new file in Xcode File > New > File... > IOS > Other > Configuration Settings File.  Name the file AWSKeys.xcconfig (because that is the filename ignored in the .gitignore, and that might help you avoid uploading your keys to github!).  In that file put the following:
 
@@ -80,11 +77,17 @@ PROJECT_CLIENT_ID = < from the Info.plist downloaded when you made a mobile hub 
 
 ```
 
-- Build and Run (Tested on a iPhone6 format machine)
-
 - You will need to specify your AWSKeys.xcconfig as a Configuration for (Debug and Release) in your project settings -> Select Project -> Select Info -> Select Configurations -> Select the AWSKeys file in both  Debug and Release. 
 - If you change the configuration of these settings you must do a Product -> Clean (which gets rid of the preconfigured info.plist I think, so the settings can find thier way to K. struct in ConstantsK.swift
-- This app uses an AWSSignInProvider class called AWSCUPIdPSignInProvider that allows authentication using Cognito Your User Pools. If you want to write your own AWSSignInProvider for another IdentityProvider this class provides a model
+- This app uses an AWSSignInProvider class called AWSCUPIdPSignInProvider that allows authentication using Cognito Your User Pools. 
+- Build and Run (Tested on a iPhone6 format machine)
+
+
+
+##### Optional, if you want to use the framework, you have to build it.
+  - cd top level directory aws-mobile-hub-helper
+  - Scripts/GenerateHelperFramework.sh (This puts a builtFramework directory at top level)
+  - In xcode open SignIn-awsmhh remove the AWSMobileHubHelper.framework from that app and add the file aws-mobilehub-helper-ios/builtFramework/framework/AWSMobileHubHelper.framework to your app.
 
 ##### Changes to aws/mobile-hub-helper
 - The following changes were required and have been made. If you want to use user pools or developer identities and/or link identities, these are needed fixes.  
@@ -94,5 +97,11 @@ PROJECT_CLIENT_ID = < from the Info.plist downloaded when you made a mobile hub 
     -   Created AWSCUPIdPSignInProvider.swift.  This class, included in this repository, is an AWSSignInProvider for Cognito User Pools.  It makes sense to include it in aws-mobile-hub-helper, but I did not because that repo is distributed as a static library and swift cannot make those.
     -   Added the ability to find out the name of the key in NSUserDefaults (Google, Facebook, and whatever friendly key name you use for User Pools) which is useful for the App being able to tell what Authentication Provider is giving the error (ex: "Login with Google failed Because" rather than "Login failed because")
     -   Added the ability to merge identities. If you set the boolean Info.plist key “Allow Merged Identities” to YES, AWSIdentityManager will maintain an NSDictionary called cachedLogins, which is added to when a new login call is made and which is shortened when a logout call is made.  Then when it returns logins it always returns the loginCache. (This code now works even if identities cannot be merged.  In that case the merge request should be canceled so: the provider is logged out (this removes that new identity that was unmergable from the running app, wipes the keychain, cleans up loginCache and removes the NSUserDefaults session key) and the application goes through a resume process where it starts any remaining sessions (there will always be at least one). 
-    -   Modified to reload all the signInProviders that left NSUserDefaults keys, not just one of them as before).  Now maintains a cache of the providers (in addition to a cache of logins). Supports providerKey(signInProvider) method to get current provider key name (a friendly name) for ANY provider (not just the currently active provider).  Use of all of this is demonstrated in the SignIn-awsmhh app.  What this will let us do is improve the above behavior when a login error occurs because identities cannot be be merged, and leave the user authenticated with the prior signInProvider after that rejection (code to do that is in test).
+    -   Modified to reload all the signInProviders that left NSUserDefaults keys, not just one of them as before).  Now maintains a cache of the providers (in addition to a cache of logins). Supports providerKey(signInProvider) method to get current provider key name (a friendly name) for ANY provider (not just the currently active provider).  Use of all of this is demonstrated in the SignIn app.  What this will let us do is improve the above behavior when a login error occurs because identities cannot be be merged, and leave the user authenticated with the prior signInProvider after that rejection (code to do that is in test).
+###### Bugs and To Do
+- Unless we have the delegate based authentication, the login screen requires the user to click "Sign-In".  But if it is a new user, the user needs to "Sign-Up".  So there is a UX problem (because the user might not click "Sign-In".
+- If you try to link an identityId to another that has the same IdP, you get cannot merge identities.  This is correct.  However if you try to link an identity with a new username from the same Cognito Pool, you drive Cognito crazy and it keeps trying to get credentials using the new token for the old identityId, then gives up with a cryptic error (GetCredentialsForIdentity keeps failing. Clearing identityId did not help. Please check your Amazon Cognito Identity configuration.).  This is not a user friendly message.  If I try it again it works (having cleared the identityId, like it promised to do previously but clearly didn't).  The next login works in any case. This could be a credentials provider bug, or it could just be something we need to detect upon login.  Further investigation needed.
+- If try to Sign up a user with a duplicate email address, it creates the user and when the user confirms, Cognito says "duplicate" and puts the user in an unusable state.  At this point there is no way to "fix that user other than administratively.  So this will result in practice with users that mess up with email addresses in a position where they need to pick a new username.  This seems very unfriendly.  The solution (obviously) is to notify the user that the email address is duplicate upon signup.  So.... We need to fetch the user that the user tries to sign up with BEFORE letting him fall into the mantrap that AWS have laid, and hopefully someday AWS will hide all this in the sdk.
+- Make SignUp buttons pick up color from cognito sync
+- AWSGoogleSignInProvider crashes on startup sometime, I think it is related to trying to start up when it's token is expired or something, because the crash is only occassional, but when it does crash.. it keeps crashing.  So what I did is to set a NSUserDefaults flag (ProvidersOk) that get set to no when starting and gets set to YES when the AWSSignInProviders all complete initialization. If upon starting up the ProviderOk flag is NO, then it drops all the provider keys and clears the keychain.  That way it at least will start up again (though you do have to log in again).
 

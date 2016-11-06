@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="11201" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Update Attributes-->
+        <scene sceneID="FIK-fw-a1f">
+            <objects>
+                <viewController id="1ct-CQ-oav" userLabel="Update Attributes" customClass="UpdateAttributesViewController" customModule="MySampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="UUJ-l5-Bb1"/>
+                        <viewControllerLayoutGuide type="bottom" id="C22-cf-g1l"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="pBm-rt-mQB">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="User Name" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="1BX-VF-buS">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.28033405169999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="2Hh-Ek-nlc"/>
+                                    <constraint firstAttribute="height" constant="30" id="e4X-yc-ctW"/>
+                                </constraints>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="2Hh-Ek-nlc"/>
+                                        <exclude reference="e4X-yc-ctW"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Phone + country code (e.g. +155555555)" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="2Ad-3B-BF4">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.28033405169999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="WkH-Vv-QMl">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.28033405169999998" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="textColor" red="1" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="emailAddress"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="W1O-2s-m5f" customClass="FieldSensitiveUIButton" customModule="MySampleApp" customModuleProvider="target">
+                                <color key="backgroundColor" red="0.1960784314" green="0.60392156860000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <state key="normal" title="Update Attributes">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="UpdateAttributesPressed:" destination="1ct-CQ-oav" eventType="touchUpInside" id="uFS-AF-Jd2"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="1BX-VF-buS" firstAttribute="top" secondItem="UUJ-l5-Bb1" secondAttribute="bottom" constant="40" id="0If-RF-T32"/>
+                            <constraint firstItem="2Ad-3B-BF4" firstAttribute="top" secondItem="1BX-VF-buS" secondAttribute="bottom" constant="10" id="14s-e1-2MY"/>
+                            <constraint firstItem="WkH-Vv-QMl" firstAttribute="top" secondItem="2Ad-3B-BF4" secondAttribute="bottom" constant="10" id="4LP-Ip-bv6"/>
+                            <constraint firstItem="W1O-2s-m5f" firstAttribute="trailing" secondItem="1BX-VF-buS" secondAttribute="trailing" id="4VV-OM-qUO"/>
+                            <constraint firstItem="2Ad-3B-BF4" firstAttribute="leading" secondItem="1BX-VF-buS" secondAttribute="leading" id="GTO-sl-S14"/>
+                            <constraint firstItem="W1O-2s-m5f" firstAttribute="leading" secondItem="WkH-Vv-QMl" secondAttribute="leading" id="Kh4-4a-oEn"/>
+                            <constraint firstItem="W1O-2s-m5f" firstAttribute="leading" secondItem="1BX-VF-buS" secondAttribute="leading" id="O3h-I4-0Qe"/>
+                            <constraint firstItem="W1O-2s-m5f" firstAttribute="top" secondItem="WkH-Vv-QMl" secondAttribute="bottom" constant="20" id="OgY-dr-g5a"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="1BX-VF-buS" secondAttribute="leading" id="YEK-EB-MZF"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="1BX-VF-buS" secondAttribute="trailing" id="YYb-tq-a8d"/>
+                            <constraint firstItem="2Ad-3B-BF4" firstAttribute="trailing" secondItem="1BX-VF-buS" secondAttribute="trailing" id="ibH-TY-Jsy"/>
+                            <constraint firstItem="WkH-Vv-QMl" firstAttribute="trailing" secondItem="1BX-VF-buS" secondAttribute="trailing" id="l48-gU-KWZ"/>
+                            <constraint firstItem="WkH-Vv-QMl" firstAttribute="leading" secondItem="1BX-VF-buS" secondAttribute="leading" id="otf-zr-tmC"/>
+                            <constraint firstItem="2Ad-3B-BF4" firstAttribute="top" secondItem="1BX-VF-buS" secondAttribute="bottom" constant="66" id="vCY-eT-lC0"/>
+                            <constraint firstItem="W1O-2s-m5f" firstAttribute="top" secondItem="WkH-Vv-QMl" secondAttribute="bottom" constant="10" id="yco-ld-WSO"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="vCY-eT-lC0"/>
+                                <exclude reference="yco-ld-WSO"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Update User Attributes" id="Tq5-RS-7qX"/>
+                    <connections>
+                        <outlet property="UpdateAttributesButton" destination="W1O-2s-m5f" id="aTO-lm-4pX"/>
+                        <outlet property="emailField" destination="WkH-Vv-QMl" id="To6-ck-dmT"/>
+                        <outlet property="phoneField" destination="2Ad-3B-BF4" id="Vsx-XC-yvB"/>
+                        <outlet property="usernameField" destination="1BX-VF-buS" id="MGs-aL-Kdx"/>
+                        <segue destination="Sgn-dG-RWU" kind="show" identifier="confirmAttribute" id="fEI-PE-rIh">
+                            <nil key="action"/>
+                        </segue>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="84z-0L-pN8" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2357" y="1930"/>
+        </scene>
+        <!--Confirm Email-->
+        <scene sceneID="Djk-fU-RPj">
+            <objects>
+                <viewController storyboardIdentifier="confirmAttribute" id="Sgn-dG-RWU" userLabel="Confirm Email" customClass="ConfirmAttributeViewController" customModule="MySampleApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="ng9-TI-6Lm"/>
+                        <viewControllerLayoutGuide type="bottom" id="AVd-PV-Wja"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="uDY-WK-Coq">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" enabled="NO" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Username" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="bzn-fY-Tok">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.2793103448" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="alphabet"/>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Code sent to:  " textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ly5-AJ-hp9">
+                                <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Confirmation Code" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="pJP-kA-fco">
+                                <color key="backgroundColor" red="1" green="1" blue="1" alpha="0.2793103448" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" keyboardType="phonePad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0If-8x-hA1" customClass="FieldSensitiveUIButton" customModule="MySampleApp" customModuleProvider="target">
+                                <color key="backgroundColor" red="0.1960784314" green="0.60392156860000001" blue="0.83921568629999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="22"/>
+                                <state key="normal" title="Confirm">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="confirmPressed:" destination="Sgn-dG-RWU" eventType="touchUpInside" id="muq-VG-qyg"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VUB-SC-Iw1">
+                                <state key="normal" title="Resend Confirmation Code"/>
+                                <connections>
+                                    <action selector="resendConfirmationCodePressed:" destination="Sgn-dG-RWU" eventType="touchUpInside" id="2wx-xa-zCY"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="0If-8x-hA1" firstAttribute="trailing" secondItem="pJP-kA-fco" secondAttribute="trailing" id="9VU-j2-gyg"/>
+                            <constraint firstItem="pJP-kA-fco" firstAttribute="trailing" secondItem="bzn-fY-Tok" secondAttribute="trailing" id="CBY-Dg-nRF"/>
+                            <constraint firstItem="0If-8x-hA1" firstAttribute="trailing" secondItem="bzn-fY-Tok" secondAttribute="trailing" id="Cf5-Xg-Vx6"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="bzn-fY-Tok" secondAttribute="leading" id="F5O-Uu-Dwe"/>
+                            <constraint firstItem="VUB-SC-Iw1" firstAttribute="top" secondItem="0If-8x-hA1" secondAttribute="bottom" constant="8" id="HWS-rt-xNb"/>
+                            <constraint firstItem="pJP-kA-fco" firstAttribute="leading" secondItem="Ly5-AJ-hp9" secondAttribute="leading" id="IRR-wX-IwT"/>
+                            <constraint firstItem="pJP-kA-fco" firstAttribute="top" secondItem="bzn-fY-Tok" secondAttribute="bottom" constant="10" id="QAW-Zw-3Vn"/>
+                            <constraint firstItem="bzn-fY-Tok" firstAttribute="top" secondItem="ng9-TI-6Lm" secondAttribute="bottom" constant="40" id="QlI-dg-Yoc"/>
+                            <constraint firstItem="VUB-SC-Iw1" firstAttribute="top" secondItem="0If-8x-hA1" secondAttribute="bottom" constant="8" id="R3i-f5-Ij3"/>
+                            <constraint firstItem="bzn-fY-Tok" firstAttribute="leading" secondItem="Ly5-AJ-hp9" secondAttribute="leading" id="RXN-lW-brB"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="bzn-fY-Tok" secondAttribute="trailing" id="SZf-f9-ghE"/>
+                            <constraint firstItem="0If-8x-hA1" firstAttribute="leading" secondItem="Ly5-AJ-hp9" secondAttribute="leading" id="T9d-k4-XYJ"/>
+                            <constraint firstItem="0If-8x-hA1" firstAttribute="leading" secondItem="VUB-SC-Iw1" secondAttribute="leading" id="Ubk-Hw-JWX"/>
+                            <constraint firstItem="Ly5-AJ-hp9" firstAttribute="top" secondItem="ng9-TI-6Lm" secondAttribute="bottom" constant="10" id="VYs-9i-gaN"/>
+                            <constraint firstItem="bzn-fY-Tok" firstAttribute="leading" secondItem="Ly5-AJ-hp9" secondAttribute="leading" id="Yfk-lq-S8g"/>
+                            <constraint firstItem="0If-8x-hA1" firstAttribute="top" secondItem="pJP-kA-fco" secondAttribute="bottom" constant="20" id="Zfy-Oz-Go1"/>
+                            <constraint firstItem="VUB-SC-Iw1" firstAttribute="leading" secondItem="Ly5-AJ-hp9" secondAttribute="leading" id="cGE-dG-HMj"/>
+                            <constraint firstItem="pJP-kA-fco" firstAttribute="trailing" secondItem="0If-8x-hA1" secondAttribute="trailing" id="fRK-oC-deO"/>
+                            <constraint firstItem="pJP-kA-fco" firstAttribute="trailing" secondItem="uDY-WK-Coq" secondAttribute="trailingMargin" id="pum-cr-dql"/>
+                            <constraint firstItem="pJP-kA-fco" firstAttribute="leading" secondItem="0If-8x-hA1" secondAttribute="leading" id="rcj-pH-aRW"/>
+                            <constraint firstAttribute="leadingMargin" secondItem="VUB-SC-Iw1" secondAttribute="leading" id="vpo-y0-7nv"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="9VU-j2-gyg"/>
+                                <exclude reference="Ubk-Hw-JWX"/>
+                                <exclude reference="HWS-rt-xNb"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" title="Confirm Email Address" id="dDN-Ml-0kU"/>
+                    <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="codeSentToLabel" destination="Ly5-AJ-hp9" id="JCr-hz-TC7"/>
+                        <outlet property="confirmButton" destination="0If-8x-hA1" id="vCd-La-InC"/>
+                        <outlet property="confirmationCodeField" destination="pJP-kA-fco" id="PUH-1p-2Mh"/>
+                        <outlet property="usernameField" destination="bzn-fY-Tok" id="uvM-zD-f76"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Oaf-Ya-hEk" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3053" y="1930"/>
+        </scene>
+    </scenes>
+</document>

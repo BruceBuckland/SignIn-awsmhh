@@ -85,6 +85,15 @@
 		E55B883A1DCC52B500E437ED /* NoSQLTableListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B882F1DCC52B500E437ED /* NoSQLTableListViewController.swift */; };
 		E55B883B1DCC52B500E437ED /* NoSQLTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B88301DCC52B500E437ED /* NoSQLTableViewController.swift */; };
 		E55B883D1DCC5F5E00E437ED /* Graffiti.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B883C1DCC5F5E00E437ED /* Graffiti.swift */; };
+		E560B2B01DCEC8BB00849921 /* ConfirmAttributeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E560B2AA1DCEC8BB00849921 /* ConfirmAttributeViewController.swift */; };
+		E560B2B11DCEC8BB00849921 /* ConfirmForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E560B2AB1DCEC8BB00849921 /* ConfirmForgotPasswordViewController.swift */; };
+		E560B2B21DCEC8BB00849921 /* ConfirmSignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E560B2AC1DCEC8BB00849921 /* ConfirmSignupViewController.swift */; };
+		E560B2B31DCEC8BB00849921 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E560B2AD1DCEC8BB00849921 /* ForgotPasswordViewController.swift */; };
+		E560B2B41DCEC8BB00849921 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E560B2AE1DCEC8BB00849921 /* SignupViewController.swift */; };
+		E560B2B51DCEC8BB00849921 /* UpdateAttributesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E560B2AF1DCEC8BB00849921 /* UpdateAttributesViewController.swift */; };
+		E560B2B71DCEC8FD00849921 /* SignUp.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E560B2B61DCEC8FD00849921 /* SignUp.storyboard */; };
+		E560B2B91DCEC91D00849921 /* ForgotPassword.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E560B2B81DCEC91D00849921 /* ForgotPassword.storyboard */; };
+		E560B2BB1DCEC93000849921 /* UpdateAttributes.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E560B2BA1DCEC93000849921 /* UpdateAttributes.storyboard */; };
 		E587A18B1DCAF53800E13E81 /* UserIdentity.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E587A18A1DCAF53800E13E81 /* UserIdentity.storyboard */; };
 		E587A1961DCB9D3100E13E81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587A1951DCB9D3100E13E81 /* AppDelegate.swift */; };
 		E587A1981DCB9D3100E13E81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E587A1971DCB9D3100E13E81 /* ViewController.swift */; };
@@ -210,6 +219,15 @@
 		E55B882F1DCC52B500E437ED /* NoSQLTableListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLTableListViewController.swift; sourceTree = "<group>"; };
 		E55B88301DCC52B500E437ED /* NoSQLTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NoSQLTableViewController.swift; sourceTree = "<group>"; };
 		E55B883C1DCC5F5E00E437ED /* Graffiti.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Graffiti.swift; sourceTree = "<group>"; };
+		E560B2AA1DCEC8BB00849921 /* ConfirmAttributeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmAttributeViewController.swift; sourceTree = "<group>"; };
+		E560B2AB1DCEC8BB00849921 /* ConfirmForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		E560B2AC1DCEC8BB00849921 /* ConfirmSignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConfirmSignupViewController.swift; sourceTree = "<group>"; };
+		E560B2AD1DCEC8BB00849921 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		E560B2AE1DCEC8BB00849921 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		E560B2AF1DCEC8BB00849921 /* UpdateAttributesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UpdateAttributesViewController.swift; sourceTree = "<group>"; };
+		E560B2B61DCEC8FD00849921 /* SignUp.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = SignUp.storyboard; sourceTree = "<group>"; };
+		E560B2B81DCEC91D00849921 /* ForgotPassword.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = ForgotPassword.storyboard; sourceTree = "<group>"; };
+		E560B2BA1DCEC93000849921 /* UpdateAttributes.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UpdateAttributes.storyboard; sourceTree = "<group>"; };
 		E587A18A1DCAF53800E13E81 /* UserIdentity.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = UserIdentity.storyboard; sourceTree = "<group>"; };
 		E587A18C1DCB04C600E13E81 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		E587A1931DCB9D3100E13E81 /* Dom.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dom.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -445,6 +463,7 @@
 		E53212041DCACCA300FFA2D7 /* App */ = {
 			isa = PBXGroup;
 			children = (
+				E560B2A91DCEC7C800849921 /* CUPUserInterface */,
 				E53212051DCACCA300FFA2D7 /* AppDelegate.swift */,
 				E53212061DCACCA300FFA2D7 /* Images.xcassets */,
 				E53212071DCACCA300FFA2D7 /* Launch Screen.storyboard */,
@@ -644,6 +663,22 @@
 				E55B88301DCC52B500E437ED /* NoSQLTableViewController.swift */,
 			);
 			path = NoSQL;
+			sourceTree = "<group>";
+		};
+		E560B2A91DCEC7C800849921 /* CUPUserInterface */ = {
+			isa = PBXGroup;
+			children = (
+				E560B2AA1DCEC8BB00849921 /* ConfirmAttributeViewController.swift */,
+				E560B2AB1DCEC8BB00849921 /* ConfirmForgotPasswordViewController.swift */,
+				E560B2AC1DCEC8BB00849921 /* ConfirmSignupViewController.swift */,
+				E560B2AD1DCEC8BB00849921 /* ForgotPasswordViewController.swift */,
+				E560B2AE1DCEC8BB00849921 /* SignupViewController.swift */,
+				E560B2AF1DCEC8BB00849921 /* UpdateAttributesViewController.swift */,
+				E560B2B61DCEC8FD00849921 /* SignUp.storyboard */,
+				E560B2B81DCEC91D00849921 /* ForgotPassword.storyboard */,
+				E560B2BA1DCEC93000849921 /* UpdateAttributes.storyboard */,
+			);
+			name = CUPUserInterface;
 			sourceTree = "<group>";
 		};
 		E587A1941DCB9D3100E13E81 /* Dom */ = {
@@ -853,6 +888,7 @@
 				E532127C1DCACCA300FFA2D7 /* GoogleSignIn.bundle in Resources */,
 				E53212751DCACCA300FFA2D7 /* NOTICE in Resources */,
 				E53212561DCACCA300FFA2D7 /* AppAnalytics.storyboard in Resources */,
+				E560B2B91DCEC91D00849921 /* ForgotPassword.storyboard in Resources */,
 				E532126C1DCACCA300FFA2D7 /* UserSettings.storyboard in Resources */,
 				E53212501DCACCA300FFA2D7 /* Main.storyboard in Resources */,
 				E53211F31DCACB3300FFA2D7 /* .gitignore in Resources */,
@@ -860,6 +896,8 @@
 				E53211F51DCACB3300FFA2D7 /* LaunchScreen.storyboard in Resources */,
 				E53212651DCACCA300FFA2D7 /* UserDataStorage.storyboard in Resources */,
 				E53212761DCACCA300FFA2D7 /* CheckXcodeVersion.sh in Resources */,
+				E560B2B71DCEC8FD00849921 /* SignUp.storyboard in Resources */,
+				E560B2BB1DCEC93000849921 /* UpdateAttributes.storyboard in Resources */,
 				E55B88351DCC52B500E437ED /* NoSQLDatabase.storyboard in Resources */,
 				E53212731DCACCA300FFA2D7 /* Amazon_Software_License.txt in Resources */,
 				E587A18B1DCAF53800E13E81 /* UserIdentity.storyboard in Resources */,
@@ -1034,6 +1072,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E560B2B51DCEC8BB00849921 /* UpdateAttributesViewController.swift in Sources */,
 				E55B88371DCC52B500E437ED /* NoSQLQueryResultViewController.swift in Sources */,
 				E55B88331DCC52B500E437ED /* GraffitiTable.swift in Sources */,
 				E53212531DCACCA300FFA2D7 /* SignInViewController.swift in Sources */,
@@ -1047,6 +1086,7 @@
 				E532126A1DCACCA300FFA2D7 /* UserIdentityViewController.swift in Sources */,
 				E55B88231DCC518100E437ED /* News.swift in Sources */,
 				E53211D81DCACB3300FFA2D7 /* AWSIdentityManager.m in Sources */,
+				E560B2B21DCEC8BB00849921 /* ConfirmSignupViewController.swift in Sources */,
 				E55B883B1DCC52B500E437ED /* NoSQLTableViewController.swift in Sources */,
 				E55B88391DCC52B500E437ED /* NoSQLTableFactory.swift in Sources */,
 				E532126B1DCACCA300FFA2D7 /* ColorThemeSettings.swift in Sources */,
@@ -1061,11 +1101,15 @@
 				E55B883A1DCC52B500E437ED /* NoSQLTableListViewController.swift in Sources */,
 				E53211E01DCACB3300FFA2D7 /* AWSUserFileManager.m in Sources */,
 				E53211E41DCACB3300FFA2D7 /* AWSCUPIdPSignInProvider.swift in Sources */,
+				E560B2B11DCEC8BB00849921 /* ConfirmForgotPasswordViewController.swift in Sources */,
+				E560B2B01DCEC8BB00849921 /* ConfirmAttributeViewController.swift in Sources */,
 				E53212681DCACCA300FFA2D7 /* UserFilesViewController.swift in Sources */,
 				E53212661DCACCA300FFA2D7 /* UserDataStorageViewController.swift in Sources */,
+				E560B2B31DCEC8BB00849921 /* ForgotPasswordViewController.swift in Sources */,
 				E53211E61DCACB3300FFA2D7 /* AWSFacebookSignInProvider.m in Sources */,
 				E532125B1DCACCA300FFA2D7 /* ContentDeliveryViewController.swift in Sources */,
 				E53211E81DCACB3300FFA2D7 /* AWSContentManager.m in Sources */,
+				E560B2B41DCEC8BB00849921 /* SignupViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

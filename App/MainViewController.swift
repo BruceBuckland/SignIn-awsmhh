@@ -181,6 +181,7 @@ class MainViewController: UITableViewController {
     }
     
     func handleLogout() {
+        NSLog("Logging out with loggedIn \(AWSIdentityManager.defaultIdentityManager().loggedIn)")
         if (AWSIdentityManager.defaultIdentityManager().loggedIn) {
             ColorThemeSettings.sharedInstance.wipe()
             AWSIdentityManager.defaultIdentityManager().logoutWithCompletionHandler({(result: AnyObject?, error: NSError?) -> Void in
