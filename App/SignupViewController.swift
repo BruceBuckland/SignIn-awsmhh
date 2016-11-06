@@ -35,6 +35,7 @@ class SignupViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         signupButton.disable()
+        usernameField.text = usernameText
     }
 
     override func viewDidLoad() {

@@ -20,6 +20,7 @@ class MainViewController: UITableViewController {
     var signInObserver: AnyObject!
     var signOutObserver: AnyObject!
     var willEnterForegroundObserver: AnyObject!
+    var lastUsername: String?
     
     // MARK: - View lifecycle
     
@@ -94,8 +95,9 @@ class MainViewController: UITableViewController {
                         strongSelf.setupBarButtonItems()
                         // You need to call `updateTheme` here in case the sign-in happens after `- viewWillAppear:` is called.
                         strongSelf.updateTheme()
+                        strongSelf.lastUsername = AWSIdentityManager.defaultIdentityManager().userName
                 })
-                
+        
                 signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
                         guard let strongSelf = self else { return }
                         print("Sign Out Observer observed sign out.")
@@ -176,7 +178,8 @@ class MainViewController: UITableViewController {
     func goToLogin() {
              print("Handling optional sign-in.")
             let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-            let loginController = loginStoryboard.instantiateViewControllerWithIdentifier("SignIn")
+            let loginController = loginStoryboard.instantiateViewControllerWithIdentifier("SignIn") as! SignInViewController
+            loginController.usernameText = self.lastUsername
             navigationController!.pushViewController(loginController, animated: true)
     }
     

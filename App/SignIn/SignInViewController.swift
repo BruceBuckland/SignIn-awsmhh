@@ -35,20 +35,31 @@ class SignInViewController: UIViewController {
     
     
     var didSignInObserver: AnyObject!
-    var customForgotPasswordViewController:UIViewController!
-    var customCreateAccountViewController:UIViewController!
+    var usernameText: String?
+
+    var customForgotPasswordViewController:ForgotPasswordViewController!
+    var customCreateAccountViewController:SignupViewController!
     
     // MARK: - View lifecycle
     
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.setToolbarHidden(true, animated: false)
+        customUserIdField.text = usernameText
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
-         print("Sign In Loading.")
         
-            didSignInObserver =  NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification,
+        didSignInObserver =  NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification,
                 object: AWSIdentityManager.defaultIdentityManager(),
                 queue: NSOperationQueue.mainQueue(),
-                usingBlock: {(note: NSNotification) -> Void in
+                usingBlock: {[weak self] (note: NSNotification) -> Void in
+                    guard let strongSelf = self else { return }
                     // perform successful login actions here
+                    if AWSIdentityManager.defaultIdentityManager().currentSignInProvider is AWSCUPIdPSignInProvider {
+                        // only remember the name of the user if it is a CUPIdP name
+                        strongSelf.usernameText = AWSIdentityManager.defaultIdentityManager().userName
+                    }
             })
 
                 // Facebook login permissions can be optionally set, but must be set
@@ -179,20 +190,23 @@ class SignInViewController: UIViewController {
         // Handle Create Account action for custom sign-in here.
         if customCreateAccountViewController == nil { // use the same one - or we get multiple observers there
             let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
-            customCreateAccountViewController = storyboard.instantiateViewControllerWithIdentifier("signUp")
+            customCreateAccountViewController = storyboard.instantiateViewControllerWithIdentifier("signUp") as! SignupViewController
         }
+        customCreateAccountViewController.usernameText = self.usernameText
         navigationController!.pushViewController(customCreateAccountViewController, animated: true)
     }
     
     func handleCustomForgotPassword() {
         // Handle Forgot Password action for custom sign-in here.
         if customForgotPasswordViewController == nil { // use the same one - or we get multiple observers there
-            let storyboard = UIStoryboard(name: "SignUp", bundle: nil)
-            customForgotPasswordViewController = storyboard.instantiateViewControllerWithIdentifier("signUp")
+            let storyboard = UIStoryboard(name: "ForgotPassword", bundle: nil)
+            customForgotPasswordViewController = storyboard.instantiateViewControllerWithIdentifier("forgotPassword") as! ForgotPasswordViewController
+            customForgotPasswordViewController.usernameText = self.usernameText
         }
         navigationController!.pushViewController(customForgotPasswordViewController, animated: true)
     }
-
+    
+ 
     func anchorViewForFacebook() -> UIView {
             return orSignInWithLabel
     }

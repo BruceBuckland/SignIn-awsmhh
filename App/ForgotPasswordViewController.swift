@@ -27,6 +27,7 @@ class ForgotPasswordViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
+        usernameField.text = usernameText
     }
     
     override func viewDidLoad() {
