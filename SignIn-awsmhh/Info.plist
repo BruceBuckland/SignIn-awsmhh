@@ -4,6 +4,45 @@
 <dict>
 	<key>AWS</key>
 	<dict>
+		<key>IdentityManager</key>
+		<dict>
+			<key>Default</key>
+			<dict>
+				<key>Allow Identity Merging</key>
+				<true/>
+				<key>Allow Simultaneous Active Accounts</key>
+				<true/>
+				<key>CognitoYourUserPools</key>
+				<dict>
+					<key>COGNITO_REGIONTYPE</key>
+					<string>$(COGNITO_REGIONTYPE)</string>
+					<key>COGNITO_USER_POOL_APP_CLIENT_ID</key>
+					<string>$(COGNITO_USER_POOL_APP_CLIENT_ID)</string>
+					<key>COGNITO_USER_POOL_APP_CLIENT_SECRET</key>
+					<string>$(COGNITO_USER_POOL_APP_CLIENT_SECRET)</string>
+					<key>COGNITO_USER_POOL_ID</key>
+					<string>$(COGNITO_USER_POOL_ID)</string>
+					<key>COGNITO_USER_POOL_IDP_NAME</key>
+					<string>$(COGNITO_USER_POOL_IDP_NAME)</string>
+					<key>COGNITO_USER_POOL_NAME</key>
+					<string>$(COGNITO_USER_POOL_NAME)</string>
+				</dict>
+				<key>Google</key>
+				<dict>
+					<key>ClientId</key>
+					<string>$(GOOGLE_CLIENT_ID)</string>
+				</dict>
+				<key>SignInProviderKeyDictionary</key>
+				<dict>
+					<key>AWSCUPIdPSignInProvider</key>
+					<string>Cognito Pool</string>
+					<key>AWSFacebookSignInProvider</key>
+					<string>Facebook</string>
+					<key>AWSGoogleSignInProvider</key>
+					<string>Google</string>
+				</dict>
+			</dict>
+		</dict>
 		<key>CloudLogic</key>
 		<dict>
 			<key>Default</key>
@@ -49,45 +88,6 @@
 			<dict>
 				<key>Region</key>
 				<string>us-east-1</string>
-			</dict>
-		</dict>
-		<key>IdentityManager</key>
-		<dict>
-			<key>Default</key>
-			<dict>
-				<key>Allow Identity Merging</key>
-				<true/>
-				<key>Allow Simultaneous Active Accounts</key>
-				<true/>
-				<key>CognitoYourUserPools</key>
-				<dict>
-					<key>COGNITO_REGIONTYPE</key>
-					<string>$(COGNITO_REGIONTYPE)</string>
-					<key>COGNITO_USER_POOL_APP_CLIENT_ID</key>
-					<string>$(COGNITO_USER_POOL_APP_CLIENT_ID)</string>
-					<key>COGNITO_USER_POOL_APP_CLIENT_SECRET</key>
-					<string>$(COGNITO_USER_POOL_APP_CLIENT_SECRET)</string>
-					<key>COGNITO_USER_POOL_ID</key>
-					<string>$(COGNITO_USER_POOL_ID)</string>
-					<key>COGNITO_USER_POOL_IDP_NAME</key>
-					<string>$(COGNITO_USER_POOL_IDP_NAME)</string>
-					<key>COGNITO_USER_POOL_NAME</key>
-					<string>$(COGNITO_USER_POOL_NAME)</string>
-				</dict>
-				<key>Google</key>
-				<dict>
-					<key>ClientId</key>
-					<string>$(GOOGLE_CLIENT_ID)</string>
-				</dict>
-				<key>SignInProviderKeyDictionary</key>
-				<dict>
-					<key>AWSCUPIdPSignInProvider</key>
-					<string>Cognito Pool</string>
-					<key>AWSFacebookSignInProvider</key>
-					<string>Facebook</string>
-					<key>AWSGoogleSignInProvider</key>
-					<string>Google</string>
-				</dict>
 			</dict>
 		</dict>
 		<key>MobileAnalytics</key>
