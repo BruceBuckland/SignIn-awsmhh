@@ -36,6 +36,7 @@ class SignupViewController: UIViewController {
         self.navigationController?.setToolbarHidden(true, animated: false)
         signupButton.disable()
         usernameField.text = usernameText
+        signupButton.updateTheme()
     }
     
     override func viewDidLoad() {
@@ -46,9 +47,9 @@ class SignupViewController: UIViewController {
         let customSignInProvider = AWSCUPIdPSignInProvider.sharedInstance
         customSignInProvider.configureIdentityManager()
         self.pool = customSignInProvider.pool
-        
+
+        signupButton.updateTheme()
         // don't require the phoneField, you can if you want of course.
-        
         signupButton.requiredFields(usernameField,passwordField,emailField)
         
         if let username = usernameText {
@@ -171,6 +172,5 @@ class SignupViewController: UIViewController {
         }
     }
     
-    
-    
+
 }

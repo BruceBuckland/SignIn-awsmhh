@@ -108,15 +108,41 @@ class Theme: NSObject {
 class FieldSensitiveUIButton: UIButton {
     
     var nonEmptyFields:[UITextField]?
+    var barColor:UIColor = ColorThemeSettings.sharedInstance.theme.titleBarColor.UIColorFromARGB()
+    
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
+        
+        updateTheme()
+    }
+    
+    func updateTheme() {
+        let settings = ColorThemeSettings.sharedInstance
+        settings.loadSettings { (themeSettings: ColorThemeSettings?, error: NSError?) -> Void in
+            guard let themeSettings = themeSettings else {
+                print("Failed to load color: \(error)")
+                return
+            }
+            dispatch_async(dispatch_get_main_queue(), {
+                self.barColor = themeSettings.theme.titleBarColor.UIColorFromARGB()
+                let buttonTextColor = themeSettings.theme.titleTextColor.UIColorFromARGB()
+
+                self.setTitleColor(buttonTextColor, forState: UIControlState.Normal)
+                self.setTitleColor(buttonTextColor.colorWithAlphaComponent(0.5), forState: UIControlState.Disabled)
+            })
+        }
+    }
     
     // in the view controller setup the button in viewWillAppear with colors and  (usually) disable the button and then call required fields in viewDidLoad
     
     func requiredFields(nonEmpty: UITextField...) {
+        
         self.nonEmptyFields = nonEmpty
         for field in nonEmptyFields! {
             field.addTarget(self, action: #selector(self.textFieldDidChange), forControlEvents: UIControlEvents.EditingChanged)
         }
     }
+    
     
     
     func textFieldDidChange() {
@@ -130,9 +156,11 @@ class FieldSensitiveUIButton: UIButton {
     }
     
     func enable(){
+        self.backgroundColor = barColor
         self.enabled = true
     }
     func disable(){
+        self.backgroundColor = barColor.colorWithAlphaComponent(0.5)
         self.enabled = false
     }
 }

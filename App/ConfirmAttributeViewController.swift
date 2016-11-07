@@ -30,6 +30,8 @@ class ConfirmAttributeViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
+        confirmButton.updateTheme()
+        confirmButton.disable()
     }
         
     override func viewDidLoad() {
@@ -40,7 +42,7 @@ class ConfirmAttributeViewController: UIViewController {
         // setup outlets
         usernameField.text = user?.username
         codeSentToLabel.text! += sentTo! // append destination to Label
-        
+        confirmButton.updateTheme()
         confirmButton.requiredFields(usernameField,confirmationCodeField)
         confirmButton.disable()
         
