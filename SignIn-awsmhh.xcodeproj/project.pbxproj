@@ -21,7 +21,6 @@
 		E50F976A1DCAE6DC00D71D5A /* GoogleUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212481DCACCA300FFA2D7 /* GoogleUtilities.framework */; };
 		E50F976F1DCAE75100D71D5A /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E50F976E1DCAE75100D71D5A /* libz.tbd */; };
 		E50F97711DCAE75F00D71D5A /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = E50F97701DCAE75F00D71D5A /* libsqlite3.tbd */; };
-		E50F97721DCAEB3E00D71D5A /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E5CB39F41DB3FD7E00F6E646 /* Info.plist */; };
 		E532119E1DCA6CC700FFA2D7 /* AWSCloudLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = E53211891DCA6CC700FFA2D7 /* AWSCloudLogic.m */; };
 		E532119F1DCA6CC700FFA2D7 /* AWSContentManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E532118C1DCA6CC700FFA2D7 /* AWSContentManager.m */; };
 		E53211A01DCA6CC700FFA2D7 /* AWSIdentityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E532118F1DCA6CC700FFA2D7 /* AWSIdentityManager.m */; };
@@ -139,7 +138,6 @@
 		2282092F783D435651DB32B0 /* Pods-MySampleApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.debug.xcconfig"; sourceTree = "<group>"; };
 		274D360013F9370268E41195 /* Pods_SignIn.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4946DBB1A29D37D3D5D088AE /* Pods_MySampleApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MySampleApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SignIn_awsmhh.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		92DEEE843184B1701F07123C /* Pods-MySampleApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MySampleApp.release.xcconfig"; path = "Pods/Target Support Files/Pods-MySampleApp/Pods-MySampleApp.release.xcconfig"; sourceTree = "<group>"; };
 		9958A399FF4971073B93BE0E /* Pods_Dom.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Dom.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4F6FEAF6DC21CA002E3AAC7 /* Pods-Dom.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Dom.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Dom/Pods-Dom.debug.xcconfig"; sourceTree = "<group>"; };
@@ -328,7 +326,6 @@
 				E587A1A81DCBA24C00E13E81 /* AWSCore.framework */,
 				E50F97701DCAE75F00D71D5A /* libsqlite3.tbd */,
 				E50F976E1DCAE75100D71D5A /* libz.tbd */,
-				6E42E8213F0EF0E7A21054D4 /* Pods_SignIn_awsmhh.framework */,
 				4946DBB1A29D37D3D5D088AE /* Pods_MySampleApp.framework */,
 				274D360013F9370268E41195 /* Pods_SignIn.framework */,
 				9958A399FF4971073B93BE0E /* Pods_Dom.framework */,
@@ -922,7 +919,6 @@
 				E5CB38221DB3605100F6E646 /* Main.storyboard in Resources */,
 				E5CB39F91DB531C700F6E646 /* Images.xcassets in Resources */,
 				E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */,
-				E50F97721DCAEB3E00D71D5A /* Info.plist in Resources */,
 				E5CB37F31DB35F0A00F6E646 /* LaunchScreen.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1331,6 +1327,7 @@
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/SignIn-awsmhh-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -1376,6 +1373,7 @@
 				SDKROOT = iphoneos;
 				"SWIFT_OBJC_BRIDGING_HEADER[arch=*]" = "$(PROJECT_DIR)/SignIn-awsmhh-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_VERSION = 2.3;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
 			};

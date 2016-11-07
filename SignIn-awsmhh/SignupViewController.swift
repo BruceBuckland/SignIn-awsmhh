@@ -30,9 +30,9 @@ class SignupViewController: UIViewController {
     @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var imageView: UIImageView!
-
+    
     @IBOutlet weak var signupButton: FieldSensitiveUIButton!
-
+    
     //MARK: Global Variables for Changing Image Functionality.
     var backgroundImageCycler: BackgroundImageCycle?
     
@@ -42,7 +42,7 @@ class SignupViewController: UIViewController {
             backgroundImageCycler = BackgroundImageCycle(self.imageView, speed: 8)
         }
         backgroundImageCycler?.start()
-
+        
         // set colors for fields and buttons
         AppColor.colorizeField(passwordField,usernameField,emailField,phoneField)
         
@@ -51,7 +51,7 @@ class SignupViewController: UIViewController {
         signupButton.disable()
         
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -64,11 +64,11 @@ class SignupViewController: UIViewController {
         // don't require the phoneField, you can if you want of course.
         
         signupButton.requiredFields(usernameField,passwordField,emailField)
-     
+        
         if let username = usernameText {
             usernameField.text = username
         }
-
+        
     }
     
     
@@ -87,11 +87,11 @@ class SignupViewController: UIViewController {
         }
         
     }
-
-
-
- 
-
+    
+    
+    
+    
+    
     //call the following function to sign up
     
     @IBAction func signupPressed(sender: AnyObject) {
@@ -104,12 +104,12 @@ class SignupViewController: UIViewController {
         
         phone.name = "phone_number"
         
-        //requires country code.  Some better processing needed here to help 
+        //requires country code.  Some better processing needed here to help
         // for instance if it doesn't start with a + we should insert one
         // must be some nice library for that.
         
         phone.value = phoneField.text
-
+        
         let email = AWSCognitoIdentityUserAttributeType()
         email.name = "email"
         email.value = emailField.text
@@ -121,11 +121,52 @@ class SignupViewController: UIViewController {
             attributes.append(phone)
         }
         
-        self.pool!.signUp(usernameField.text!, password: passwordField.text!, userAttributes: attributes, validationData: nil).continueWithBlock{ (task) in
+        signupWithUniqueEmail(emailField.text!, username: self.usernameField.text!, password: self.passwordField.text!, userAttributes: attributes)
+    }
+    // This task returns either a task that returns signup request or a task that returns an error that the email is in use.
+    // In cases where we have declared email an alias, the email address should get user not found if we want to signup with
+    // it.  If it is NOT an alias in the pool, this is a wasted call BUT should work because it would only reject usernames that are
+    // email addresses and already in use, which is ok (I don't think email addresses are legal usernames, so that's ok).
+    func signupWithUniqueEmail(email: String, username: String, password: String, userAttributes: [AWSCognitoIdentityUserAttributeType]?)  {
+        self.user = self.pool!.getUser(emailField.text!)
+        self.user?.getSession(email, password: "93490349 this should always be the wrong password 283749823", validationData: nil).continueWithBlock({ (task) -> AWSTask? in
             // needs to be async so we can ALWAYS return nil for AWSTask
+            
+            
+            if task.error == nil  {
+                NSLog("How did you guess that password, and why?")
+                return nil
+            } else {  // we should either get wrong password or user not exist
+                if let rejectType = task.error?.code  {
+                    
+                    switch rejectType {
+                    case AWSCognitoIdentityProviderErrorType.NotAuthorized.rawValue:
+                        
+                        // If it is not authorized, then the email exists as an alias to another user
+                        return AWSTask(error: NSError(domain: AWSCognitoIdentityProviderErrorDomain, code: AWSCognitoIdentityProviderErrorType.UsernameExists.rawValue, userInfo: ["message":"Email already in use by a user"]))
+                        
+                    case AWSCognitoIdentityProviderErrorType.UserNotFound.rawValue:
+
+                        // If it is not found, then the email is not an alias to another user and can be used
+                        return self.pool!.signUp(self.usernameField.text!, password: self.passwordField.text!, userAttributes: userAttributes, validationData: nil)
+                        
+                    default:
+                        
+                        // Other errors - we will have to see
+                        NSLog("When checking if email was unique encountered unexpected error type: \(rejectType) expected NotAuthorized or UserNotFound - debug - continuing")
+                        return self.pool!.signUp(self.usernameField.text!, password: self.passwordField.text!, userAttributes: userAttributes, validationData: nil)
+                    }
+                }
+            }
+            return nil
+        }).continueWithBlock({ (task) in
+
             dispatch_async(dispatch_get_main_queue()) {
                 
                 if task.error != nil {  // some sort of error
+                    let myerror = task.error
+                    NSLog("\(myerror)")
+                    
                     let alert = UIAlertController(title: "", message: task.error?.userInfo["message"] as? String, preferredStyle: UIAlertControllerStyle.Alert)
                     alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
                     self.presentViewController(alert, animated: true, completion: nil)
@@ -144,16 +185,16 @@ class SignupViewController: UIViewController {
                         
                         // setup to send sentTo thru segue
                         self.sentTo = response.codeDeliveryDetails?.destination
-                        self.performSegueWithIdentifier("confirmSignup", sender: sender)
+                        self.performSegueWithIdentifier("confirmSignup", sender: self)
                     } else { // user is confirmed - can it happen?
                         self.navigationController?.popToRootViewControllerAnimated(true) // back to login
                     }
                 }
             }
             return nil
-        }
+        })
     }
-
+    
     
     
     // MARK: - Navigation
