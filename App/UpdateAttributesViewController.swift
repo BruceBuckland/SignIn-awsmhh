@@ -36,6 +36,7 @@ class UpdateAttributesViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         
+        UpdateAttributesButton.updateTheme()
         UpdateAttributesButton.disable()
         
     }
@@ -46,9 +47,10 @@ class UpdateAttributesViewController: UIViewController {
         self.navigationController?.setNavigationBarHidden(false, animated: true)
         
         self.pool = AWSCognitoIdentityUserPool(forKey: "UserPool")
+
+        UpdateAttributesButton.updateTheme()
         
         // don't require the phoneField, you can if you want of course.
-        
         UpdateAttributesButton.requiredFields(usernameField,phoneField,emailField)
         
         usernameField.text = username

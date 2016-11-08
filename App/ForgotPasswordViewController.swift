@@ -28,6 +28,8 @@ class ForgotPasswordViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
         usernameField.text = usernameText
+        forgotPasswordButton.updateTheme()
+        forgotPasswordButton.disable()
     }
     
     override func viewDidLoad() {
@@ -35,7 +37,8 @@ class ForgotPasswordViewController: UIViewController {
         
         // Do any additional setup after loading the view.
         self.navigationController?.setNavigationBarHidden(false, animated: true)
-        
+
+        forgotPasswordButton.updateTheme()
         forgotPasswordButton.requiredFields(usernameField)
         
         let customSignInProvider = AWSCUPIdPSignInProvider.sharedInstance

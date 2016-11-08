@@ -70,6 +70,7 @@
 		E532127B1DCACCA300FFA2D7 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212441DCACCA300FFA2D7 /* GoogleNetworkingUtilities.framework */; };
 		E532127C1DCACCA300FFA2D7 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E53212451DCACCA300FFA2D7 /* GoogleSignIn.bundle */; };
 		E532127D1DCACCA300FFA2D7 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212461DCACCA300FFA2D7 /* GoogleSignIn.framework */; };
+		E5474A651DD1A723001B163B /* ExtensionsUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38081DB35F9300F6E646 /* ExtensionsUIColor.swift */; };
 		E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */; };
 		E55B88231DCC518100E437ED /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B88221DCC518100E437ED /* News.swift */; };
 		E55B88311DCC52B500E437ED /* CloudLogic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55B88251DCC52B500E437ED /* CloudLogic.storyboard */; };
@@ -158,7 +159,6 @@
 		E53211961DCA6CC700FFA2D7 /* AWSFacebookSignInProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFacebookSignInProvider.m; sourceTree = "<group>"; };
 		E53211971DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSGoogleSignInProvider.h; sourceTree = "<group>"; };
 		E53211981DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSGoogleSignInProvider.m; sourceTree = "<group>"; };
-		E53211991DCA6CC700FFA2D7 /* AWSMobileHubHelper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AWSMobileHubHelper-Bridging-Header.h"; sourceTree = "<group>"; };
 		E532119A1DCA6CC700FFA2D7 /* AWSSignInProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSignInProvider.h; sourceTree = "<group>"; };
 		E532119C1DCA6CC700FFA2D7 /* AWSUserFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSUserFileManager.h; sourceTree = "<group>"; };
 		E532119D1DCA6CC700FFA2D7 /* AWSUserFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSUserFileManager.m; sourceTree = "<group>"; };
@@ -405,7 +405,6 @@
 				E53211961DCA6CC700FFA2D7 /* AWSFacebookSignInProvider.m */,
 				E53211971DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.h */,
 				E53211981DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.m */,
-				E53211991DCA6CC700FFA2D7 /* AWSMobileHubHelper-Bridging-Header.h */,
 				E532119A1DCA6CC700FFA2D7 /* AWSSignInProvider.h */,
 			);
 			path = SignIn;
@@ -668,9 +667,9 @@
 				E560B2AA1DCEC8BB00849921 /* ConfirmAttributeViewController.swift */,
 				E560B2AB1DCEC8BB00849921 /* ConfirmForgotPasswordViewController.swift */,
 				E560B2AC1DCEC8BB00849921 /* ConfirmSignupViewController.swift */,
+				E560B2AF1DCEC8BB00849921 /* UpdateAttributesViewController.swift */,
 				E560B2AD1DCEC8BB00849921 /* ForgotPasswordViewController.swift */,
 				E560B2AE1DCEC8BB00849921 /* SignupViewController.swift */,
-				E560B2AF1DCEC8BB00849921 /* UpdateAttributesViewController.swift */,
 				E560B2B61DCEC8FD00849921 /* SignUp.storyboard */,
 				E560B2B81DCEC91D00849921 /* ForgotPassword.storyboard */,
 				E560B2BA1DCEC93000849921 /* UpdateAttributes.storyboard */,
@@ -1103,6 +1102,7 @@
 				E53212661DCACCA300FFA2D7 /* UserDataStorageViewController.swift in Sources */,
 				E560B2B31DCEC8BB00849921 /* ForgotPasswordViewController.swift in Sources */,
 				E53211E61DCACB3300FFA2D7 /* AWSFacebookSignInProvider.m in Sources */,
+				E5474A651DD1A723001B163B /* ExtensionsUIColor.swift in Sources */,
 				E532125B1DCACCA300FFA2D7 /* ContentDeliveryViewController.swift in Sources */,
 				E53211E81DCACB3300FFA2D7 /* AWSContentManager.m in Sources */,
 				E560B2B41DCEC8BB00849921 /* SignupViewController.swift in Sources */,

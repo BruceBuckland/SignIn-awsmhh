@@ -22,11 +22,13 @@ class ConfirmForgotPasswordViewController: UIViewController {
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.setToolbarHidden(true, animated: false)
+        updatePasswordButton.updateTheme()
+        updatePasswordButton.disable()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        updatePasswordButton.updateTheme()
         // Do any additional setup after loading the view.
         updatePasswordButton.requiredFields(confirmationCodeField,newPasswordField)
     }

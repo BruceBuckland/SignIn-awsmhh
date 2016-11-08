@@ -102,9 +102,4 @@ class AWSMobileClient: NSObject {
         // until the completionHandler is complete
         return didFinishLaunching
     }
-    
-    // let AWSIdentityManager understand when we have exited gracefully.
-    func applicationDidEnterBackground(application: UIApplication) {
-        AWSIdentityManager.defaultIdentityManager().interceptApplicationDidEnterBackground(application)
-    }
 }

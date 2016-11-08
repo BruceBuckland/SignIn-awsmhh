@@ -27,6 +27,11 @@ class ConfirmSignupViewController: UIViewController {
     
     @IBOutlet weak var codeSentToLabel: UILabel!
     
+    override func viewWillAppear(animated: Bool) {
+        confirmButton.updateTheme()
+        confirmButton.disable()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -35,7 +40,7 @@ class ConfirmSignupViewController: UIViewController {
         // setup outlets
         usernameField.text = user?.username
         codeSentToLabel.text! += sentTo! // append destination to Label
-        
+        confirmButton.updateTheme()
         confirmButton.requiredFields(usernameField,confirmationCodeField)
         confirmButton.disable()
     }

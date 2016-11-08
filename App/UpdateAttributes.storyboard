@@ -53,6 +53,11 @@
                                 <state key="normal" title="Update Attributes">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="UpdateAttributesPressed:" destination="1ct-CQ-oav" eventType="touchUpInside" id="uFS-AF-Jd2"/>
                                 </connections>
@@ -131,6 +136,11 @@
                                 <state key="normal" title="Confirm">
                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
+                                        <integer key="value" value="5"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
                                 <connections>
                                     <action selector="confirmPressed:" destination="Sgn-dG-RWU" eventType="touchUpInside" id="muq-VG-qyg"/>
                                 </connections>
