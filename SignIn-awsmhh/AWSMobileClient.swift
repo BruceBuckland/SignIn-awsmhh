@@ -86,6 +86,12 @@ class AWSMobileClient: NSObject {
      */
     func didFinishLaunching(application: UIApplication, withOptions launchOptions: [NSObject : AnyObject]?) -> Bool {
         print("didFinishLaunching:")
+        print("Logging Keychain")
+        KeychainDump.logIt()
+        print("Logging NSUserDefaults")
+        let test = NSUserDefaults.standardUserDefaults().dictionaryRepresentation()
+        NSLog("\(test)")
+        print("End of logging")
         
         let didFinishLaunching: Bool = AWSIdentityManager.defaultIdentityManager().interceptApplication(application, didFinishLaunchingWithOptions: launchOptions)
         

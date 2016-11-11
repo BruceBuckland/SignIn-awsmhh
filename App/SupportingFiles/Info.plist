@@ -56,7 +56,7 @@
 			<key>Default</key>
 			<dict>
 				<key>Allow Identity Merging</key>
-				<true/>
+				<false/>
 				<key>Allow Simultaneous Active Accounts</key>
 				<true/>
 				<key>CognitoYourUserPools</key>
