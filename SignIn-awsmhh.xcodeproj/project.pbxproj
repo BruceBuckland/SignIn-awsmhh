@@ -70,7 +70,6 @@
 		E532127B1DCACCA300FFA2D7 /* GoogleNetworkingUtilities.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212441DCACCA300FFA2D7 /* GoogleNetworkingUtilities.framework */; };
 		E532127C1DCACCA300FFA2D7 /* GoogleSignIn.bundle in Resources */ = {isa = PBXBuildFile; fileRef = E53212451DCACCA300FFA2D7 /* GoogleSignIn.bundle */; };
 		E532127D1DCACCA300FFA2D7 /* GoogleSignIn.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212461DCACCA300FFA2D7 /* GoogleSignIn.framework */; };
-		E5474A651DD1A723001B163B /* ExtensionsUIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38081DB35F9300F6E646 /* ExtensionsUIColor.swift */; };
 		E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */; };
 		E55B88231DCC518100E437ED /* News.swift in Sources */ = {isa = PBXBuildFile; fileRef = E55B88221DCC518100E437ED /* News.swift */; };
 		E55B88311DCC52B500E437ED /* CloudLogic.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E55B88251DCC52B500E437ED /* CloudLogic.storyboard */; };
@@ -107,8 +106,6 @@
 		E587A1AD1DCBA3D900E13E81 /* AWSIdentityManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E532118F1DCA6CC700FFA2D7 /* AWSIdentityManager.m */; };
 		E587A1AE1DCBA3E700E13E81 /* AWSFacebookSignInProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E53211961DCA6CC700FFA2D7 /* AWSFacebookSignInProvider.m */; };
 		E587A1AF1DCBA3EC00E13E81 /* AWSGoogleSignInProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = E53211981DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.m */; };
-		E5A8E6CA1DD25FF90029CB36 /* KeychainDump.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A8E6C91DD25FF90029CB36 /* KeychainDump.m */; };
-		E5A8E6CB1DD260020029CB36 /* KeychainDump.m in Sources */ = {isa = PBXBuildFile; fileRef = E5A8E6C91DD25FF90029CB36 /* KeychainDump.m */; };
 		E5BA19341DCADD8200F2F8A9 /* AWSCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212341DCACCA300FFA2D7 /* AWSCore.framework */; };
 		E5BA19351DCADD8200F2F8A9 /* AWSDynamoDB.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212351DCACCA300FFA2D7 /* AWSDynamoDB.framework */; };
 		E5BA19361DCADD8200F2F8A9 /* AWSLambda.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E53212361DCACCA300FFA2D7 /* AWSLambda.framework */; };
@@ -161,6 +158,7 @@
 		E53211961DCA6CC700FFA2D7 /* AWSFacebookSignInProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSFacebookSignInProvider.m; sourceTree = "<group>"; };
 		E53211971DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSGoogleSignInProvider.h; sourceTree = "<group>"; };
 		E53211981DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSGoogleSignInProvider.m; sourceTree = "<group>"; };
+		E53211991DCA6CC700FFA2D7 /* AWSMobileHubHelper-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "AWSMobileHubHelper-Bridging-Header.h"; sourceTree = "<group>"; };
 		E532119A1DCA6CC700FFA2D7 /* AWSSignInProvider.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSSignInProvider.h; sourceTree = "<group>"; };
 		E532119C1DCA6CC700FFA2D7 /* AWSUserFileManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AWSUserFileManager.h; sourceTree = "<group>"; };
 		E532119D1DCA6CC700FFA2D7 /* AWSUserFileManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AWSUserFileManager.m; sourceTree = "<group>"; };
@@ -241,8 +239,6 @@
 		E587A1AA1DCBA25400E13E81 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = "../../../Library/Developer/Xcode/DerivedData/SignIn-awsmhh-foggkucsmenkvmebhddwjugylciu/Build/Products/Debug-iphonesimulator/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework"; sourceTree = "<group>"; };
 		E587A1AC1DCBA31100E13E81 /* SignIn-awsmhh-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "SignIn-awsmhh-Bridging-Header.h"; sourceTree = "<group>"; };
 		E58B54FA1DC565E300E381F5 /* AWSGithubSignInProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWSGithubSignInProvider.swift; path = "SignIn-awsmhh/AWSGithubSignInProvider.swift"; sourceTree = "<group>"; };
-		E5A8E6C81DD25FF90029CB36 /* KeychainDump.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = KeychainDump.h; sourceTree = "<group>"; };
-		E5A8E6C91DD25FF90029CB36 /* KeychainDump.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = KeychainDump.m; sourceTree = "<group>"; };
 		E5C5480E1DBB494E00816386 /* cognito diagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "cognito diagram.pdf"; sourceTree = "<group>"; };
 		E5CB37E51DB35F0A00F6E646 /* SignIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E5CB37F21DB35F0A00F6E646 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -409,6 +405,7 @@
 				E53211961DCA6CC700FFA2D7 /* AWSFacebookSignInProvider.m */,
 				E53211971DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.h */,
 				E53211981DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.m */,
+				E53211991DCA6CC700FFA2D7 /* AWSMobileHubHelper-Bridging-Header.h */,
 				E532119A1DCA6CC700FFA2D7 /* AWSSignInProvider.h */,
 			);
 			path = SignIn;
@@ -632,8 +629,6 @@
 		E53212801DCACD9E00FFA2D7 /* Common-Sources */ = {
 			isa = PBXGroup;
 			children = (
-				E5A8E6C81DD25FF90029CB36 /* KeychainDump.h */,
-				E5A8E6C91DD25FF90029CB36 /* KeychainDump.m */,
 				E5CB382E1DB3654500F6E646 /* AWSMobileClient.swift */,
 				E5CB382B1DB3630900F6E646 /* AWSCUPIdPSignInProvider.swift */,
 				E58B54FA1DC565E300E381F5 /* AWSGithubSignInProvider.swift */,
@@ -673,9 +668,9 @@
 				E560B2AA1DCEC8BB00849921 /* ConfirmAttributeViewController.swift */,
 				E560B2AB1DCEC8BB00849921 /* ConfirmForgotPasswordViewController.swift */,
 				E560B2AC1DCEC8BB00849921 /* ConfirmSignupViewController.swift */,
-				E560B2AF1DCEC8BB00849921 /* UpdateAttributesViewController.swift */,
 				E560B2AD1DCEC8BB00849921 /* ForgotPasswordViewController.swift */,
 				E560B2AE1DCEC8BB00849921 /* SignupViewController.swift */,
+				E560B2AF1DCEC8BB00849921 /* UpdateAttributesViewController.swift */,
 				E560B2B61DCEC8FD00849921 /* SignUp.storyboard */,
 				E560B2B81DCEC91D00849921 /* ForgotPassword.storyboard */,
 				E560B2BA1DCEC93000849921 /* UpdateAttributes.storyboard */,
@@ -1092,7 +1087,6 @@
 				E55B88391DCC52B500E437ED /* NoSQLTableFactory.swift in Sources */,
 				E532126B1DCACCA300FFA2D7 /* ColorThemeSettings.swift in Sources */,
 				E55B88381DCC52B500E437ED /* NoSQLSampleDataGenerator.swift in Sources */,
-				E5A8E6CB1DD260020029CB36 /* KeychainDump.m in Sources */,
 				E532125C1DCACCA300FFA2D7 /* DemoFeature.swift in Sources */,
 				E55B88341DCC52B500E437ED /* NewsTable.swift in Sources */,
 				E53211DB1DCACB3300FFA2D7 /* AWSMobileClient.swift in Sources */,
@@ -1109,7 +1103,6 @@
 				E53212661DCACCA300FFA2D7 /* UserDataStorageViewController.swift in Sources */,
 				E560B2B31DCEC8BB00849921 /* ForgotPasswordViewController.swift in Sources */,
 				E53211E61DCACB3300FFA2D7 /* AWSFacebookSignInProvider.m in Sources */,
-				E5474A651DD1A723001B163B /* ExtensionsUIColor.swift in Sources */,
 				E532125B1DCACCA300FFA2D7 /* ContentDeliveryViewController.swift in Sources */,
 				E53211E81DCACB3300FFA2D7 /* AWSContentManager.m in Sources */,
 				E560B2B41DCEC8BB00849921 /* SignupViewController.swift in Sources */,
@@ -1153,7 +1146,6 @@
 				E5C548691DBC32D100816386 /* AWSCUPIdPSignInProvider.swift in Sources */,
 				E5CB38101DB35F9300F6E646 /* AppColor.swift in Sources */,
 				E53211A21DCA6CC700FFA2D7 /* AWSFacebookSignInProvider.m in Sources */,
-				E5A8E6CA1DD25FF90029CB36 /* KeychainDump.m in Sources */,
 				E5CB381D1DB35F9300F6E646 /* LoginViewController.swift in Sources */,
 				E532119F1DCA6CC700FFA2D7 /* AWSContentManager.m in Sources */,
 				E5CB38161DB35F9300F6E646 /* ConfirmSignupViewController.swift in Sources */,
