@@ -1,19 +1,19 @@
 PODS:
-  - AWSCognito (2.4.11):
-    - AWSCore (= 2.4.11)
-  - AWSCognitoIdentityProvider (2.4.11):
-    - AWSCore (= 2.4.11)
-  - AWSCore (2.4.11)
-  - AWSDynamoDB (2.4.11):
-    - AWSCore (= 2.4.11)
-  - AWSLambda (2.4.11):
-    - AWSCore (= 2.4.11)
-  - AWSMobileAnalytics (2.4.11):
-    - AWSCore (= 2.4.11)
-  - AWSS3 (2.4.11):
-    - AWSCore (= 2.4.11)
-  - AWSSNS (2.4.11):
-    - AWSCore (= 2.4.11)
+  - AWSCognito (2.4.12):
+    - AWSCore (= 2.4.12)
+  - AWSCognitoIdentityProvider (2.4.12):
+    - AWSCore (= 2.4.12)
+  - AWSCore (2.4.12)
+  - AWSDynamoDB (2.4.12):
+    - AWSCore (= 2.4.12)
+  - AWSLambda (2.4.12):
+    - AWSCore (= 2.4.12)
+  - AWSMobileAnalytics (2.4.12):
+    - AWSCore (= 2.4.12)
+  - AWSS3 (2.4.12):
+    - AWSCore (= 2.4.12)
+  - AWSSNS (2.4.12):
+    - AWSCore (= 2.4.12)
   - Bolts (1.8.4):
     - Bolts/AppLinks (= 1.8.4)
     - Bolts/Tasks (= 1.8.4)
@@ -73,14 +73,14 @@ DEPENDENCIES:
   - GoogleUtilities
 
 SPEC CHECKSUMS:
-  AWSCognito: e086ad6f499e309dbf0030170cffc65a0bfd27c6
-  AWSCognitoIdentityProvider: e8b124892dba5bbe32f93194220ad4b17bb50677
-  AWSCore: e66b0f50d68f9897cc9e68471062f0cb5379eec5
-  AWSDynamoDB: 1d54c63fe63c2afcd0caea5ce709d1a0b213213f
-  AWSLambda: a724cdda7d76c8c9d6e8447134c221b22531d2bc
-  AWSMobileAnalytics: b57240111c0c93b2172bd61db20842755a6b1c7e
-  AWSS3: 2f90735901744687eaeb91621fa62ee921db6510
-  AWSSNS: 6844814ce167da813e213a4d3f8f0e6c45ae3bed
+  AWSCognito: 3c897210f6bfbb04585332388dff2036a3f39540
+  AWSCognitoIdentityProvider: 219628dfb0110d9763e18a2f4d6895e9ad963382
+  AWSCore: 8ee5b1dc06a0fd562429fe7120113ca93cbfbca6
+  AWSDynamoDB: f78e38016afa783c9c3d7d0f1c33c8c283eee8d9
+  AWSLambda: 39c628a20f48bcdb8d9ab469fbfe866236668a62
+  AWSMobileAnalytics: 144bbdca22a1b44f5ea1e2d7296868cda6f875a9
+  AWSS3: 7bb3e095a37ed8334a0b868bbca74ab574b37a4f
+  AWSSNS: 758ecea491002c9064f3771a853ca9250b93ccc0
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
   FBSDKCoreKit: 2807fe0da2ddb49a1469da6d6ff597f99912980f
   FBSDKLoginKit: 6d350cb6a22d6956e9d078885de6ee8a0ebc51b4
@@ -94,6 +94,6 @@ SPEC CHECKSUMS:
   GTMOAuth2: 7fc9c10f5c745f4d9850419ea88889fe3baa6b7d
   GTMSessionFetcher: a1f8ed39e4fe21c68957daed472c7afbcdf29166
 
-PODFILE CHECKSUM: e4e62c176460c3ebf629feeaa87df9942f88908e
+PODFILE CHECKSUM: d9eb95601b04d7596e540cea2e9b9aff572d50af
 
 COCOAPODS: 1.0.1

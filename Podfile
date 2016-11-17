@@ -16,13 +16,9 @@ def mobile_pods
     pod 'AWSS3', '~>2.4.6'
     pod 'AWSLambda', '~>2.4.6'
     #     pod 'Bolts-Swift', '~>1.2.0' Bolts 1.8.4 comes with AWS?
-    
 
 
-end
 
-target :'Dom' do
-    mobile_pods
 end
 
 target :'SignIn' do
@@ -38,9 +34,7 @@ target :'MySampleApp' do
     pod 'GoogleNetworkingUtilities'
     pod 'GoogleAuthUtilities'
     pod 'GoogleAppUtilities'
-    
+
 
 
 end
-
-
