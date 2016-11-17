@@ -88,24 +88,25 @@ class MainViewController: UITableViewController {
             icon: "NoSQLIcon", storyboard: "NoSQLDatabase")
         
         demoFeatures.append(demoFeature)
-
-                signInObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self] (note: NSNotification) -> Void in
-                        guard let strongSelf = self else { return }
-                        print("Sign In Observer observed sign in.")
-                        strongSelf.setupBarButtonItems()
-                        // You need to call `updateTheme` here in case the sign-in happens after `- viewWillAppear:` is called.
-                        strongSelf.updateTheme()
-                        strongSelf.lastUsername = AWSIdentityManager.defaultIdentityManager().userName
-                })
         
-                signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
-                        guard let strongSelf = self else { return }
-                        print("Sign Out Observer observed sign out.")
-                        strongSelf.setupBarButtonItems()
-                        strongSelf.updateTheme()
-                })
-                
-                setupBarButtonItems()
+        signInObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self] (note: NSNotification) -> Void in
+            guard let strongSelf = self else { return }
+            print("Sign In Observer observed sign in.")
+            strongSelf.logUsername()
+            strongSelf.setupBarButtonItems()
+            // You need to call `updateTheme` here in case the sign-in happens after `- viewWillAppear:` is called.
+            strongSelf.updateTheme()
+            strongSelf.lastUsername = AWSIdentityManager.defaultIdentityManager().userName
+            })
+        
+        signOutObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignOutNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self](note: NSNotification) -> Void in
+            guard let strongSelf = self else { return }
+            print("Sign Out Observer observed sign out.")
+            strongSelf.setupBarButtonItems()
+            strongSelf.updateTheme()
+            })
+        
+        setupBarButtonItems()
     }
     
     deinit {
@@ -157,12 +158,12 @@ class MainViewController: UITableViewController {
         let viewController = storyboard.instantiateViewControllerWithIdentifier(demoFeature.storyboard)
         self.navigationController!.pushViewController(viewController, animated: true)
     }
-
+    
     func updateTheme() {
         let settings = ColorThemeSettings.sharedInstance
         settings.loadSettings { (themeSettings: ColorThemeSettings?, error: NSError?) -> Void in
             guard let themeSettings = themeSettings else {
-                 print("Failed to load color: \(error)")
+                print("Failed to load color: \(error)")
                 return
             }
             dispatch_async(dispatch_get_main_queue(), {
@@ -176,11 +177,11 @@ class MainViewController: UITableViewController {
     }
     
     func goToLogin() {
-             print("Handling optional sign-in.")
-            let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
-            let loginController = loginStoryboard.instantiateViewControllerWithIdentifier("SignIn") as! SignInViewController
-            loginController.usernameText = self.lastUsername
-            navigationController!.pushViewController(loginController, animated: true)
+        print("Handling optional sign-in.")
+        let loginStoryboard = UIStoryboard(name: "SignIn", bundle: nil)
+        let loginController = loginStoryboard.instantiateViewControllerWithIdentifier("SignIn") as! SignInViewController
+        loginController.usernameText = self.lastUsername
+        navigationController!.pushViewController(loginController, animated: true)
     }
     
     func handleLogout() {
@@ -195,6 +196,12 @@ class MainViewController: UITableViewController {
         } else {
             assert(false)
         }
+    }
+    
+    func logUsername() {
+        let identityManager = AWSIdentityManager.defaultIdentityManager()
+        let provider = AWSIdentityManager.providerKey((identityManager.currentSignInProvider as? AWSSignInProvider)!)
+        identityManager.recordIdentityForIdentityId(identityManager.userName!, provider: provider)
     }
 }
 

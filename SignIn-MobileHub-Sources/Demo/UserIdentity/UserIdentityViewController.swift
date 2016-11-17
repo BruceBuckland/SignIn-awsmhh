@@ -24,7 +24,7 @@ class UserIdentityViewController: UIViewController {
     @IBOutlet weak var userPhone: UILabel!
     @IBOutlet weak var authenticator: UILabel!
     @IBOutlet weak var openSessions: UILabel!
-    
+    @IBOutlet weak var linkedUserNames: UILabel!
     // MARK: - View lifecycle
     
     override func viewWillAppear(animated: Bool) {
@@ -60,13 +60,22 @@ class UserIdentityViewController: UIViewController {
             userPhone.text = NSLocalizedString("N/A", comment: "Placeholder text for Not Available")
         }
         
+        linkedUserNames.text = ""
         if identityManager.loggedIn {
-            authenticator.text = identityManager.providerKey(identityManager.currentSignInProvider as! AWSSignInProvider)
+            
+            for (key,value) in (identityManager.getIdentitiesForIdentityId())! {
+                linkedUserNames.text = linkedUserNames.text! + "\(key)/\(value)\n"
+            }
+        }
+        NSLog("getIdentitiesForIdentityId():\(identityManager.identityId) - \(identityManager.getIdentitiesForIdentityId())")
+        
+        if identityManager.loggedIn {
+            authenticator.text = AWSIdentityManager.providerKey(identityManager.currentSignInProvider as! AWSSignInProvider)
         }
         openSessions.text = ""
         for provider in identityManager.activeProviders() {
-            if authenticator.text != identityManager.providerKey(provider as! AWSSignInProvider) {
-            openSessions.text = openSessions.text! + "(" + identityManager.providerKey(provider as! AWSSignInProvider) + ") "
+            if authenticator.text != AWSIdentityManager.providerKey(provider as! AWSSignInProvider) {
+                openSessions.text = openSessions.text! + "(" + AWSIdentityManager.providerKey(provider as! AWSSignInProvider) + ") "
             }
         }
     }

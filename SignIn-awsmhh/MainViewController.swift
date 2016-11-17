@@ -85,6 +85,7 @@ class MainViewController: UIViewController {
         signInObserver = NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification, object: AWSIdentityManager.defaultIdentityManager(), queue: NSOperationQueue.mainQueue(), usingBlock: {[weak self] (note: NSNotification) -> Void in
             guard let strongSelf = self else { return }
             print("Sign In Observer observed sign in.")
+            strongSelf.logUsername()
             strongSelf.setupBarButtonItems()
             strongSelf.refreshInterface("-SignIn \(strongSelf.authenticatedBy())")
             })
@@ -180,17 +181,17 @@ class MainViewController: UIViewController {
     @IBAction func actionNotRequiringAuthenticationPressed(sender: AnyObject) {
         var line = ""
         for provider in AWSIdentityManager.defaultIdentityManager().activeProviders() as! [AWSSignInProvider] {
-            NSLog("provider: \(AWSIdentityManager.defaultIdentityManager().providerKey(provider)) authenticated by: \(self.authenticatedBy()) username: \(provider.userName) imageURL:\(provider.imageURL)")
-        
-            if AWSIdentityManager.defaultIdentityManager().providerKey(provider) == self.authenticatedBy() {
+            NSLog("provider: \(AWSIdentityManager.providerKey(provider)) authenticated by: \(self.authenticatedBy()) username: \(provider.userName) imageURL:\(provider.imageURL)")
+            
+            if AWSIdentityManager.providerKey(provider) == self.authenticatedBy() {
                 if provider.userName == nil { // should not happen but currently does when errors or cancel on signin
-                    line += "Sign On Error Not Properly Reversed by Mobile Hub Helper on *" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ", "
+                    line += "Sign On Error Not Properly Reversed by Mobile Hub Helper on *" + AWSIdentityManager.providerKey(provider) + ", "
                 } else {
-                    line += "\(provider.userName!) on *" + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ", " // flag our auth provider now
+                    line += "\(provider.userName!) on *" + AWSIdentityManager.providerKey(provider) + ", " // flag our auth provider now
                     
                 }
             } else {
-                line += "\(provider.userName!) on " + AWSIdentityManager.defaultIdentityManager().providerKey(provider) + ", "
+                line += "\(provider.userName!) on " + AWSIdentityManager.providerKey(provider) + ", "
             }
             
         }
@@ -202,12 +203,17 @@ class MainViewController: UIViewController {
     
     func authenticatedBy() -> String {
         if let currentSignInProvider = AWSIdentityManager.defaultIdentityManager().currentSignInProvider as? AWSSignInProvider {
-            return AWSIdentityManager.defaultIdentityManager().providerKey(currentSignInProvider)
+            return AWSIdentityManager.providerKey(currentSignInProvider)
         } else {
-            return "Guest"
+            return "Unauthenticated"
         }
     }
     
+    func logUsername() {
+        let identityManager = AWSIdentityManager.defaultIdentityManager()
+        let provider = AWSIdentityManager.providerKey((identityManager.currentSignInProvider as? AWSSignInProvider)!)
+        identityManager.recordIdentityForIdentityId(identityManager.userName!, provider: provider)
+    }
     func refreshInterface(appendToId: String = "-shouldNotHappen") {
         
         self.updateUserAttributesButton.hidden = true
@@ -219,7 +225,7 @@ class MainViewController: UIViewController {
             
             if AWSIdentityManager.defaultIdentityManager().loggedIn  {
                 self.updateUserAttributesButton.hidden = false
-                NSLog("We have an \(AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider))")
+                NSLog("We have an \(AWSIdentityManager.providerKey(signInProvider))")
             }
             signInProvider.user.getDetails().continueWithSuccessBlock() { (task) in
                 dispatch_async(dispatch_get_main_queue()) {

@@ -78,6 +78,9 @@
 		E53211F31DCACB3300FFA2D7 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37FA1DB35F2600F6E646 /* .gitignore */; };
 		E53211F51DCACB3300FFA2D7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37F11DB35F0A00F6E646 /* LaunchScreen.storyboard */; };
 		E555BFBA1DB89A2B00D05268 /* ImageAsset.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */; };
+		E589BC661DDE3135002B0C60 /* ExtensionsAWSIdentityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BC641DDE3135002B0C60 /* ExtensionsAWSIdentityManager.swift */; };
+		E589BC671DDE3135002B0C60 /* ExtensionsAWSIdentityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BC641DDE3135002B0C60 /* ExtensionsAWSIdentityManager.swift */; };
+		E589BC681DDE3135002B0C60 /* ExtensionsAWSTask.swift in Sources */ = {isa = PBXBuildFile; fileRef = E589BC651DDE3135002B0C60 /* ExtensionsAWSTask.swift */; };
 		E5C548691DBC32D100816386 /* AWSCUPIdPSignInProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB382B1DB3630900F6E646 /* AWSCUPIdPSignInProvider.swift */; };
 		E5CB37F31DB35F0A00F6E646 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E5CB37F11DB35F0A00F6E646 /* LaunchScreen.storyboard */; };
 		E5CB38101DB35F9300F6E646 /* AppColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5CB38001DB35F9200F6E646 /* AppColor.swift */; };
@@ -181,6 +184,8 @@
 		E555BFB91DB89A2B00D05268 /* ImageAsset.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = ImageAsset.xcassets; sourceTree = "<group>"; };
 		E587A1A81DCBA24C00E13E81 /* AWSCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCore.framework; path = "../../../Library/Developer/Xcode/DerivedData/SignIn-awsmhh-foggkucsmenkvmebhddwjugylciu/Build/Products/Debug-iphonesimulator/AWSCore/AWSCore.framework"; sourceTree = "<group>"; };
 		E587A1AA1DCBA25400E13E81 /* AWSCognitoIdentityProvider.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AWSCognitoIdentityProvider.framework; path = "../../../Library/Developer/Xcode/DerivedData/SignIn-awsmhh-foggkucsmenkvmebhddwjugylciu/Build/Products/Debug-iphonesimulator/AWSCognitoIdentityProvider/AWSCognitoIdentityProvider.framework"; sourceTree = "<group>"; };
+		E589BC641DDE3135002B0C60 /* ExtensionsAWSIdentityManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsAWSIdentityManager.swift; sourceTree = "<group>"; };
+		E589BC651DDE3135002B0C60 /* ExtensionsAWSTask.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExtensionsAWSTask.swift; sourceTree = "<group>"; };
 		E58B54FA1DC565E300E381F5 /* AWSGithubSignInProvider.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AWSGithubSignInProvider.swift; path = "SignIn-awsmhh/AWSGithubSignInProvider.swift"; sourceTree = "<group>"; };
 		E5C5480E1DBB494E00816386 /* cognito diagram.pdf */ = {isa = PBXFileReference; lastKnownFileType = image.pdf; path = "cognito diagram.pdf"; sourceTree = "<group>"; };
 		E5CB37E51DB35F0A00F6E646 /* SignIn.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SignIn.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -518,6 +523,8 @@
 		E53212801DCACD9E00FFA2D7 /* Common-Sources */ = {
 			isa = PBXGroup;
 			children = (
+				E589BC641DDE3135002B0C60 /* ExtensionsAWSIdentityManager.swift */,
+				E589BC651DDE3135002B0C60 /* ExtensionsAWSTask.swift */,
 				E51D53F61DDD7D3F001CC5D7 /* SignIn-awsmhh-Bridging-Header.h */,
 				E5CB382E1DB3654500F6E646 /* AWSMobileClient.swift */,
 				E5CB382B1DB3630900F6E646 /* AWSCUPIdPSignInProvider.swift */,
@@ -823,6 +830,7 @@
 				E51D5A261DDE12D3001CC5D7 /* ForgotPasswordViewController.swift in Sources */,
 				E51D5B6D1DDE12D4001CC5D7 /* GraffitiTable.swift in Sources */,
 				E51D5A211DDE12D3001CC5D7 /* AppDelegate.swift in Sources */,
+				E589BC671DDE3135002B0C60 /* ExtensionsAWSIdentityManager.swift in Sources */,
 				E53211D61DCACB3300FFA2D7 /* AWSCloudLogic.m in Sources */,
 				E51D5B6B1DDE12D4001CC5D7 /* ContentDeliveryViewController.swift in Sources */,
 				E53211D81DCACB3300FFA2D7 /* AWSIdentityManager.m in Sources */,
@@ -870,10 +878,12 @@
 				E532119E1DCA6CC700FFA2D7 /* AWSCloudLogic.m in Sources */,
 				E5CB38141DB35F9300F6E646 /* ConfirmAttributeViewController.swift in Sources */,
 				E53211A01DCA6CC700FFA2D7 /* AWSIdentityManager.m in Sources */,
+				E589BC681DDE3135002B0C60 /* ExtensionsAWSTask.swift in Sources */,
 				E5CB38151DB35F9300F6E646 /* ConfirmForgotPasswordViewController.swift in Sources */,
 				E5CB38181DB35F9300F6E646 /* ExtensionsUIColor.swift in Sources */,
 				E5CB382F1DB3654500F6E646 /* AWSMobileClient.swift in Sources */,
 				E5CB381B1DB35F9300F6E646 /* K.swift in Sources */,
+				E589BC661DDE3135002B0C60 /* ExtensionsAWSIdentityManager.swift in Sources */,
 				E53211A31DCA6CC700FFA2D7 /* AWSGoogleSignInProvider.m in Sources */,
 				E53211A11DCA6CC700FFA2D7 /* AWSPushManager.m in Sources */,
 				E5CB381E1DB35F9300F6E646 /* SignupViewController.swift in Sources */,
@@ -924,30 +934,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSCognito",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSCore",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSLambda",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSS3",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSSNS",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/Bolts",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/FBSDKCoreKit",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/FBSDKLoginKit",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/GoogleToolboxForMac",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/GTMOAuth2",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/GTMSessionFetcher",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSCognito",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSCore",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSLambda",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSS3",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSSNS",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/Bolts",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/FBSDKCoreKit",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/FBSDKLoginKit",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/GoogleToolboxForMac",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/GTMOAuth2",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/GTMSessionFetcher",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.odellventures.MySampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -976,30 +962,6 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSCognito",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSCore",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSLambda",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSS3",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/AWSSNS",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/Bolts",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/FBSDKCoreKit",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/FBSDKLoginKit",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/GoogleToolboxForMac",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/GTMOAuth2",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator/GTMSessionFetcher",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Debug-iphonesimulator",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSCognito",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSCore",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSLambda",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSS3",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/AWSSNS",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/Bolts",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/FBSDKCoreKit",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/FBSDKLoginKit",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/GoogleToolboxForMac",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/GTMOAuth2",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos/GTMSessionFetcher",
-					"$(PROJECT_DIR)/SignIn-MobileHub-Sources/aws-mobilehub-helper-ios/builtFramework/Release-iphoneos",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.odellventures.MySampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
