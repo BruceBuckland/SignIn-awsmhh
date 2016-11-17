@@ -282,7 +282,7 @@ class LoginViewController: UIViewController, AWSCognitoIdentityPasswordAuthentic
                 })
             } else {
                 dispatch_async(dispatch_get_main_queue(),{
-                    self.showErrorDialog(AWSIdentityManager.defaultIdentityManager().providerKey(signInProvider), withError: error!)
+                    self.showErrorDialog(AWSIdentityManager.providerKey(signInProvider), withError: error!)
                 })
             }
             print("result = \(result), error = \(error)")
