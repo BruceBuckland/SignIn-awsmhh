@@ -11,7 +11,6 @@ import AWSCognito
 
 
 let DatasetForUsernameState = "IdPUsers_State"
-let KeyForProviderDictionary = "Providers"
 
 extension AWSIdentityManager {
     /**
@@ -26,7 +25,6 @@ extension AWSIdentityManager {
      * AWS->IdentityManager->Default->SignInProviderKeyDictionary
      * @return provider name or nil (nil if classname not found)
      */
-
     class func providerKey(provider: AWSSignInProvider) -> String {
         let AWSInfoIdentityManager = "IdentityManager"
         let defaultDictionary = AWSInfo().defaultServiceInfo(AWSInfoIdentityManager)?.infoDictionary
@@ -38,28 +36,34 @@ extension AWSIdentityManager {
         }
     }
     
+    /**
+     * providerList is a list of all configured AWSsignInProviders based upon Info.plist
+     * or AWSSignInProviderFactory registration list.  Be careful removing IdentityProviders
+     * because if you remove an identity provider and it has synced data, that synced data is there forever
+     * using up space but never used.
+     */
+    class func providerList() -> [String] {
+        let AWSInfoIdentityManager = "IdentityManager"
+        let defaultDictionary = AWSInfo().defaultServiceInfo(AWSInfoIdentityManager)?.infoDictionary
+        let signInProviderKeyDictionary = defaultDictionary?["SignInProviderKeyDictionary"] as! NSDictionary
+        return signInProviderKeyDictionary.allValues  as! [String] //[String(provider.dynamicType)]
+    }
+    
     // Track usernames against IdentityIds the username and provider in a dictionary
     // We only sync if the username is not yet recorded on this device
-    // There is a Dataset record called "Providers" in the dataset containing a Dictionary
-    // provider name is the key, username is the value
     //
     func getIdentitiesForIdentityId() -> NSDictionary? {
         let syncClient: AWSCognito = AWSCognito.defaultCognito()
         let adminState: AWSCognitoDataset = syncClient.openOrCreateDataset(DatasetForUsernameState)
-        // get JSON data from our key
-        if let jsonData = adminState.stringForKey(KeyForProviderDictionary)?.dataUsingEncoding(NSUTF8StringEncoding) {
-            do {
-                let providerDict = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! [String:AnyObject]
-                // successful conversion from JSON
-                return providerDict
-                
-            } catch let error as NSError {
-                print("JSON error: \(error.localizedDescription)")
-            }
+        
+        var providerDict:[String:String] = [:]
+        
+        for provider in AWSIdentityManager.providerList() {
+            providerDict[provider] = adminState.stringForKey(provider)
         }
-        return nil
+        return providerDict
     }
-
+    
     /**
      * log the userName and providerKey for a user in a
      * Cognito Sync dataset and synchronize.  If the
@@ -70,46 +74,23 @@ extension AWSIdentityManager {
      */
     func recordIdentityForIdentityId(username: String, provider: String) {
         let syncClient: AWSCognito = AWSCognito.defaultCognito()
-        let usernameState: AWSCognitoDataset = syncClient.openOrCreateDataset(DatasetForUsernameState)
-        var providerDict:NSDictionary?
+        let adminState: AWSCognitoDataset = syncClient.openOrCreateDataset(DatasetForUsernameState)
         
-        func syncDict(providerDictionary: NSDictionary?) {
-            do {
-                let jsonData = try NSJSONSerialization.dataWithJSONObject(providerDictionary!, options: NSJSONWritingOptions.PrettyPrinted)
-                usernameState.setString(String(data: jsonData, encoding: NSUTF8StringEncoding), forKey: KeyForProviderDictionary)
-                // sync
-                NSLog("Synchronize occured")
-                usernameState.synchronize().continueWithExceptionCheckingBlock({(result: AnyObject?, error: NSError?) -> Void in
-                    if let error = error {
-                        print("AWS task error saving username for identityId: \(error.localizedDescription)")
-                    }
-                })
-            } catch let error as NSError {
-                print("JSON error: \(error.localizedDescription)")
+        if let storedUserName = adminState.stringForKey(provider) { // Got a Dataset record
+            if storedUserName != username {
+                abort()
+            } else {
+                return // do nothing the username is sync'd already
             }
-        }
-        
-        if let jsonData = usernameState.stringForKey(KeyForProviderDictionary)?.dataUsingEncoding(NSUTF8StringEncoding) { // Got a Dataset record
-            do {
-                let providerDict = try NSJSONSerialization.JSONObjectWithData(jsonData, options: NSJSONReadingOptions.MutableContainers) as! NSMutableDictionary
-                
-                if providerDict[provider] as? String == username { // have dict have username
-                    return
-                } else { // need to sync new username
-                    providerDict.setValue(username, forKey: provider)
-                    syncDict(providerDict)
+        } else { // There is no Dataset Record for this provider
+            adminState.setString(username, forKey: provider)
+            NSLog("Synchronize occured setString \(provider)=>\(username)")
+            adminState.synchronize().continueWithExceptionCheckingBlock({(result: AnyObject?, error: NSError?) -> Void in
+                if let error = error {
+                    print("AWS task error saving username for identityId: \(error.localizedDescription)")
                 }
-                
-            } catch let error as NSError {
-                print("JSON error: \(error.localizedDescription)")
-                providerDict = [provider:username]
-                syncDict(providerDict)
-            }
-        } else { // There is no Dataset Record
-            providerDict = [provider:username]
-            syncDict(providerDict)
+                NSLog("Stored Identities after sync: \(self.getIdentitiesForIdentityId())")
+            })
         }
-        
-        
     }
 }

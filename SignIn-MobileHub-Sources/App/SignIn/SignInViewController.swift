@@ -49,19 +49,7 @@ class SignInViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        didSignInObserver =  NSNotificationCenter.defaultCenter().addObserverForName(AWSIdentityManagerDidSignInNotification,
-                                                                                     object: AWSIdentityManager.defaultIdentityManager(),
-                                                                                     queue: NSOperationQueue.mainQueue(),
-                                                                                     usingBlock: {[weak self] (note: NSNotification) -> Void in
-                                                                                        guard let strongSelf = self else { return }
-                                                                                        // perform successful login actions here
-                                                                                        if AWSIdentityManager.defaultIdentityManager().currentSignInProvider is AWSCUPIdPSignInProvider {
-                                                                                            // only remember the name of the user if it is a CUPIdP name
-                                                                                            strongSelf.usernameText = AWSIdentityManager.defaultIdentityManager().userName
-                                                                                        }
-            })
-        
+
         // Facebook login permissions can be optionally set, but must be set
         // before user authenticates.
         AWSFacebookSignInProvider.sharedInstance().setPermissions(["public_profile"]);
@@ -106,7 +94,7 @@ class SignInViewController: UIViewController {
     }
     
     deinit {
-        NSNotificationCenter.defaultCenter().removeObserver(didSignInObserver)
+        NSNotificationCenter.defaultCenter().dropObserver(didSignInObserver)
     }
     
     func dimissController() {
